@@ -2,8 +2,60 @@
 
 > #Import Data into R as 'IGE'
 
-> #Calculate Sharpe Ratio
+>                                                  ##Calculate Sharpe Ratio
 
 > IGE$DailyRet <- repeat(NA, length(IGE$Date))
 > # This time the length is 1504, use 1504 in below for 'length(IGE$Date)'
 
+> length(IGE$Date)
+[1] 1504
+
+
+> IGE$DailyRet <- rep(NA, 1504)
+
+> for (i in 2:length(IGE$Adj.Close)) {IGE$DailyRet[i] <- (IGE$Adj.Close[i]-IGE$Adj.Close[i - 1])/IGE$Adj.Close[i-1]}
+> # 'Adj.Close' is the daily stock close price adjusted for Dividents and splits
+
+> IGE$EXDailyRet <- rep(NA, 1504)
+
+> IGE$EXDailyRet <- IGE$DailyRet - 0.04/252
+# Assume 0.04 to be the yearly risk-free return during the period
+
+> IGE$SR <- sqrt(252) * mean(IGE$EXDailyRet, na.rm = TRUE) / sd(IGE$DailyRet, na.rm = TRUE)
+
+>                                      ##Calculate Drawdown and Max.Drawdown.Duration
+
+> IGE$DailyRetSPY <- rep(NA, 1504)
+> # Daily Return for 'SPY'
+
+> for (i in 2:1504) {IGE$DailyRetSPY[i] <- (AdjCloseSPY[i]-AdjCloseSPY[i-1])/AdjCloseSPY[i-1]}
+
+> IGE$EXDR.SPY <- IGE$DailyRetSPY - 0.04/252
+> # Again, assuem yearly risk-free return to be 0.04
+
+> IGE$CumRet <- rep(NA, 1504)
+
+> IGE$NetDR <- (IGE$DailyRetSPY - IGE$DailyRet) /(-2)
+> # In this example, we Long 'IGE' and Short 'SPY'. So for Net Return, we have 2 times the principle.
+
+> IGE$CumRet[1:2] <- IGE$NetDR[1:2]
+
+> for (i in 3:1504) {IGE$CumRet[i] <- (1+IGE$CumRet[i-1])*(1+IGE$NetDR[i])-1}
+> # 'CumRet' is the Cumlumative Return for this portfolio
+
+> IGE$HWaterMk <- rep(NA, 1504)
+> # 'HWaterMk' stands for High Water Mark
+
+> for (i in 2:1504) {IGE$HWaterMk[i] <- max(c(IGE$CumRet[i],IGE$HWaterMk[i-1]), na.rm = TRUE)}
+
+> IGE$DW <- rep(NA, 1504)
+> # 'DW' stands for Drawdown
+
+> for (i in 2:1504) {IGE$DW[i] <- ((1+IGE$CumRet[i])/(1+IGE$HWaterMk[i]))-1}
+
+> IGE$MaxDW.Dur <- rep(0, 1504)
+
+> for (i in 2:1504) {if (IGE$DW[i]==0) {IGE$MaxDW.Dur[i]<- 0} else {IGE$MaxDW.Dur[i] <- IGE$MaxDW.Dur[i-1] + 1} }
+
+> max(IGE$MaxDW.Dur)
+[1] 497
