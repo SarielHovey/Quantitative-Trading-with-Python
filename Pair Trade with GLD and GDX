@@ -36,3 +36,17 @@ for (i in 1:252) {if (Trainset$Zscore[i] >= 2) {Trainset$Position[i] <- 'Short'}
 for (i in 1:252) {if (abs(Trainset$Zscore[i]) <= 1) {Trainset$Position[i] <- 'Exit'}}
 for (i in 1:252) {if (abs(Trainset$Zscore[i]) > 1 & abs(Trainset$Zscore[i]) < 2) {Trainset$Position[i] <- 'Hold'}}
 
+P.GLD <- rep(NA, 252)
+P.GDX <- rep(NA, 252)
+for (i in 1:252) {if (Trainset$Position[i] == 'Exit') {P.GLD[i] <- 0}}
+for (i in 1:252) {if (Trainset$Position[i] == 'Exit') {P.GDX[i] <- 0}}
+for (i in 1:252) {if (Trainset$Position[i] == 'Long') {P.GLD[i] <- 1}}
+for (i in 1:252) {if (Trainset$Position[i] == 'Long') {P.GDX[i] <- -1}}
+for (i in 1:252) {if (Trainset$Position[i] == 'Short') {P.GLD[i] <- -1}}
+for (i in 1:252) {if (Trainset$Position[i] == 'Short') {P.GDX[i] <- 1}}
+for (i in 2:252) {if (Trainset$Position[i] == 'Hold') {P.GLD[i] <- P.GLD[i-1]}}
+for (i in 2:252) {if (Trainset$Position[i] == 'Hold') {P.GDX[i] <- P.GDX[i-1]}}
+
+# Assume Mean Reverting for Spread. When too small with Zscore <= -2, the spread tends to rise, with GLD rising and GDX decreasing
+
+Posi <- data.frame(GLD=P.GLD, GDX=P.GDX)
