@@ -59,3 +59,4 @@
 
 > max(IGE$MaxDW.Dur)
 [1] 497
+> # This is the max Drawdown, 497 days.
