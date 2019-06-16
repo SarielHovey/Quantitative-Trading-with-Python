@@ -28,3 +28,11 @@ Trainset$StdSPD <- sd(Trainset$Spread)
 
 Trainset$Zscore <- (Trainset$Spread - Trainset$MeanSPD) / Trainset$StdSPD
 # If Zscore <= -2 then Long spread; If Zscore >= 2 then Short spread; If abs(Zscore) <= 1 then Exit
+Trainset$Position <- rep(NA, 252)
+# Initialize Position
+
+for (i in 1:252) {if (Trainset$Zscore[i] <= -2) {Trainset$Position[i] <- 'Long'}}
+for (i in 1:252) {if (Trainset$Zscore[i] >= 2) {Trainset$Position[i] <- 'Short'}}
+for (i in 1:252) {if (abs(Trainset$Zscore[i]) <= 1) {Trainset$Position[i] <- 'Exit'}}
+for (i in 1:252) {if (abs(Trainset$Zscore[i]) > 1 & abs(Trainset$Zscore[i]) < 2) {Trainset$Position[i] <- 'Hold'}}
+
