@@ -1,0 +1,30 @@
+# Download data for GLD and GDX from 'Yahoo! Finance' from date 2017-06-15 to 2019-06-16
+# Import data into R
+
+GDX$Date <- as.Date(GDX$Date)
+GLD$Date <- as.Date(GLD$Date)
+
+Trainset <- data.frame(Date = GDX$Date[1:252], GDX = GDX$Adj.Close[1:252], GLD = GLD$Adj.Close[1:252])
+Testset <- data.frame(Date = GDX$Date[253:504], GDX = GDX$Adj.Close[253:504], GLD = GLD$Adj.Close[253:504])
+# Divide half of the samples into Trainset
+
+HedgeRatio <- lm(Trainset$GLD ~ Trainset$GDX)    #Hedge GDX against GLD for pair trade
+HedgeRatio
+
+#Call:
+#lm(formula = Trainset$GLD ~ Trainset$GDX)
+
+#Coefficients:
+ #(Intercept)  Trainset$GDX  
+     # 83.906         1.742  
+
+Trainset$HRto <- HedgeRatio$coefficients[2]
+
+Trainset$Spread <- Trainset$GLD - Trainset$HRto * Trainset$GDX
+Testset$Spread <- Testset$GLD - Trainset$HRto * Testset$GDX
+
+Trainset$MeanSPD <- mean(Trainset$Spread)
+Trainset$StdSPD <- sd(Trainset$Spread)
+
+Trainset$Zscore <- (Trainset$Spread - Trainset$MeanSPD) / Trainset$StdSPD
+# If Zscore <= -2 then Long spread; If Zscore >= 2 then Short spread; If abs(Zscore) <= 1 then Exit
