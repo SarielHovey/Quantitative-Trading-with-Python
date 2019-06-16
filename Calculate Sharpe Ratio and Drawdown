@@ -1,0 +1,9 @@
+> #Download Data from 'Yahoo! Finance' for 'IGE' and 'SPY'.
+
+> #Import Data into R as 'IGE'
+
+> #Calculate Sharpe Ratio
+
+> IGE$DailyRet <- repeat(NA, length(IGE$Date))
+> # This time the length is 1504, use 1504 in below for 'length(IGE$Date)'
+
