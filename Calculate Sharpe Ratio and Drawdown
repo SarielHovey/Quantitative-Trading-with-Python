@@ -110,3 +110,15 @@ HPM <- PM(Rt, upper=TRUE, n=2, Rb=0)    # Higher Partial Moment
 
 Omega <- mean(Rt, na.rm = TRUE) / PM(Rt)^0.5    # Generalized Omega, assuming Rb=0, n=2
 UPR <- PM(Rt, upper = TRUE)^0.5 / PM(Rt)^0.5    # Upside Potential Ratio, assuming Rb=0, n=2
+
+                                ### Calculate Jensen's Alpha with OLS ###
+model <- lm(Rt ∼ Rb)    # Intercept as $\alpha$; b1 as $\beta$. $R_t = \alpha + \beta R_{t,b} + \epsilon_{i}$
+
+                                ### Calculate Pure Profit Score ###
+# $PPS = $\prep{E_T0 -V_0}{V_0} R^2$
+# $\prep{E_t0}{V_t} = \alpha + \beta t + \epsilon_{i}$    #Get R Squared from the regression
+y <- Et/Vt
+ls1 <- lm(y ∼ t)                   
+PPS <- ((Et[length(Et)] - Vt[1]) / Vt[1]) * summary(ls1)$r.squared
+
+
