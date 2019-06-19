@@ -1,0 +1,6 @@
+# Get Data from Yahoo! Finance via 'Quantmod'
+library('quantmod')
+
+# Get GLD & GDX data from 2017-06-18
+getSymbols(c("GLD"), from = '2017-06-18')
+getSymbols(c("GDX"), from = '2017-06-18')
