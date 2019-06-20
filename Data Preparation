@@ -19,16 +19,3 @@ For (i in Dlist) {
 		DATA[[i]] <- (DATA[[i]])[order(DATA[[i]][["Date"]], decreasing = FALSE)]
 		 }
 
-				        ### Use YQL to fetch data ###
-setwd('WhereYouPutYourData')
-library('XML')
-
-base <- "http://query.yahooapis.com/v1/public/yql?"
-# Base Url to YQL
-begQuery <- "q=select * from yahoo.finance.historicaldata where symbol in "
-# SQL query
-midQuery <- "( 'GLD', 'GDX') "
-# Stock name
-endQuery <- "and startDate = '2017-06-18' and endDate = '2019-06-20'"
-endParams <- "&diagnostics=true&env=store://datatables.org/alltableswithkeys"
-urlstr <- paste0(base, begQuery, midQuery, endQuery, endParams)
