@@ -26,3 +26,4 @@ library('zoo')
 datetemp <- sort(unique(unlist(sapply(DATA, function(v) v[["Date"]]))))
 datetemp <- data.frame(datetemp, stringsAsFactors = FALSE)
 names(datetemp) <- "Date"
+
