@@ -44,7 +44,9 @@ temp <- c(DATA[["Close"]][index(DATA[["Close"]]) %in% c("2015-11-23",
 +                                                       "2015-12-02"), "KORS"])
 # Missing data are set to 'NA'
 
-# Caution: Smoothing method below will place downward bias on Volatility 
+# Caution: Smoothing method below will place downward bias on Volatility
+# Caution: Variance Metrics are used in Indicators and Performance metrics
+# e.g. Indicators like Bollinger Bands and Rolling SR
 
 	# Forward Replacement--Replace 'NA' with the most previous non-NA value
 forwardfun <- function(v, n) {
