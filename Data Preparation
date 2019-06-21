@@ -20,6 +20,8 @@ For (i in Dlist) {
 		 }
 
 				      ### Organize Data as Date-uniform ###
+# Codes from 'Automated Trading with R: Quantitative Research and Platform Development'
+
 library('zoo')
 # Compute the date template as a column of a data.frame for merging                  
 # Considers date are strings in YYYY-MM-DD format                  
