@@ -56,6 +56,7 @@ forwardfun <- function(v, n) {
 +}
 
 maxconsec <- 3
+# Caution: 'maxconsec' = (max consecutive NA number +1)
 
 # We pass maxconsec to rollapply() in "width = "                    
 # and pass it again to forwardfun() in "n = "                    
@@ -81,6 +82,8 @@ linearfun <- function(v, n){
 + }}
 
 maxconsec <- 5
+# Caution: 'maxconsec' >= (max consecutive NA number +2) & (is odd)
+
 linearrep <- rollapply(temp,
 +         width = maxconsec,
 +         FUN = linearfun,
@@ -112,6 +115,8 @@ volfun <- function(v, n, vol){
 +}
 
 maxconsec <- 5
+# Caution: 'maxconsec' >= (max consecutive NA number +2) & (is odd)
+
 volrep <- rollapply(cbind(temp, voltemp),
 +         width = maxconsec,
 +         FUN = function(v) volfun(v[,1], n = maxconsec, v[,2]),
