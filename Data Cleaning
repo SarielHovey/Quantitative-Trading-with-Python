@@ -126,3 +126,28 @@ volrep <- rollapply(cbind(temp, voltemp),
 +         align = "center")
 
 
+					
+					### Adjust for Dividents & Splits ###
+# Declare new zoo data frame of adjustment factors                    
+MULT <- DATA[["Adj Close"]] / DATA[["Close"]]
+
+# Store Close and Open Prices in new variable "Price" and "OpenPrice"                    
+DATA[["Price"]] <- DATA[["Close"]]
+# DATA[['Price']] is Unadjusted Close
+DATA[["OpenPrice"]] <- DATA[["Open"]]
+# DATA[['OpenPrice']] is Unadjusted Open
+# Unadjusted Close & Unadjusted Open are saved for Order Execution, Account Management, Performance Assessment
+
+# Adjust Open, High, and Low                    
+DATA[["Open"]] <- DATA[["Open"]] * MULT
+DATA[["High"]] <- DATA[["High"]] * MULT
+DATA[["Low"]] <- DATA[["Low"]] * MULT
+# Copy Adjusted Close to Close                    
+DATA[["Close"]] <- DATA[["Adj Close"]]
+# Get Adjusted Open, Adjusted High, Adjusted Low, Adjusted Close
+                 
+DATA[["Adj Close"]] <- NULL
+
+
+					### Inactive Symbols -- by Forward Replacement ###
+# Inactive Symbol usually caused by Merger & Acquisition
