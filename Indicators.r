@@ -68,8 +68,7 @@ CMFfunc <- function(close, high, low, volume){
 
 n <- 20
 k <- length(exampleset)
-CMFseries <-
-rollapply(cbind(DATA[["Close"]][,exampleset],
+CMFseries <- rollapply(cbind(DATA[["Close"]][,exampleset],
                  DATA[["High"]][,exampleset],
                  DATA[["Low"]][,exampleset],
                  DATA[["Volume"]][,exampleset]),
