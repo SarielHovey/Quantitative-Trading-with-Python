@@ -24,5 +24,8 @@ A typical order for Quantitative Trading:
     Management, Performance Assessment. 
 
 
-3. 
+3. Get Portfolio Adjustment via Indicators & Rule Sets
 ------------------
+    Data from Step 2 should be transferred by Indicators into a form that could then be process by Rule Sets, 
+    adjusted by Account Parameters. 
+    The Ultimate Goal is to get the final Portfolio Adjustment -- which guides you to trade.
