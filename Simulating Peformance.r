@@ -1,3 +1,4 @@
+# A typcial simulating example from 'Chris Conlan, Automated Trading with R, 10.1007/978-1-4842-2178-5_7'
 equNA <- function(v){
    o <- which(!is.na(v))[1]
    return(ifelse(is.na(o), length(v)+1, o))
