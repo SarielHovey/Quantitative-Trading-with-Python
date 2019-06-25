@@ -59,7 +59,7 @@ for(s in S){
   DATA[[s]] <- NULL
 
   # Update user on progress            
-  if( which( Dlist == s ) %% 25 == 0 ){
+  if( which( S == s ) %% 25 == 0 ){
     cat( paste0(round(100 * which( S == s ) / length(S), 1), "% Complete\n") )
   }
 
