@@ -55,7 +55,7 @@ for(s in S){
     }
 
     names(DATA[[i]]) <- c(names(DATA[[i]])[-(ncol(DATA[[i]]))], s)
-  }
+  }}
   DATA[[s]] <- NULL
 
   # Update user on progress            
