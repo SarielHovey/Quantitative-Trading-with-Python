@@ -13,7 +13,7 @@ S <- sub('.csv', '', list.files())		#If CSV file has been downloaded
 
 # Use data.table::fread(), sort DATA in date-ascending order
 DATA <- list()
-For (i in S) {
+for (i in S) {
 		suppressWarnings(
 		    DATA[[i]] <- fread(paste0(i, '.csv'), sep=','))
 		DATA[[i]] <- (DATA[[i]])[order(DATA[[i]][["Date"]], decreasing = FALSE)]
