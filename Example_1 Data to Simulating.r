@@ -71,4 +71,18 @@ DATA <- lapply(DATA, function(v) zoo(v[,2:ncol(v)], strptime(v[,1], "%Y-%m-%d"))
 
 
 #                               ### Step 2: Data Cleaning ###
- 
+# Test if NA included in DATA
+
+# Use Forward Replacement for NA in DATA if exists
+
+
+# Adjust for splits & dividents for ATS
+MULT <- DATA[["Adj Close"]] / DATA[["Close"]]
+
+DATA[["Price"]] <- DATA[["Close"]]
+DATA[["OpenPrice"]] <- DATA[["Open"]]
+DATA[["OpenPrice"]] <- DATA[["Open"]]	       
+	       
+	       
+	       
+	       
