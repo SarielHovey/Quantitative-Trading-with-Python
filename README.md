@@ -15,6 +15,8 @@ A typical order for Quantitative Trading:
     available), Google and etc.. For building a trading platform, API is a must. Luckily there are 
     dozens of cheap serice to be achieve on the Internet. 
 
+https://github.com/SarielHovey/Quantitative_Trading_With_R/blob/master/Data%20Preparation.r
+
 
 2. Data Cleaning
 -------------------
@@ -23,6 +25,7 @@ A typical order for Quantitative Trading:
     and Volume to be adjusted; Unadjusted Open and Unadjusted Close must be saved for Order Execution, Account 
     Management, Performance Assessment. 
 
+Data Cleaning.r
 
 3. Get Portfolio Adjustment via Indicators & Rule Sets
 ------------------
