@@ -25,10 +25,21 @@ https://github.com/SarielHovey/Quantitative_Trading_With_R/blob/master/Data%20Pr
     and Volume to be adjusted; Unadjusted Open and Unadjusted Close must be saved for Order Execution, Account 
     Management, Performance Assessment. 
 
-Data Cleaning.r
+https://github.com/SarielHovey/Quantitative_Trading_With_R/blob/master/Data%20Cleaning.r
 
 3. Get Portfolio Adjustment via Indicators & Rule Sets
 ------------------
     Data from Step 2 should be transferred by Indicators into a form that could then be process by Rule Sets, 
     adjusted by Account Parameters. 
     The Ultimate Goal is to get the final Portfolio Adjustment -- which guides you to trade.
+
+    For Indicators, an example:
+https://github.com/SarielHovey/Quantitative_Trading_With_R/blob/master/Indicators.r
+
+    For Simulating, an example:
+https://github.com/SarielHovey/Quantitative_Trading_With_R/blob/master/Simulating%20Peformance.r
+
+    For process from date to simulating, an example:
+https://github.com/SarielHovey/Quantitative_Trading_With_R/blob/master/Example_1%20Data%20to%20Simulating.r
+
+
