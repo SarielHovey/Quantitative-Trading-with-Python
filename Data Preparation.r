@@ -21,6 +21,12 @@ Quandl.api_key('Quandl_API_Key')
 # curl "https://www.quandl.com/api/v3/datasets/WIKI/FB.csv?column_index=4&start_date=2014-01-01&end_date=2014-12-31&collapse=monthly&transform=rdiff&api_key=YOURAPIKEY
 # Details for this on 'https://docs.quandl.com/docs/in-depth-usage'
 
+DATA <- list()
+datatemp <- c('GOOG','APPL')	# symbols you need
+Quandl("FRED/GDP", start_date="2001-12-31", end_date="2005-12-31")
+for (i in datatemp) {
+	DATA[[i]] <- Quandl(paste0('WIKI/', i), start_date="2009-06-25", end_date="2019-06-27",
+			   collapse='daily',order='asc'), type = 'raw'}
 
 
 
