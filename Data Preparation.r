@@ -1,4 +1,4 @@
-          ### Get Data from Yahoo! Finance via 'Quantmod' ###
+#          ### Get Data from Yahoo! Finance via 'Quantmod' ###
 library('quantmod')
 
 # Get GLD & GDX data from 2017-06-18
@@ -6,10 +6,30 @@ getSymbols(c("GLD"), from = '2017-06-18')
 getSymbols(c("GDX"), from = '2017-06-18')
 # Data in 'xts' format
 
+
+
+
+
+
+#	 ### Get Data from Quantdl ###
+install.packages("Quandl")
+library(Quandl)
+Quandl.api_key('Quandl_API_Key')
+
+
+
+
+
+
+
+
+
+
+
 			             ### Load Data via package 'data.table' ###
 setwd('WhereYouPutYourData')
 library('data.table')
-S <- sub('.csv', '', list.files())		#If CSV file has been downloaded
+S <- sub('.csv', '', list.files())		
 
 # Use data.table::fread(), sort DATA in date-ascending order
 DATA <- list()
