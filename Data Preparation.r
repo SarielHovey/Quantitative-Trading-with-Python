@@ -16,9 +16,10 @@ install.packages("Quandl")
 library(Quandl)
 Quandl.api_key('Quandl_API_Key')
 
-
-
-
+# Example API Request for csv
+# GET "https://www.quandl.com/api/v3/datasets/WIKI/FB/data.csv?api_key=YOURAPIKEY"
+# curl "https://www.quandl.com/api/v3/datasets/WIKI/FB.csv?column_index=4&start_date=2014-01-01&end_date=2014-12-31&collapse=monthly&transform=rdiff&api_key=YOURAPIKEY
+# Details for this on 'https://docs.quandl.com/docs/in-depth-usage'
 
 
 
