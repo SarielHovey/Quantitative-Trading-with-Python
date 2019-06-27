@@ -72,17 +72,50 @@ DATA <- lapply(DATA, function(v) zoo(v[,2:ncol(v)], strptime(v[,1], "%Y-%m-%d"))
 
 #                               ### Step 2: Data Cleaning ###
 # Test if NA included in DATA
+anyNA(DATA)
 
 # Use Forward Replacement for NA in DATA if exists
+if anyNA(DATA) {
 
+}
 
 # Adjust for splits & dividents for ATS
 MULT <- DATA[["Adj Close"]] / DATA[["Close"]]
 
+# Save unadjusted Close&Open
 DATA[["Price"]] <- DATA[["Close"]]
 DATA[["OpenPrice"]] <- DATA[["Open"]]
-DATA[["OpenPrice"]] <- DATA[["Open"]]	       
-	       
-	       
-	       
-	       
+
+DATA[["Open"]] <- DATA[["Open"]] * MULT
+DATA[["High"]] <- DATA[["High"]] * MULT
+DATA[["Low"]] <- DATA[["Low"]] * MULT
+DATA[["Close"]] <- DATA[["Adj Close"]]
+DATA[["Adj Close"]] <- NULL
+
+
+# Compute Return Matrix
+NAPAD <- zoo(matrix(NA, nrow = 1, ncol = ncol(DATA[["Close"]])),
+            order.by = index(DATA[["Close"]])[1])
+
+names(NAPAD) <- names(DATA[["Close"]])
+NAPAD
+#            AAPL AMD AMZN GOOG HP IBM INTC MSFT
+#2009-06-24   NA  NA   NA   NA NA  NA   NA   NA
+
+RETURN <- rbind(NAPAD, (DATA[['Close']] / lag(DATA[['Close']], k = -1) - 1) )
+head(RETURN)
+#                   AAPL          AMD         AMZN         GOOG           HP          IBM         INTC         MSFT
+#2009-06-24           NA           NA           NA           NA           NA           NA           NA           NA
+#2009-06-25  0.026721680 -0.005464481  0.036962282  0.015832255  0.048911188  0.018338886  0.013043182  0.013634210
+#2009-06-26  0.018446884 -0.005494505  0.020437957  0.022969489  0.007026748 -0.003583094 -0.001226134 -0.018495271
+#2009-06-29 -0.003299612  0.027624309 -0.010133501 -0.002774427 -0.005709052  0.001419780  0.005524546  0.021841889
+#2009-06-30  0.003240166  0.040322581  0.007587679 -0.006012133 -0.015310926 -0.013323353  0.010378439 -0.003772332
+#2009-07-01  0.002808629  0.010335917 -0.024623547 -0.006167184 -0.008422647  0.004022439  0.029607394  0.011358939
+
+OVERRETURN <- rbind(NAPAD, (DATA[['Open']] / lag(DATA[['Close']], k = -1) - 1) )
+
+# Set 6-core computation in R
+library(doParallel)
+workers <- 6
+registerDoParallel( cores = workers )
+
