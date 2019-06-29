@@ -28,3 +28,4 @@ pbz_paid <- function(rf, u, d, upb, dpb){
     paid = (u*exp(-rf) - 1) / (u - d)
     return(paid)
     }
+# paiu and paid are the amout used to syntheic pb
