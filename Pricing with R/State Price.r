@@ -18,3 +18,13 @@ pbz <- function(rf, u, d, upb, dpb){
     return(pb)
 }
 # pb is the spot price of required symbol; upb is the up price of pb at period 1; dpb is the down price of pb at T_1
+
+pbz_paiu <- function(rf, u, d, upb, dpb){
+    paiu = (1 - d*exp(-rf)) / (u - d)
+    return(paiu)
+    }
+
+pbz_paid <- function(rf, u, d, upb, dpb){
+    paid = (u*exp(-rf) - 1) / (u - d)
+    return(paid)
+    }
