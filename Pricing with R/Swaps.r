@@ -28,6 +28,17 @@ bportwap_fix <- function(r) {
 }
 
 
-## Currency Swap(principle exchange)
 
+
+## Currency Swap(principle exchange)
+## S is current fx rate, {domestic currency}/{foreign currency}
+## cf1, cf2, time can all be vectors
+curr_swap_price = function(S, time, cf1, cf2, y1, y2) {
+        bf = cf1 * exp(-y1 * time)
+        bd = cf2 * exp(-y2 * time)
+        s1 = sum(bf)
+        s2 = sum(bd)
+        V = S * s1 - s2
+        return(V)
+}
 
