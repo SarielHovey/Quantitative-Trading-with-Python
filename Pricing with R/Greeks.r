@@ -28,7 +28,7 @@ greek_put <- function(S, X, rf, sigma, T) {
         Vega <- S * Ts * nd1
         Theta <- -(S*nd1*sigma)/(2*Ts) + rf*X*exp(-rf*T)*pnorm(-d2)
         Rho <- X*T*exp(-rf*T)*pnorm(-d2)
-        Greeks_C <- c(Delta, Gamma, Theta, Vega, Rho)
-        names(Greeks_C) <- c('Delta','Gamma','Theta','Vega','Rho')
-        return(Greeks_C)
+        Greeks_P <- c(Delta, Gamma, Theta, Vega, Rho)
+        names(Greeks_P) <- c('Delta','Gamma','Theta','Vega','Rho')
+        return(Greeks_P)
 }
