@@ -115,3 +115,5 @@ mcav_eu_p <- function(S, X, r, sigma, t, n) {
         return(exp(-r*t)*s/n)
 }
 
+
+
