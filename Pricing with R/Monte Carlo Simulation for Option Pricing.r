@@ -60,3 +60,58 @@ mc_eu_p <- function(S, X, r, sigma, t, n) {
         return(exp(-r*t)*s/n)
 }
 
+
+
+
+# Antithetic Variate (对偶变量法) Monte Carlo for European Call
+## use pmax() to work on Vector
+payoff_call_v <- function(price, X) {
+        return(pmax(0, price - X))
+}
+## Caution: s_t1 and s_t2 are Vectors, max() returns 1 value
+mcav_eu_c <- function(S, X, r, sigma, t, n) {
+        R <- (r - 0.5*sigma^2) * t
+        SD <- sigma*sqrt(t)
+        s_t1 <- numeric(n)
+        s_t2 <- numeric(n)
+        sum_poff1 <- numeric(n)
+        sum_poff2 <- numeric(n)
+        sum_poff_avg <- numeric(n)
+        for (i in 1:n) {
+                x <- rnorm(1)
+                s_t1[i] <- S*exp(R+SD*x)
+                s_t2[i] <- S*exp(R+SD*(-x))
+        }
+        sum_poff1 <- payoff_call_v(s_t1, X)
+        sum_poff2 <- payoff_call_v(s_t2, X)
+        sum_poff_avg <- (sum_poff1 + sum_poff2)/2
+        s <- sum(sum_poff_avg)
+        return(exp(-r*t)*s/n)
+}
+
+
+# Antithetic Variate (对偶变量法) Monte Carlo for European Put
+payoff_put_v <- function(price, X) {
+        return(pmax(0, X - price))
+}
+
+mcav_eu_p <- function(S, X, r, sigma, t, n) {
+        R <- (r - 0.5*sigma^2) * t
+        SD <- sigma*sqrt(t)
+        s_t1 <- numeric(n)
+        s_t2 <- numeric(n)
+        sum_poff1 <- numeric(n)
+        sum_poff2 <- numeric(n)
+        sum_poff_avg <- numeric(n)
+        for (i in 1:n) {
+                x <- rnorm(1)
+                s_t1[i] <- S*exp(R+SD*x)
+                s_t2[i] <- S*exp(R+SD*(-x))
+        }
+        sum_poff1 <- payoff_put_v(s_t1, X)
+        sum_poff2 <- payoff_put_v(s_t2, X)
+        sum_poff_avg <- (sum_poff1 + sum_poff2)/2
+        s <- sum(sum_poff_avg)
+        return(exp(-r*t)*s/n)
+}
+
