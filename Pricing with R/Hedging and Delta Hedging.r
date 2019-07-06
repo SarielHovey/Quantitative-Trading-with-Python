@@ -63,7 +63,7 @@ stock.change <- c(0,diff(N)) * S
 R <- c(1, rep(exp(rf/52), (length(S)-1)))
 ### cost is cumulative cost for constantly adjusting long stocks
 cost <- rep(NA, length(S))
-interest.cost <- rep(0, length(s))
+interest.cost <- rep(0, length(S))
 cost[1] <- stock.cost[1]
 for (i in 2:length(S)) {
         cost[i] <- cost[i-1] * R[i] + stock.change[i]
