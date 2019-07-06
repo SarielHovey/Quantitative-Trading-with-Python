@@ -48,7 +48,7 @@ p_sim <- function(S, r, sigma, t) {
         SD <- sigma * sqrt(t)
         return(S * exp(R + SD*rnorm(1)))
 }
-
+# n is the times to simulate, t is $T-t$
 mc_eu_p <- function(S, X, r, sigma, t, n) {
         s_t <- numeric(n)
         sum_payoff <- numeric(n)
