@@ -1,8 +1,8 @@
 # 1-time simulation for S_T
 ## Given Ito, $ S_T = S_t*exp((r - 0.5* sigma^2) + sigma * echo * sqrt(T-t)) $, echo is a normal distribution
 ## sigma, rf are both yearly data
-sim_rand <- function(S, rf, sigma, t) {
-        R <- (rf - 0.5*sigma^2) * t
+sim_rand <- function(S, r, sigma, t) {
+        R <- (r - 0.5*sigma^2) * t
         SD <- sigma * sqrt(t)
         S_T <- 0.000000
         S_T <- S * exp(R + SD*rnorm(1))
@@ -116,4 +116,88 @@ mcav_eu_p <- function(S, X, r, sigma, t, n) {
 }
 
 
+
+# Variable Controlling Monte Carlo for European Call
+## Caution: S_1 and S_2 should be very alike stocks
+payoff_call <- function(price, X) {
+        return(pmax(0, price - X))
+}
+
+sim_rand <- function(S, r, sigma, t) {
+        R <- (r - 0.5*sigma^2) * t
+        SD <- sigma * sqrt(t)
+        S_T <- 0.000000
+        S_T <- S * exp(R + SD*rnorm(1))
+        return(S_T)
+}
+
+bscall_option <- function(S, X, rf, sigma, T) {
+        d1 <- (log(S/X) + (rf + 0.5 * sigma^2)*T) / (sigma*sqrt(T))
+        d2 = d1 - sigma*sqrt(T)
+        C <- 0.000000
+        C <- S * pnorm(d1) - X * exp(-rf * T) * pnorm(d2)
+        return(C)        
+}
+
+mcvc_eu_c <- function(S_1, S_2, X, r, sigma, t, n) {
+        c_bs2 <- bscall_option(S_2, X, r, sigma, t)
+        s_t1 <- numeric(n)
+        s_t2 <- numeric(n)
+        sum_payoff1 <- numeric(n)
+        sum_payoff2 <- numeric(n)
+        for (i in 1:n) {
+                s_t1[i] <- sim_rand(S_1, r, sigma, t)
+                s_t2[i] <- sim_rand(S_2, r, sigma, t)
+        }
+        sum_payoff1 <- payoff_call(s_t1, X)
+        sum_payoff2 <- payoff_call(s_t2, X)
+        t1 <- sum(sum_payoff1)
+        t2 <- sum(sum_payoff2)
+        c_sim1 <- exp(-r*t)*t1/n
+        c_sim2 <- exp(-r*t)*t2/n
+        return(c_sim1 + c_bs2 - c_sim2)
+}
+
+
+
+# Variable Controlling Monte Carlo for European Put
+## Caution: S_1 and S_2 should be very alike stocks
+payoff_put <- function(price, X) {
+        return(pmax(0, X - price))
+}
+
+sim_rand <- function(S, r, sigma, t) {
+        R <- (r - 0.5*sigma^2) * t
+        SD <- sigma * sqrt(t)
+        S_T <- 0.000000
+        S_T <- S * exp(R + SD*rnorm(1))
+        return(S_T)
+}
+
+bsput_option <- function(S, X, rf, sigma, T) {
+        d1 <- (log(S/X) + (rf + 0.5 * sigma^2)*T) / (sigma*sqrt(T))
+        d2 <- d1 - sigma*sqrt(T)
+        P <- 0.000000
+        P <- X * exp(-rf * T) * pnorm(-d2) - S * pnorm(-d1)
+        return(P) 
+}
+
+mcvc_eu_p <- function(S_1, S_2, X, r, sigma, t, n) {
+        c_bs2 <- bsput_option(S_2, X, r, sigma, t)
+        s_t1 <- numeric(n)
+        s_t2 <- numeric(n)
+        sum_payoff1 <- numeric(n)
+        sum_payoff2 <- numeric(n)
+        for (i in 1:n) {
+                s_t1[i] <- sim_rand(S_1, r, sigma, t)
+                s_t2[i] <- sim_rand(S_2, r, sigma, t)
+        }
+        sum_payoff1 <- payoff_put(s_t1, X)
+        sum_payoff2 <- payoff_put(s_t2, X)
+        t1 <- sum(sum_payoff1)
+        t2 <- sum(sum_payoff2)
+        c_sim1 <- exp(-r*t)*t1/n
+        c_sim2 <- exp(-r*t)*t2/n
+        return(c_sim1 + c_bs2 - c_sim2)
+}
 
