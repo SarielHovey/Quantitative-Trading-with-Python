@@ -13,8 +13,8 @@ ef_eu_c <- function(S, X, r, sigma, t, price_step, t_step) {
         a <- numeric(M)
         b <- numeric(M)
         c <- numeric(M)
-        r1 <- 1/(1 + t*delta_t)
-        r2 <- delta_t/(1 + delta_t)
+        r1 <- 1/(1 + r*delta_t)
+        r2 <- delta_t/(1 + r*delta_t)
         for (i in 2:M) {
                 a[i] <- r2*0.5*(i-1)*(-r+sigma_square*(i-1))
                 b[i] <- r1*(1-sigma_square*(i-1)^2 *delta_t)
@@ -55,8 +55,8 @@ ef_eu_p <- function(S, X, r, sigma, t, price_step, t_step) {
         a <- numeric(M)
         b <- numeric(M)
         c <- numeric(M)
-        r1 <- 1/(1 + t*delta_t)
-        r2 <- delta_t/(1 + delta_t)
+        r1 <- 1/(1 + r*delta_t)
+        r2 <- delta_t/(1 + r*delta_t)
         for (i in 2:M) {
                 a[i] <- r2*0.5*(i-1)*(-r+sigma_square*(i-1))
                 b[i] <- r1*(1-sigma_square*(i-1)^2 *delta_t)
