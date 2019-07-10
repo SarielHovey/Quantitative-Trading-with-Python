@@ -28,4 +28,24 @@ bs_as_ga_p <- function(S_av, X, r, q, sigma, t) {
 
 
 
+# Asian Call (Arismatic Average)
+## m1 为期权价格算术平均值的一阶矩; m2 为期权价格算术平均值的二阶矩
+bs_as_aa_c <- function(S, X, r, q, sigma, t) {
+        sigma_sqr <- sigma^2
+        tsqr <- sqrt(t)
+        m1 <- S*(exp((r-q)*t) - 1) / ((r-q)*t)
+        m2 <- (2*S*S*exp((2*(r-q)+sigmasqr)*t))/((r-q+sigmasqr)*(2*r - 2*q+sigmasqr)*t^2) + 2*S*S/((r-q)*t^2)*(1/(2*(r-q)+sigmasqr)-exp((r-q)*t)/(r-q+sigmasqr))
+        F <- m1
+        sigma_a <- 1/t * log(m2/(m1*m1))
+        d1 <- (log(F/X) + (0.5*sigma_a^2)*t)/(sqrt(sigma_a)*tsqr)
+        d2 <- d1 - sqrt(sigma_a)*tsqr
+        c <- exp(-r*t) * (F*pnorm(d1) - X*pnorm(d2))
+        return(c)
+}
+
+
+
+
+
+
 
