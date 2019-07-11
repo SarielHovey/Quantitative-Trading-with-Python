@@ -61,3 +61,36 @@ bs_as_aa_p <- function(S, X, r, q, sigma, t) {
 
 
 
+# European Lookback Call
+## Smin is the min price during t; S is current price
+bs_eu_lb_c <- function(S, Smin, r, q, sigma, t) {
+        sigmasqr <- sigma^2
+        tsqr <- sqrt(t)
+        a1 <- (log(S/Smin) + (r-q+sigmasqr/2)*t)/(sigma*tsqr)
+        a2 <- a1 - sigma*tsqr
+        a3 <- (log(S/Smin) + (-r+q+sigmasqr/2)*t)/(sigma*tsqr)
+        Y1 <- 2 * (r-q-sigmasqr/2)*log(S/Smin)/sigmasqr
+        c <- S*exp(-q*t)*pnorm(a1)-S*exp(-q*t)*(sigmasqr/(2*(r-q)))*pnorm(-a1)-Smin*exp(-r*t)*(pnorm(a2)-(sigmasqr/(2*(r-q)))*exp(Y1)*pnorm(-a3))
+        return(c)
+}
+
+
+
+# European Lookback Put
+## Smax is the max price during t; S is current price
+bs_eu_lb_p <- function(S, Smax, r, q, sigma, t) {
+        sigmasqr <- sigma^2
+        tsqr <- sqrt(t)
+        b1 <- (log(Smax/S) + (-r+q+sigmasqr/2)*t)/(sigma*tsqr)
+        b2 <- b1 - sigma*tsqr
+        b3 <- (log(Smax/S) + (r-q-sigmasqr/2)*t)/(sigma*tsqr)
+        Y2 <- 2 * (r-q-sigmasqr/2)*log(Smax/S)/sigmasqr
+        p <- Smax*exp(-r*t)*(pnorm(b1)-(sigmasqr/(2*(r-q)))*exp(Y2)*pnorm(-b3)) + S*exp(-q*t)*sigmasqr/(2*(r-q))*pnorm(-b2) - S*exp(-q*t)*pnorm(b2)
+        return(p)
+}
+
+
+
+
+
+
