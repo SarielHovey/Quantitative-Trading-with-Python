@@ -91,6 +91,37 @@ bs_eu_lb_p <- function(S, Smax, r, q, sigma, t) {
 
 
 
+# European Knock-in Barriar Call
+## H is barriar price; r is market yearly return; rf is risk-free yearly return
+bs_eu_bar_in_c <- function(S, X, H, r, rf, q, sigma, t) {
+        sigmasqr <- sigma^2
+        tsqr <- sqrt(t)
+        lambda <- (r - rf + 0.5*sigmasqr)/sigmasqr
+        y <- (log((H*H)/(S*X))) / (sigma*tsqr)
+        c <- S*exp(-q*t)*(H/S)^(2*lambda)*pnorm(y) - X*exp(-r*t)*(H/S)^(2*lambda -2)*pnorm(y-sigma*tsqr)
+        return(c)
+}
+
+
+
+# European Knock-in Barriar Put
+## H is barriar price; r is market yearly return; rf is risk-free yearly return
+bs_eu_bar_in_p <- function(S, X, H, r, rf, q, sigma, t) {
+        sigmasqr <- sigma^2
+        tsqr <- sqrt(t)
+        lambda <- (r - rf + 0.5*sigmasqr)/sigmasqr
+        y <- (log((H*H)/(S*X))) / (sigma*tsqr)
+        p <- X*exp(-r*t)*(H/S)^(2*lambda -2)*pnorm(-y+sigma*tsqr) - S*exp(-q*t)*(H/S)^(2*lambda)*pnorm(-y)
+        return(p)
+}
+
+
+
+
+
+
+
+
 
 
 
