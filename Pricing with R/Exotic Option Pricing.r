@@ -116,12 +116,82 @@ bs_eu_bar_in_p <- function(S, X, H, r, rf, q, sigma, t) {
 }
 
 
-
 # Asset Exchange Call
+## q1 is asset return for S1; give up S1 for S2; rho is correlation coefficient between S1 and S2;
+bs_eu_ae_c <- function(S1, S2, q1, q2, sigma1, sigma2, rho, t) {
+        sigma1sqr <- sigma1^2
+        sigma2sqr <- sigma2^2
+        tsqr <- sqrt(t)
+        sigma <- sqrt(sigma1sqr + sigma2sqr - 2*rho*sigma1*sigma2)
+        d1 <- (log(S2/S1) + (q1-q2+0.5*sigma^2)*t)/(sigma*tsqr)
+        d2 <- d1 - sigma*tsqr
+        c <- S2*exp(-q2*t)*pnorm(d1) - S1*exp(-q1*t)*pnorm(d2)
+        return(c)
+}
 
 
 
+# Bermudan Call
+## potential_et is yearly potential execution time, like c(0.25,0.5,0.75)
+bt_berm_c <- function(S, X, r, q, sigma, times, potential_et, steps) {
+        delta_t <- times/steps
+        R <- exp(r*delta_t)
+        u <- exp(sigma*sqrt(delta_t))
+        d <- 1/u
+        p_up <- (exp((r-q)*delta_t)-d)/(u-d)
+        p_down <- 1 - p_up
+        prices <- numeric(steps+1)
+        call_values <- numeric(steps+1)
+        potential_es <- numeric(length(potential_et))
+        for (i in 1:length(potential_et)) {
+                t <- potential_et[i]
+                if (t>0 & t<times) {potential_es[i] <- floor(t/delta_t)}
+        }
+        prices[1] <- S*d^steps
+        for (i in 2:(steps+1)) {prices[i] <- u^2 * prices[i-1]}
+        call_values <- pmax(0, prices - X)
+        for (j in steps:1) {
+                check_exe <- FALSE
+                if (j %in% potential_es) {check_exe <- TRUE}
+                for (i in 1:j) {
+                        call_values[i] <- (p_up*call_values[i+1] + p_down*call_values[i])/R
+                        prices[i] <- d*prices[i+1]
+                        if (check_exe) {call_values[i] <- max(call_values[i], prices[i]-X)}
+                }
+        }
+        return(call_values[1])       
+}
 
 
+
+# Bermudan Put
+bt_berm_p <- function(S, X, r, q, sigma, times, potential_et, steps) {
+        delta_t <- times/steps
+        R <- exp(r*delta_t)
+        u <- exp(sigma*sqrt(delta_t))
+        d <- 1/u
+        p_up <- (exp((r-q)*delta_t)-d)/(u-d)
+        p_down <- 1 - p_up
+        prices <- numeric(steps+1)
+        put_values <- numeric(steps+1)
+        potential_es <- numeric(length(potential_et))
+        for (i in 1:length(potential_et)) {
+                t <- potential_et[i]
+                if (t>0 & t<times) {potential_es[i] <- floor(t/delta_t)}
+        }
+        prices[1] <- S*d^steps
+        for (i in 2:(steps+1)) {prices[i] <- u^2 * prices[i-1]}
+        put_values <- pmax(0, X - prices)
+        for (j in steps:1) {
+                check_exe <- FALSE
+                if (j %in% potential_es) {check_exe <- TRUE}
+                for (i in 1:j) {
+                        put_values[i] <- (p_up*put_values[i+1] + p_down*put_values[i])/R
+                        prices[i] <- d*prices[i+1]
+                        if (check_exe) {put_values[i] <- max(put_values[i], X-prices[i])}
+                }
+        }
+        return(put_values[1])       
+}
 
 
