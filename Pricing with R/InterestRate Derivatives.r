@@ -26,6 +26,7 @@ bs_IRfloor <- function(Fk, Rx, L, r, sigma, tau, k) {
 
 
 # Zero-Bond Call
+## If t consists of large part of time for bond, then use Bond Future price for B
 bs_zbo_c <- function(B, X, R, sigma, t) {
     sigmasqr <- sigma^2
     tsqr <- sqrt(t)
@@ -38,6 +39,7 @@ bs_zbo_c <- function(B, X, R, sigma, t) {
 
 
 # Zero-Bond Put
+## If t consists of large part of time for bond, then use Bond Future price for B
 bs_zbo_p <- function(B, X, R, sigma, t) {
     sigmasqr <- sigma^2
     tsqr <- sqrt(t)
@@ -85,6 +87,7 @@ bs_cbo_p <- function(B, X, r, sigma, t, co_pay_times, co_amt) {
 
 
 
+# Rendlmmen-Bartter Model for Bond Call
 
 
 
