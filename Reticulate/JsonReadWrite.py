@@ -1,6 +1,6 @@
 import json
 
-data = {'name':'Da Ye','number':100,'age':78}
+data = {'name':'大爷(Da Ye)','number':100,'age':78}
 jsonStr = json.dumps(data)  #python数据结构(一般为字典)转换为JSON编码的字符串
 print(jsonStr)
 print(type(json))
