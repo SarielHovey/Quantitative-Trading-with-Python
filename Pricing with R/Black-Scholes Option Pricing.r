@@ -79,7 +79,7 @@ newtonopimvol <- function(S, X, fr, T, op) {
                 diff <- op - price
                 if(abs(diff) < accu) return(sigma)
                 d1 <- (log(S/X) + (rf + 0.5*sigma^2)*T) / (sigma*sqrt(T))
-                nd1 <- 1/(sqrt(2*3.1415926)) * exp(- d1^2/2)
+                nd1 <- 1/(sqrt(2*pi)) * exp(- d1^2/2)
                 vega <- S*ts*nd1
                 sigma <- sigma + diff/vega
         }
