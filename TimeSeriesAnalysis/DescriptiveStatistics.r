@@ -56,7 +56,7 @@ t.test(gdx)
 #>	One Sample t-test
 #>
 #>data:  gdx
-t = 323.81, df = 503, p-value < 2.2e-16
+#>t = 323.81, df = 503, p-value < 2.2e-16
 #>alternative hypothesis: true mean is not equal to 0
 #>95 percent confidence interval:
 #> 21.48027 21.74252
