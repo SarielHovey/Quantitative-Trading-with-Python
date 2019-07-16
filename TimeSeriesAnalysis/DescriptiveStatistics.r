@@ -142,3 +142,15 @@ r_useu[1] <- 0
 plot(r_useu,type='l')
 ## 画出自相关图, 范围为700天
 acf(r_useu, lag=700)
+
+requrie(reticulate)
+np <- import('numpy')
+purchase_disicion <- np$where(r_useu>0, 1, -1)
+head(purchase_disicion)
+#>     [,1]
+#>[1,]   -1
+#>[2,]    1
+#>[3,]   -1
+#>[4,]   -1
+#>[5,]   -1
+#>[6,]    1
