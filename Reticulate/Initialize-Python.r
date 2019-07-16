@@ -15,18 +15,21 @@ os$getcwd()
 #> "C:\\Program Files\\R\\bin"
 
 # Import Numpy
-numpy <- import("numpy")
+np <- import("numpy")
 y <- array(1:4, c(2, 2))
 #> y
 #>     [,1] [,2]
 #>[1,]    1    3
 #>[2,]    2    4
 
+## after Importing, numpy functions can be used in R
 x <- numpy$array(y)
 #>x
 #>     [,1] [,2]
 #>[1,]    1    3
 #>[2,]    2    4
+
+x <- numpy$where(x>0, 1, -1)
 
 # Use Python console in R
 repl_python()
