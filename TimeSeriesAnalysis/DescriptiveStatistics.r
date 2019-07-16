@@ -77,3 +77,67 @@ normalTest(gdx, method='jb')
 #> Mon Jul 15 10:56:09 2019 by user: sariel
 
 
+
+
+
+# Now get to example for Foreign Exchange Rate USD/EUR
+setwd("Z:/linshi")
+useu <- read.table('d-useu.txt',header = T)
+head(d.useu)
+#>  Date Mon Day  Value
+#>1 2000   1   4 1.0309
+#>2 2000   1   5 1.0335
+#>3 2000   1   6 1.0324
+#>4 2000   1   7 1.0294
+#>5 2000   1  10 1.0252
+#>6 2000   1  11 1.0322
+
+d.useu$ri <- as.Date(paste(d.useu$Date,d.useu$Mon,d.useu$Day,sep='.'), 
+                      format = "%Y.%m.%d")
+head(d.useu)
+#>  Date Mon Day  Value         ri
+#>1 2000   1   4 1.0309 2000-01-04
+#>2 2000   1   5 1.0335 2000-01-05
+#>3 2000   1   6 1.0324 2000-01-06
+#>4 2000   1   7 1.0294 2000-01-07
+
+fx_useu <- xts(d.useu$Value, order.by = d.useu$ri)
+head(fx_useu)
+#>             [,1]
+#>2000-01-04 1.0309
+#>2000-01-05 1.0335
+#>2000-01-06 1.0324
+#>2000-01-07 1.0294
+#>2000-01-10 1.0252
+#>2000-01-11 1.0322
+
+df_useu <- diff(fx_useu)
+## r_useu is the daily return rate for fx_useu
+r_useu <- df_useu/fx_useu
+## 对数化收益率
+r_useu <- log(1+r_useu)
+basicStats(r_useu)
+#>                      x
+#>nobs        2323.000000
+#>NAs            1.000000
+#>Minimum       -0.030961
+#>Maximum        0.044167
+#>1. Quartile   -0.003409
+#>3. Quartile    0.003780
+#>Mean           0.000067
+#>Median         0.000075
+#>Sum            0.156002
+#>SE Mean        0.000136
+#>LCL Mean      -0.000199
+#>UCL Mean       0.000333
+#>Variance       0.000043
+#>Stdev          0.006535
+#>Skewness       0.033960
+#>Kurtosis       2.597988
+
+## 由于diff(), r_useu的第一个元素为NA
+r_useu[1] <- 0
+## 画出对数收益率对时间的关系图
+plot(r_useu,type='l')
+## 画出自相关图, 范围为700天
+acf(r_useu, lag=700)
