@@ -91,7 +91,7 @@ head(d.useu)
 #>4 2000   1   7 1.0294
 #>5 2000   1  10 1.0252
 #>6 2000   1  11 1.0322
-
+require(fBasic); require(xts)
 d.useu$ri <- as.Date(paste(d.useu$Date,d.useu$Mon,d.useu$Day,sep='.'), 
                       format = "%Y.%m.%d")
 head(d.useu)
@@ -137,6 +137,7 @@ basicStats(r_useu)
 
 ## 由于diff(), r_useu的第一个元素为NA
 r_useu[1] <- 0
+
 ## 画出对数收益率对时间的关系图
 plot(r_useu,type='l')
 ## 画出自相关图, 范围为700天
