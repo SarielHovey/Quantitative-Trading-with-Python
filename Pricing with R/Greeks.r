@@ -39,6 +39,8 @@ greek_put <- function(S, X, rf, sigma, T) {
 ## q is continuously compounded dividend yield
 ## Delta_call for stocks with div is between 0 and exp(-q*T)
 ## Gamma for Call or Put is always positive; Gamma max when option is At-the-Money
+## Theta is Time Decay for Option, thus is always negative
+## During very short T, according to Tyler, $ \delta_C = Theta* \delta_T + Delta * \delta_S + 0.5*Gamma*(\delta_S)^2 $
 greek_call <- function(S, X, rf, q, sigma, T) {
     Ts <- sqrt(T)
     d1 <- (log(S/X) + (rf - q + 0.5*sigma^2)*T)/(sigma*sqrt(T))
