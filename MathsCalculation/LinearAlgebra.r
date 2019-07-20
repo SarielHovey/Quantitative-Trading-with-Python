@@ -57,12 +57,18 @@ T$u %*% diag(T$d) %*% t(T$v) - A
 #>[2,] -1.021405e-14 -5.329071e-15 3.552714e-15 2.220446e-15
 #>[3,]  2.042810e-14  0.000000e+00 8.881784e-16 3.552714e-15
 
-## T$v[,3] is the solution for $ AX = b $
+## T$v[,3] is the solution for $ AX = 0 $
 A %*% T$v[,3] - b
               [,1]
 [1,]  6.661338e-16
 [2,]  1.343370e-14
 [3,] -1.099121e-14
 
+
+## If b is not a 0 vector, then
+require(MASS)
+## ginv() gives out Moore-Penrose Inverse, A^{+}    广义逆矩阵
+A_p <- ginv(A)
+X <- A_p %*% b
 
 
