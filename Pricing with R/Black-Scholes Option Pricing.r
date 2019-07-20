@@ -43,7 +43,8 @@ divbsput_option <- function(S, X, rf, div, divT, sigma, T) {
 }
 
 
-# Implied Volatility
+# Implied Volatility    隐含波动率
+## 隐含波动率无解析解,然而BSM模型中, S, X, rf, T, op均可观察到,因而可以反向求出隐含波动率
 ## Bisection method for IV
 ## op is the current market price of option
 # options(digits = 6)
