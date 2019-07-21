@@ -61,24 +61,28 @@ max(IGE$MaxDW.Dur)
 # [1] 497
 # This is the max Drawdown Duration, 497 days.
 
+
+
                                       ### Build a Function in R for Max Drawdown ###
+# vector v is used to store all $curve[i] - curve[i-1]$
+# Line 83 set previous max(v) to negative Inf, then get the next max(v)
 MD <- function(curve, n = 1){
 
     time <- length(curve)
-    v <- rep(NA, (time * (time - 1)) / 2)  # vector v is used to store all $curve[i] - curve[i-1]$
+    v <- rep(NA, (time * (time - 1)) / 2)
     k <- 1
     for(i in 1:(length(curve)-1)){
         for(j in (i+1):length(curve)){
             v[k] <- curve[i] - curve[j]
             k <- k + 1
             }
-   }
-   m <- rep(NA, length(n))
-   for(i in 1:n){
+    }
+    m <- rep(NA, length(n))
+    for(i in 1:n){
         m[i] <- max(v)
-        v[which.max(v)] <- -Inf  # Set previous max(v) to negative Inf, then get the next max(v)
-   }
-   return(m)
+        v[which.max(v)] <- -Inf
+    }
+    return(m)
   
 }
 
