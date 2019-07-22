@@ -27,6 +27,7 @@ acf(gdp, lag=20)
 # 对对数化gdp一阶差分的PACF图
 pacf(diff_gdp, lag=20)
 
+# 对一阶差分的ar回归中, AIC选择了AR(9)模型,因而对原数据进行DF检验时选择>9的滞后项
 # 对对数化GDP数据进行DF单位根检验,发现在10项滞后项时无法拒绝H0
 # H0: 回归系数\beta_1 = 1; H1: \beta_1 < 1
 adfTest(gdp, lags=10, type=c("c"))
