@@ -6,7 +6,7 @@
 import pandas as pd
 
 # Pandas Series
-## Pandas的Series与R中的一维数组类似,均支持标签索引与数字索引
+## Pandas的Series与R中带names()向量类似,均支持标签索引与数字索引
 ## 建立时可用index= 参数直接制定index(R中为dimnames,不要混淆)
 arr = pd.Series([1,2,3,4], index=['A','B',"C",'D'])
 arr
@@ -111,7 +111,7 @@ DATA.head(6)
 #>4  2017-06-20  118.419998  118.459999  118.070000  118.180000  118.180000       4617400  
 #>5  2017-06-21  118.150002  118.660004  118.150002  118.519997  118.519997       4723700
 ### 如前所述,在R环境中可无损转换为R的DataFrame
-###     >>>DA_GLD <- np$DATA
+###     >>>DA_GLD <- py$DATA
 ### to_excel()方法可将数据写入xls文件(推荐使用to_csv()方法)
 DATA.to_excel('GLD_AdjClose')
 
