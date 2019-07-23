@@ -1,5 +1,5 @@
-#library(reticulate)
-#repl_python()
+#library(reticulate)        以下Python3代码均在R下的reticualte环境中运行,目的在于能够同时使用Python的数据清洗与R的数据分析
+#repl_python()      启动R下的Python解释器,输入exit则退出
 #>Python 3.7.3 (C:\PROGRA~3\ANACON~1\python.exe)
 #>Reticulate 1.12 REPL -- A Python interpreter in R.
 
@@ -64,13 +64,31 @@ f(arr)
 import numpy.random as npr
 import matplotlib.pyplot as plt
 
+## npr.rand()用于生成位于[0,1)的随机数组
+npr.rand(4,3)
+#>array([[0.14991221, 0.73560538, 0.68169895],
+#>       [0.06475313, 0.08516567, 0.06523326],
+#>       [0.48031127, 0.00196387, 0.15264255],
+#>       [0.36592999, 0.75706219, 0.96999586]])
 
+## npr.randn()用于生成服从标准正态的随机数组
+npr.randn(4,3)
 
+## npr.randint()用于生成区间内的随机整数(同样左闭右开); size参数由元组控制,输出矩阵
+npr.randint(3,43,size=(4,3))
+#>array([[41, 35, 36],
+#>       [36, 24, 11],
+#>       [38, 41, 11],
+#>       [19,  9, 36]])
 
+## npr.choice()用于生成类似离散概率分布,支持标签; size参数的控制同上
+npr.choice(['a','b','c'], size=(4,3),p=[0.3,0.4,0.3])
+#>array([['b', 'a', 'a'],
+#>       ['b', 'c', 'b'],
+#>       ['b', 'a', 'a'],
+#>       ['a', 'c', 'b']], dtype='<U1')
 
-
-
-
-
+## npr.binomial()生成二项分布; 输出结果表示n次中p发生的次数
+npr.binomial(n=5000,p=0.34,size=(4,3))
 
 
