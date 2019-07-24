@@ -172,6 +172,49 @@ da
 #>Day3       4  8  12  1.0    There
 
 
+## pd DataFrame按列排序
+da.sort_values(by=['Location','A'],ascending=[True,False],inplace=True)
+da
+#>           A  B   C    D Location
+#>Tomorrow   3  7  11  0.0     Here
+#>Yesterday  1  5   9  0.0     Here
+#>Day3       4  8  12  1.0    There
+#>Today      2  6  10  1.0    There
+
+
+## pd DataFrame重复项的处理
+xy = r.xy
+xy
+#>  k1   k2
+#>0  x  3.0
+#>1  x  2.0
+#>2  x  1.0
+#>3  y  4.0
+#>4  y  3.0
+#>5  y  4.0
+### drop_duplicates()方法默认去除完全相同的行(原数据框不变)
+xy.drop_duplicates()
+#>  k1   k2
+#>0  x  3.0
+#>1  x  2.0
+#>2  x  1.0
+#>3  y  4.0
+#>4  y  3.0
+### subset参数确定按某一列去重, keep参数设置保留的元素
+xy.drop_duplicates(subset='k1',keep='last')
+#>  k1   k2
+#>2  x  1.0
+#>5  y  4.0
+### 可以查看完全重复的行
+xy[xy.duplicated()]
+#>  k1   k2
+#>5  y  4.0
+
+
+## 
+
+
+
 
 
 
