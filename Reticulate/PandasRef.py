@@ -284,3 +284,37 @@ DATA[(DATA.Close>120) & (DATA.Close>DATA.Open)].copy().head(6)
 
 
 
+## pd.cut()方法对数据进行分组
+DATA.Close.describe()
+#>count    504.000000
+#>mean     121.025496
+#>std        4.141033
+#>min      111.099998
+#>25%      118.124998
+#>50%      121.559998
+#>75%      124.337502
+#>max      128.830002
+#>Name: Close, dtype: float64
+
+### 以py列表的形式创建区间分割值
+daye = [110,115,120,125,130]
+### 以py列表的形式创建区间名称(注意:5个分割点返还4个区间)
+daye2 = ['Low','MediumLow','MediumHigh','High']
+nidaye = pd.cut(DATA.Close,daye, labels=daye2)
+nidaye.head(6)
+#>0    MediumLow
+#>1    MediumLow
+#>2    MediumLow
+#>3    MediumLow
+#>4    MediumLow
+#>5    MediumLow
+#>Name: Close, dtype: category
+#>Categories (4, object): [Low < MediumLow < MediumHigh < High]
+
+
+
+
+## py的gruopby()分组(类似于sql中的groupby)
+
+
+
