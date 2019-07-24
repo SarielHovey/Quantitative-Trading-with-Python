@@ -151,6 +151,28 @@ DATA.info()
 #>memory usage: 27.6+ KB
 
 
+## pd DataFrame的map映射
+### Initiazlize a data.frame in R, and transfer to python
+da = r.da
+da
+#>           A  B   C    D
+#>Yesterday  1  5   9  0.0
+#>Today      2  6  10  1.0
+#>Tomorrow   3  7  11  0.0
+#>Day3       4  8  12  1.0
+### 新建一个字典用于map()方法
+b = {0: 'Here', 1:'There'}
+### 在da中新建一列用于存储映射的结果
+da['Location'] = da.D.map(b)
+da
+#>           A  B   C    D Location
+#>Yesterday  1  5   9  0.0     Here
+#>Today      2  6  10  1.0    There
+#>Tomorrow   3  7  11  0.0     Here
+#>Day3       4  8  12  1.0    There
+
+
+
 
 
 
