@@ -11,19 +11,29 @@ refresh_rate = 1                           # 调仓频率，表示执行handle_d
     
 # 配置账户信息，支持多资产多账户; 下例提供了stock账户与futures账户
 accounts = {
-    'security_account': AccountConfig(account_type='security', capital_base=10000000, position_base={}, cost_base={}, commission = Commission(buycost=0.001, sellcost=0.002, unit='perValue'), slippage=Slippage(value=0.0, unit='perValue')),
+    'security_account': AccountConfig(account_type='security', capital_base=10000000, position_base={'000001.XSHE':1000, '600000.XSHG':2000}, cost_base={'000001.XSHE':12, '600000.XSHG':4.7}, commission = Commission(buycost=0.001, sellcost=0.002, unit='perValue'), slippage=Slippage(value=0.0, unit='perValue')),
     
     'futures_account': AccountConfig(account_type='futures', capital_base=10000000, commission=Commission(buycost=0.001, sellcost=0.002, unit='perValue'), slippage=Slippage(value=0.0, unit='perValue'), margin_rate=0.1)
 }
   
 def initialize(context):            #初始化策略运行环境
     pass
-  
+
+
 # 每个单位时间(如果按天回测,则每天调用一次,如果按分钟,则每分钟调用一次)调用一次
 def handle_data(context):               # 核心策略逻辑
+    # context.previous用于获取交易日前一日, 返回datatime
     previous_date = context.previous_date.strftime('%Y-%m-%d')
-     
+    
+    # 获取策略运行的当前时刻与日期
+    print(context.now)
+    print(context.current_date)
+    
+    # 获取最后一次成交价. symbol需在Line04的universe中
+    print(contex.current_price('00001.XSHE'))
+    
     # 获取因子PE的的历史数据集，截止到前一个交易日
+    # context.get_universe('stock',exclude_halt=True)获取当天universe的未停牌证券池
     hist = context.history(symbol=context.get_universe(exclude_halt=True), attribute='PE', time_range=1, style='tas')[previous_date]
      
     # 将因子值从小到大排序，并取前100支股票作为目标持仓
@@ -31,7 +41,7 @@ def handle_data(context):               # 核心策略逻辑
     target_position = signal[:100].index
      
     # 获取当前账户信息
-    account = context.get_account('fantasy_account')   
+    account = context.get_account('security_account')   
     current_position = account.get_positions(exclude_halt=True)       
      
     # 卖出当前持有，但目标持仓没有的部分
