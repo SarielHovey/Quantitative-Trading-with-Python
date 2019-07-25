@@ -41,15 +41,18 @@ def handle_data(context):               # 核心策略逻辑
     target_position = signal[:100].index
      
     # 获取当前账户信息
-    account = context.get_account('security_account')   
-    current_position = account.get_positions(exclude_halt=True)       
+    stock_account = context.get_account('security_account')   
+    current_position = stock_account.get_positions(exclude_halt=True)       
      
     # 卖出当前持有，但目标持仓没有的部分
     for stock in set(current_position).difference(target_position):
-        account.order_to(stock, 0)
+        stock_account.order_to(stock, 0)
      
     # 根据目标持仓权重，逐一委托下单
     for stock in target_position:
-        account.order(stock, 10000)
+        stock_account.order(stock, 10000)
 
-
+    # 账户间资金划转
+    futures_account = context.get_account('futures_account')
+    if context.current_date.strfttime('%d')== '01'
+        context.transfer_cash(origin=stock_account, target=futures_account, amount = 1e5)
