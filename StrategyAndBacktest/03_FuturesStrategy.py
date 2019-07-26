@@ -1,19 +1,19 @@
 # Initialize in Uqer
-start = '2016-01-15'                       # 回测起始时间
-end = '2016-06-01'                         # 回测结束时间
-universe = ['IFM0', 'SRM0','RBM0','TFM0']       # 证券池，支持股票、基金、期货、指数四种资产
-benchmark = 'HS300'                        # 策略参考标准
-freq = 'd'                                 # 策略类型，'d'表示日间策略使用日线回测，'m'表示日内策略使用分钟线回测
-refresh_rate = 1                           # 调仓频率，表示执行handle_data的时间间隔，若freq = 'd'时间间隔的单位为交易日，若freq = 'm'时间间隔为分钟
-  
-# 配置账户信息，支持多资产多账户
+# An example for context.get_rolling_tuple()
+start = '2016-01-15'                       
+end = '2016-06-01'                        
+universe = ['IFM0', 'SRM0','RBM0','TFM0']   
+benchmark = 'HS300'                   
+freq = 'd'                         
+refresh_rate = 1      
 accounts = {
     'futures_account': AccountConfig(account_type='futures', capital_base=10000000)
 }
   
 def initialize(context):
     pass
-  
+
+ 
 def handle_data(context):    
     futures_account = context.get_account('futures_account')
     for symbol in universe:
@@ -32,6 +32,57 @@ def handle_data(context):
 #>2016-04-15 00:00:00: IF1604 -> IF1605
 #>2016-04-29 00:00:00: TF1606 -> TF1609
 #>2016-05-19 00:00:00: IF1605 -> IF1606
+
+
+
+
+
+
+# An example for account.switch_position() 用于调仓
+start = '2016-12-15'           
+end = '2016-12-19'        
+universe = ['IFM0']      
+benchmark = 'HS300'              
+freq = 'd'                         
+refresh_rate = 1            
+  
+accounts = {
+    'futures_account': AccountConfig(account_type='futures', capital_base=10000000)
+}
+  
+def initialize(context):
+    pass
+  
+def handle_data(context):  
+    print(context.current_date)
+    futures_account = context.get_account('futures_account')
+    current_date = context.current_date.strftime('%Y-%m-%d')
+    
+    if current_date == "2016-12-15":
+        symbol_bf, symbol_af = context.get_rolling_tuple('IFM0')
+        print(symbol_bf, symbol_af)
+        futures_account.order(symbol_af, 3, 'open')
+        print(futures_account.position)
+    elif current_date == "2016-12-16":
+        symbol_bf, symbol_af = context.get_rolling_tuple('IFM0')
+        print(symbol_bf, symbol_af)
+        futures_account.switch_position(symbol_bf, symbol_af)
+        print(futures_account.position)
+    elif current_date == "2016-12-19":
+        symbol_bf, symbol_af = context.get_rolling_tuple('IFM0')
+        print(symbol_bf, symbol_af)
+        print(futures_account.position)
+
+#>2016-12-15 00:00:00
+#>('IF1612', 'IF1612')
+{}
+#>2016-12-16 00:00:00
+#>('IF1612', 'IF1701')
+#>{'IF1612': FuturesPosition(long_amount: 3.0, short_amount: 0.0, long_margin: 1197936.0, short_margin: 0.0, long_cost: 3364.0, short_cost: 0.0, price: 3327.6, today_profit: 0.0, profit: -32760.0)}
+#>2016-12-19 00:00:00
+#>('IF1701', 'IF1701')
+#>{'IF1701': FuturesPosition(long_amount: 3.0, short_amount: 0.0, long_margin: 1193760.0, short_margin: 0.0, long_cost: 3306.0, short_cost: 0.0, price: 3316.0, today_profit: 0.0, profit: 9000.0)}
+
 
 
 
