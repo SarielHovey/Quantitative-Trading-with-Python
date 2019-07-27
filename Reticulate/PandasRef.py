@@ -324,28 +324,14 @@ DATA[['closePrice']].groupby(DATA['ticker']).agg(['mean','std']).head(6)
 ## 使用pandas对数据进行清洗与标签旋转
 ### (1)基于pd DataFrame的pivot()方法
 for i in ['AAPL','AMD','AMZN','INTC','MSFT']:
-    i = pd.read_csv("Z:/linshi/" +i + ".csv",encoding='ANSI',dtype={'Date':str})
+    df_temp = pd.read_csv("Z:/linshi/" +i + ".csv",encoding='ANSI',dtype={'Date':str})
+    df_temp.rename(columns={'Adj Close':'AdjClose'}, inplace=True)
+    df_temp['Symbol'] = i
+    DATA = DATA.append(df_temp)
 
-for i in [AAPL,AMD,AMZN,INTC,MSFT]:
-    i.rename(columns={'Adj Close':'AdjClose'}, inplace=True)
-
-AAPL.head(6)
-#>         Date       Open       High        Low      Close  AdjClose      Volume
-#>0  2009-06-24  19.345715  19.642857  19.265715  19.459999  12.926208  121381400
-#>1  2009-06-25  19.392857  20.028572  19.315714  19.980000  13.271618  147361900
-#>2  2009-06-26  19.969999  20.508572  19.962856  20.348572  13.516438  109846100
-#>3  2009-06-29  20.494286  20.564285  20.219999  20.281429  13.471839  141904000
-#>4  2009-06-30  20.368572  20.542856  20.257143  20.347143  13.515490  108556000
-#>5  2009-07-01  20.500000  20.665714  20.360001  20.404285  13.553450  103544700
-
-DATA = pd.DataFrame()
-### 将Date设置为行标签
-for i in [AAPL,AMD,AMZN,INTC,MSFT]:
-    i.set_index(['Date'],inplace=True)
-
-
-
-
+del(df_temp)
+len(DATA.Symbol)
+DATA_AdjClose = DATA.pivot(index='Date', columns='Symbol', values='AdjClose')
 
 
 
