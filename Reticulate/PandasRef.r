@@ -1,5 +1,5 @@
-#library(reticulate)        以下Python3代码均在R下的reticualte环境中运行,目的在于能够同时使用Python的数据清洗与R的数据分析
-#repl_python()      启动R下的Python解释器,输入exit则退出
+library(reticulate)        #以下Python3代码均在R下的reticualte环境中运行,目的在于能够同时使用Python的数据清洗与R的数据分析
+repl_python()      #启动R下的Python解释器,输入exit则退出
 #>Python 3.7.3 (C:\PROGRA~3\ANACON~1\python.exe)
 #>Reticulate 1.12 REPL -- A Python interpreter in R.
 
@@ -65,16 +65,16 @@ arr_dic
 #>[1] 3
 #>$D
 #>[1] 4
-
+exit
 
 
 # Pandas DataFrame
 ## pd DataFrame与R中的DataFrame等价,在reticulate环境下可以直接相互引用
 ### 首先在R环境下建立一个数据框da
-###   >>>A <- 1:4
-###   >>>B <- 5:8
-###   >>>C <- 9:12
-###   >>>da <- data.frame(A,B,C, row.names = c('Yesterday','Today','Tomorrow','Day3'))
+A <- 1:4
+B <- 5:8
+C <- 9:12
+da <- data.frame(A,B,C, row.names = c('Yesterday','Today','Tomorrow','Day3'))
 #>          A B  C
 #>Yesterday 1 5  9
 #>Today     2 6 10
@@ -82,6 +82,7 @@ arr_dic
 #>Day3      4 8 12
 
 ### 进入repl_python()环境并引用
+repl_python()
 ### 引用结果为一个pd DataFrame
 da = r.da
 #>           A  B   C
@@ -332,6 +333,40 @@ for i in ['AAPL','AMD','AMZN','INTC','MSFT']:
 del(df_temp)
 len(DATA.Symbol)
 DATA_AdjClose = DATA.pivot(index='Date', columns='Symbol', values='AdjClose')
+exit
+
+### 之后可在R中调用
+Data_Adjc <- py$DATA_AdjClose
+head(Data_Adjc)
+#>               AAPL  AMD  AMZN     INTC     MSFT
+#>2009-06-24 12.92621 3.66 79.27 11.78784 18.41243
+#>2009-06-25 13.27162 3.64 82.20 11.94159 18.66347
+#>2009-06-26 13.51644 3.62 83.88 11.92695 18.31829
+#>2009-06-29 13.47184 3.72 83.03 11.99284 18.71839
+#>2009-06-30 13.51549 3.87 83.66 12.11731 18.64778
+#>2009-07-01 13.55345 3.91 81.60 12.47607 18.85960
+### 还可以提取出行名与列名. 提取出的行名可作为vector用于建立xts对象
+row.names(Data_Adjc) -> Date
+head(Date)
+#>[1] "2009-06-24" "2009-06-25" "2009-06-26" "2009-06-29" "2009-06-30" "2009-07-01"
+length(Date) == length(Data_Adjc$AAPL)
+#>[1] TRUE
+colnames(Data_Adjc) -> Sybs
+cat(Sybs)
+#>AAPL AMD AMZN INTC MSFT
+### 由于Date中元素均为character,因此需要转换为r中的date对象
+Date <- as.Date(Date, '%Y-%m-%d')
+### 建立xts对象示例
+AAPL_Adjc <- xts(Data_Adjc$AAPL, order.by = Date)
+head(AAPL_Adjc)
+#>               [,1]
+#>2009-06-24 12.92621
+#>2009-06-25 13.27162
+#>2009-06-26 13.51644
+#>2009-06-29 13.47184
+#>2009-06-30 13.51549
+#>2009-07-01 13.55345
+
 
 
 
