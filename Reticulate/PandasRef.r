@@ -370,3 +370,21 @@ head(AAPL_Adjc)
 
 
 
+###(2)基于pandas的set_index()与unstack()方法--可得到与(1)等价的效果
+#### 第一步从DATA长表中降维出需要的Date, AdjClose与Symbol列
+DATA_Adjc = DATA.loc[:, ['Date','AdjClose','Symbol']]
+#### 1)set_index将Date与Symbol设为行标签,Symbol在最内
+#### 2)unstack将Symbol释放到列中,且在最内; 列的总标签为AdjClose
+DATA_Adjc = DATA_Adjc.set_index(['Date','Symbol']).unstack()['AdjClose']
+DATA_Adjc.head()
+#>               AAPL  AMD  AMZN     INTC     MSFT
+#>2009-06-24 12.92621 3.66 79.27 11.78784 18.41243
+#>2009-06-25 13.27162 3.64 82.20 11.94159 18.66347
+#>2009-06-26 13.51644 3.62 83.88 11.92695 18.31829
+#>2009-06-29 13.47184 3.72 83.03 11.99284 18.71839
+#>2009-06-30 13.51549 3.87 83.66 12.11731 18.64778
+#>2009-07-01 13.55345 3.91 81.60 12.47607 18.85960
+
+### 显然(2)的最终结果与(1)相同.但是,(1)的方法明显运算更快且更简洁
+### 建议一律采用pivot方法进行数据降维
+
