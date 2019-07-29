@@ -79,12 +79,16 @@ def handle_stock_orders(context, wts):
             continue
         account.order(stk, int(total_money * wts[stk] / prices[stk] /100)*100)
 
+
+
+
 def handle_futures_orders(context):
     stock_account = context.get_account('stock_account')
     future_account = context.get_account('futures_account')
     # 使用实际合约映射主力连续合约
     contract_current_month = context.get_symbol('IFL0')
 
+    # 判断是否需要移仓换月
     contract_holding = context.contract_holding
     if not contract_holding:
         contract_holding = contract_current_month
@@ -95,3 +99,48 @@ def handle_futures_orders(context):
             log.info(u'距离到期,还有%s天' % (contract_holding, days_to_expire))
             contract_next_month = context.get_symbol('IFL1')
             futures_position = future_account.get_position(contract_holding)
+            if futures_position:
+                current_holding = futures_position.short_amount
+                log.info(u'移仓换月. [旧%s, 新%s, 共%s手.]' % (contract_holding, contract_next_month, int(current_holding)))
+                if current_holding == 0:
+                    return
+                future_account.order(contract_holding, current_holding, 'close')
+                future_account.order(contract_next_month, -1*current_holding, 'open')
+                context.contract_holding = contract_next_month
+                return
+    stock_position = stock_account.get_positions()
+    # 使用空头期货对冲多头股票
+    if stock_position:
+        stock_positions_value = stock_account.portfolio_value - stock_account.cash
+        # print(u'当前股票市值 ', stock_positions_value )
+        futures_position = future_account.get_position(contract_holding)
+        # 若无期货空头则建仓
+        if not futures_position:
+            contract_current_month = context.get_symbol('IFL0')
+            multiplier = get_asset(contract_current_month).multiplier
+            futures_price = context.current_price(contract_current_month)
+            total_hedging_amount = int(stock_positions_value / futures_price / multiplier)
+            log.info(u'%s未期货建仓, 空头开仓%s手' % (contract_current_month, contract_holding))
+            future_account.order(contract_current_month, -1*total_hedging_amount, 'open')
+            context.contract_holding = contract_current_month
+        # 若有期货空头则调仓
+        else:
+            contract_holding = context.contract_holding
+            contract_current_month = context.get_symbol('IFL0')
+            futures_price = context.current_price(contract_current_month)
+            multiplier = get_asset(contract_holding).multiplier
+            # 计算hedge需要的期货手数
+            total_hedging_amount = int(stock_positions_value / futures_price / multiplier)
+            hedging_amount_diff = total_hedging_amount - futures_position.short_amount
+            # 调仓阈值, 调大则减少调仓频率
+            threshold = 2
+            if hedging_amount_diff >= threshold:
+                log.info(u'空头调仓. [合约:%s, 当前空头手数:%s, 目标空头手数:%s]' %(contract_holding, int(futures_position.short_amount), total_hedging_amount))
+                # 多开空仓
+                future_account.order(contract_holding, -1*int(hedging_amount_diff), 'open')
+            elif hedging_amount_diff <= (-threshold):
+                log.info(u'空头调仓. [合约:%s, 当前空头手数:%s, 目标空头手数:%s]' %(contract_holding, int(futures_position.short_amount), total_hedging_amount))
+                # 减少空仓
+                future_account.order(contract_holding, int(abs(hedging_amount_diff)), 'close')
+
+
