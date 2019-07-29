@@ -24,7 +24,7 @@ slippage = Slippage(value=0, unit='perValue')
   
 accounts = {
     'stock_account': AccountConfig(account_type='security', capital_base=capital_base, commission=stock_commission, slippage=slippage),
-    'futures_account' AccountConfig(account_type='futures', capital_base=capital_base, commission=futures_commission, slippage=slippage)
+    'futures_account': AccountConfig(account_type='futures', capital_base=capital_base, commission=futures_commission, slippage=slippage)
 }
   
 def initialize(context):
@@ -96,7 +96,7 @@ def handle_futures_orders(context):
         last_trade_date = get_asset(contract_holding).last_trade_date
         days_to_expire = (last_trade_date - context.current_date).days
         if days_to_expire == 3:
-            log.info(u'距离到期,还有%s天' % (contract_holding, days_to_expire))
+            log.info(u'距离%s到期,还有%s天' % (contract_holding, days_to_expire))
             contract_next_month = context.get_symbol('IFL1')
             futures_position = future_account.get_position(contract_holding)
             if futures_position:
