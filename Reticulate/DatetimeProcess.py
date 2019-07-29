@@ -7,6 +7,10 @@ B = datetime.datetime.strptime('2019-06-29', '%Y-%m-%d')
 A-B
 #>datetime.timedelta(days=30)
 
+A>B
+#>True
+#-------------------------------------------------------------------------------
+
 #2. strftime方法可将datetime object转为str
 datetime.datetime.now()
 #>datetime.datetime(2019, 7, 29, 11, 35, 53, 70233)
@@ -52,3 +56,19 @@ C.strftime('%Y-%B-%d %a %H:%M:%S')
 ## %Y 带世纪部分的十制年份 
 ## %z，%Z 时区名称，如果不能得到时区名称则返回空字符。 
 ## %% 百分号
+#-------------------------------------------------------------------------
+
+#3. parse()的用法
+## parse函数能够解析str, 返回datetime object
+from dateutil.parser import parse
+
+D = '2019 Aug 01 10:34:43am'
+parse(D)
+#>datetime.datetime(2019, 8, 1, 10, 34, 43)
+
+E = '2019 Aug 01 10:34:43pm'
+parse(E)
+#>datetime.datetime(2019, 8, 1, 22, 34, 43)
+
+
+
