@@ -43,3 +43,42 @@ tradedaylist = tradedaylist.drop_duplicates(subset=['mon','year'], keep='first')
 t_date = tradedaylist.loc[tradedaylist.mon.isin(['05']),:]['calendarDate'].values
 t_date = [datetime.datetime.strptime(x, '%Y-%m-%d') for x in t_date]
 
+start = '2015-01-01'
+end = '2017-12-31'
+universe = DynamicUniverse('HS300')
+benchmark = 'HS300'
+freq = 'd'
+refresh_rate = 1
+commission = Commission(0.0013, 0.0013)
+accounts = {
+    'security_account': AccountConfig(account_type='security', capital_base=1000000)
+}
+
+def initialize(context):
+    pass
+
+def handle_data(context):
+    account = context.get_account('security_account')
+    if context.current_date in t_date:
+        position = account.get_positions()
+        buy_list = MichaelHiggins(context.get_universe(exclude_halt=True), context.previous_date)
+        if len(position) >0:
+            # 获取当日停牌secID
+            notopen = DataAPI.MktEqudGet(tradeDate=context.now,secID=position.keys(),isOpen='0',field=u'secID',pandas='1')
+            sum_ = 0
+            # 计算停牌secID权益
+            for sec in notopen.secID:
+                tmp = account.get_position(sec).value
+                sum_ += tmp
+            buyweight = 1.0 - sum_ / account.portfolio_value
+        else:
+            buyweight = 1.0
+        for stk in position:
+            if stk not in buy_list:
+                account.order_to(stk,0)
+        if len(buy_list) > 0:
+            weight = buyweight/len(buy_list)
+        else:
+            weight = 0
+        for stk in buy_list:
+            account.order_pct_to(stk,weight)
