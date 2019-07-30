@@ -56,15 +56,15 @@ def handle_data(context):
     # Set a point to stop loss or profit
     profit = futures_account.get_positions().get(symbol,dict()).get('profit',0)
     margin = futures_account.get_positions().get(symbol,dict()).get('long_margin',0) - futures_account.get_positions().get(symbol,dict()).get('short_margin',0)
-
-    if margin and profit/margin < -0.03:
+    # Seems the best stop-loss/profit interval currently
+    if margin and profit/margin < -0.1:
         if current_long > 0:
             futures_account.order(symbol, -current_long, 'close')
         if current_short > 0:
             futures_account.order(symbol, current_short, 'close')
         print(datetime.strftime(context.current_date, '%Y-%m-%d') + ' 止损')
 
-    if margin and profit/margin > 0.05:
+    if margin and profit/margin > 0.3:
         if current_long >0:
             futures_account.order(symbol, -current_long, 'close')
         if current_short > 0:
