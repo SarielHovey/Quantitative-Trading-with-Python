@@ -37,9 +37,9 @@ def handle_data(context):
     current_short = futures_account.get_positions().get(symbol, dict()).get('short_amount', 0)
 
     history_data = context.history(symbol=symbol, attribute=['closePrice','openPrice','lowPrice','highPrice'], time_range=30, freq='1d')[symbol]
-    # Here we use MA5 and MA10
-    MA_S = talib.MA(history_data['closePrice'].apply(float).values,timeperiod=5)
-    MA_L = talib.MA(history_data['closePrice'].apply(float).values,timeperiod=10)
+    # Here we use MA3 and MA5
+    MA_S = talib.MA(history_data['closePrice'].apply(float).values,timeperiod=3)
+    MA_L = talib.MA(history_data['closePrice'].apply(float).values,timeperiod=5)
     if MA_S[-1] > MA_L[-1] and MA_S[-2] < MA_L[-2]:
         if current_short >0:
             futures_account.order(symbol, current_short, 'close')
