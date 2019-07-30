@@ -2,7 +2,7 @@
 # The strategy should be used when mkt shows obvious trend, NOT when mkt stays around a certain level
 # Remember: Futures mks is a gambel table. Usage of Kelly's Fuction is recommended
 # In this strategy, we use 2 MA lines, one Short term and one Long term to capture trends
-
+# Warnning: The Strategy shows high profitability in past years, but behaves badly recently, either due to (1)limit of capacity; (2)tighter regulations
 import re
 import talib
 import pandas as pd
@@ -37,7 +37,7 @@ def handle_data(context):
     current_short = futures_account.get_positions().get(symbol, dict()).get('short_amount', 0)
 
     history_data = context.history(symbol=symbol, attribute=['closePrice','openPrice','lowPrice','highPrice'], time_range=30, freq='1d')[symbol]
-    # Here we use MA3 and MA5
+    # Here we use MA3 and MA5. After Backtest, seems we should set MA3 and MA5 to balance sensitivity
     MA_S = talib.MA(history_data['closePrice'].apply(float).values,timeperiod=3)
     MA_L = talib.MA(history_data['closePrice'].apply(float).values,timeperiod=5)
     if MA_S[-1] > MA_L[-1] and MA_S[-2] < MA_L[-2]:
