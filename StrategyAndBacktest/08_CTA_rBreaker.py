@@ -19,7 +19,7 @@ capital_base = 1e7
 refresh_rate = (1, 5)
 freq = 'm'
 commission = {'RB': (0.000025, 'perValue')}
-slippage = Slippage(0, 'parValue')
+slippage = Slippage(0, 'perValue')
 amount = 20
 accounts = {
     'futures_account': AccountConfig(account_type='futures', capital_base=capital_base, commission=commission, slippage=slippage)
@@ -42,7 +42,7 @@ def handle_data(context):
     long_position = futures_account.get_positions().get(symbol, dict()).get('long_amount', 0)
     short_position = futures_account.get_positions().get(symbol, dict()).get('short_amount', 0)
     if context.current_minute == '09:30':
-        yester_data = DataAPI.MktFutdGet(tradeDate=context.previous_date,ticker=symbol,field=[u'closePrice',u'highestPrice',u'lowestPrice',pandas='1'])
+        yester_data = DataAPI.MktFutdGet(tradeDate=context.previous_date,ticker=symbol,field=[u'closePrice',u'highestPrice',u'lowestPrice'],pandas='1')
         context.high = yester_data['highestPrice'].iat[0]
         context.low = yester_data['lowestPrice'].iat[0]
         context.close = yester_data['closePrice'].iat[0]
