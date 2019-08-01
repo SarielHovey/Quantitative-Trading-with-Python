@@ -75,4 +75,19 @@ def get_smart_weight(cov_mat, method='min variance', wts_ad):
     else:
         raise ValueError('wts_adjusted should be True/False.')
 
+def get_idx_cons(idx, date):
+    '''
+    功能: 获取指数在某一天的成分股列表
+    Input:
+        idx    指数, xxxxxx型string, 000300沪深300; 000016上证50, 000905中证500, 000906中证800, 000001上证综指. 多个指数组合请以list形式给出
+        date    yyyymmdd型string
+    Output:
+        list of tickers
+    '''
+    try:
+        data = DataAPI.IdxConsGet(ticker=idx, intoDate=date, field='',pandas='1')['consTickerSymbol']
+    except:
+        raise ValueError('DataAPI.IdxConsGet Error')
+
+    return(list(set(data)))
     
