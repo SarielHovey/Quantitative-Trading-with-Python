@@ -62,15 +62,17 @@ def get_smart_weight(cov_mat, method='min variance', wts_ad):
     else:
         raise ValueError('Method should be min variance/risk parity/max diversification/equal weight.')
 
-        # 权重调整
-        if res['success'] == False:
-            # print(res['message'])
-            pass
-        wts = pd.Series(index=cov_mat.index, data=res['x'])
-        if wts_adjusted == True:
-            wts = wts[wts >= 0.0001]
-            return(wts / wts.sum() * 1.0)
-        elif wts_adjusted == False:
-            return(wts)
-        else:
-            raise ValueError('wts_adjusted should be True/False.')
+    # 权重调整
+    if res['success'] == False:
+        # print(res['message'])
+        pass
+    wts = pd.Series(index=cov_mat.index, data=res['x'])
+    if wts_adjusted == True:
+        wts = wts[wts >= 0.0001]
+        return(wts / wts.sum() * 1.0)
+    elif wts_adjusted == False:
+        return(wts)
+    else:
+        raise ValueError('wts_adjusted should be True/False.')
+
+    
