@@ -42,6 +42,27 @@ Bchmk.head(6)
 
 Retn = DATA.pivot(index='Date',columns='ts_code',values='pct_chg')
 Retn.iloc[0,] = Retn.iloc[0,].fillna(value=0)
-# Use data in last row to fill NA
+# Use data in previous row to fill NA
 Retn = Retn.fillna(method='pad',axis=0)
 Retn_bh = Bchmk.pivot(index='Date',columns='ts_code',values='pct_chg')
+
+PB = DATA.pivot(index='Date',columns='ts_code',values='pb')
+# Use P/B in next row to fill NA
+PB = PB.fillna(method='backfill', axis=0)
+
+MV = DATA.pivot(index='Date',columns='ts_code',values='circ_mv')
+MV = MV.fillna(method='backfill', axis=0)
+
+# Check if there is Date-Mismatch on Date
+len(Retn) == len(PB) == len(Retn_bh) == len(MV)
+#>True
+
+
+
+
+DATA_temp <- py$DATA_temp
+DATA <- py$DATA
+Retn <- py$Retn
+Retn_bh <- py$Retn_bh
+PB <- py$PB
+MV <- py$MV
