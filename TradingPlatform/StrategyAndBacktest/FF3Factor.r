@@ -11,7 +11,7 @@ Bench = pd.read_csv("D:/R_Quant/Benchmark_HS300.csv",encoding='UTF8',dtype={'tra
 Factor = pd.read_csv("D:/R_Quant/DATA_HS300_Factors.csv",encoding='UTF8',dtype={'trade_date':str, 'ts_code':str})
 IR = pd.read_csv("D:/R_Quant/DATA_InterestRate.csv",encoding='UTF8',dtype={'date':str})
 
-
+Mkt = tushare.pro_bar(ts_code='000906.SH', asset='I', start_date='20100101', end_date='20190802')
 
 len(HS300.trade_date) == len(Factor.trade_date)
 #> True
@@ -57,12 +57,18 @@ MV = MV.fillna(method='backfill', axis=0)
 len(Retn) == len(PB) == len(Retn_bh) == len(MV)
 #>True
 
+MktRt = Mkt[['ts_code','trade_date','pct_chg']].copy()
+MktRt['Date'] = pd.to_datetime(Bchmk.trade_date, format='%Y%m%d')
+MktRt = MktRt.pivot(index='Date',columns='ts_code',values='pct_chg')
 
+exit
 
-
+# Import Data from Python to R
 DATA_temp <- py$DATA_temp
 DATA <- py$DATA
 Retn <- py$Retn
 Retn_bh <- py$Retn_bh
 PB <- py$PB
 MV <- py$MV
+MktRt <- py$MktRt
+
