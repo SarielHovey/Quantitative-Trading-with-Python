@@ -145,10 +145,9 @@ acf(lm_1$residuals)
 
 
 
-### 3-Factor Model
+# 3-Factor Model
 repl_python()
 SMB = np.zeros(2330)
-
 for i in range(0,2330):
     tmp = MV.iloc[i,] >= MV.iloc[i,].mean()
     tmp3 = Retn.iloc[i,] * (1*tmp)
@@ -157,3 +156,75 @@ for i in range(0,2330):
     tmp1 = Retn.iloc[i,] * (1*tmp)
     tmp11 = tmp1.replace(0, np.NaN).mean()
     SMB[i] = tmp11 - tmp31
+
+HML = np.zeros(2330)
+## Pandas的quantile方法返回一个pd Series实例, 使用values[]方法可以索引值
+
+for i in range(0,2330):
+    tmp = PB.iloc[i,] <= PB.iloc[i,].quantile([0.333,0.667]).values[0]
+    tmp3 = Retn.iloc[i,] * (1*tmp)
+    tmp31 = tmp3.replace(0, np.NaN).mean()
+    tmp = PB.iloc[i,] >= PB.iloc[i,].quantile([0.333,0.667]).values[1]
+    tmp1 = Retn.iloc[i,] * (1*tmp)
+    tmp11 = tmp1.replace(0, np.NaN).mean()
+    HML[i] = tmp11 - tmp31
+
+exit
+
+SMB <- as.vector(py$SMB)
+HML <- as.vector(py$HML)
+names(SMB) <- Tdate
+names(HML) <- Tdate
+names(MKT) <- Tdate
+
+adfTest(SMB, lags = 12)
+#>Title:
+#> Augmented Dickey-Fuller Test
+#>
+#>Test Results:
+#>  PARAMETER:
+#>    Lag Order: 12
+#> STATISTIC:
+#>    Dickey-Fuller: -12.0479
+#>  P VALUE:
+#>    0.01 
+
+#>adfTest(HML, lags = 12)
+#>Title:
+#> Augmented Dickey-Fuller Test
+#>
+#>Test Results:
+#>  PARAMETER:
+#>    Lag Order: 12
+#>  STATISTIC:
+#>    Dickey-Fuller: -10.2866
+#>  P VALUE:
+#>    0.01 
+
+
+Rt_SZ300136 <- Retn$`300136.SZ` - 0.04/360
+lm_2 <- lm(Rt_SZ300136 ~ MKT + SMB + HML)
+plot(lm_2)
+summary(lm_2)
+Call:
+lm(formula = Rt_SZ300136 ~ MKT + SMB + HML)
+#>
+#>Residuals:
+#>    Min      1Q  Median      3Q     Max 
+#>-18.766  -1.666  -0.205   1.475  60.302 
+
+#>Coefficients:
+#>             Estimate Std. Error t value Pr(>|t|)    
+#>(Intercept) -0.003924   0.065460  -0.060 0.952207    
+#>MKT          1.205897   0.052010  23.186  < 2e-16 ***
+#>SMB          0.355982   0.105465   3.375 0.000749 ***
+#>HML          0.758669   0.083667   9.068  < 2e-16 ***
+#>---
+#>Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+#>Residual standard error: 3.051 on 2326 degrees of freedom
+#>Multiple R-squared:  0.3172,	Adjusted R-squared:  0.3163 
+#>F-statistic: 360.2 on 3 and 2326 DF,  p-value: < 2.2e-16
+
+
+
