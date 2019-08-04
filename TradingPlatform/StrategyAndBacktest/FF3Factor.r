@@ -74,13 +74,36 @@ MktRt <- py$MktRt
 
 
 
+# Construct Pofrtfolio
+require(fBasic)
+require(fUnitRoots)
+row.names(PB) -> Tdate
+Tdate <- as.Date(Tdate, format = '%Y-%m-%d')
+P_Rtn <- rowMeans(Retn)
+MKT <- P_Rtn - 0.04/360
+P_Std <- rowSds(Retn)
+
+
+
 # Try CAPM first
-library(fUnitRoots)
-## Both pass Unit-Root Test
-m1 <- ar(Retn$`000001.SZ`,method = 'mle')
+## 检验序列平稳性
+m1 <- ar(Retn$`300136.SZ`,method = 'mle')
 m1$order
-#>[1] 12
-adfTest(Retn$`000001.SZ`, lag=12)
+#>[1] 11
+adfTest(Retn$'300136.SZ', lag=11)
+#>Title:
+#> Augmented Dickey-Fuller Test
+#>Test Results:
+#>  PARAMETER:
+#>    Lag Order: 11
+#>  STATISTIC:
+#>    Dickey-Fuller: -10.6569
+#>  P VALUE:
+#>    0.01 
+m1 <- ar(MKT,method = 'mle')
+m1$order
+#>[1] 10
+adfTest(MKT, lags = 12)
 #>Title:
 #> Augmented Dickey-Fuller Test
 #>
@@ -88,48 +111,41 @@ adfTest(Retn$`000001.SZ`, lag=12)
 #>  PARAMETER:
 #>    Lag Order: 12
 #>  STATISTIC:
-#>    Dickey-Fuller: -8.6594
-#>  P VALUE:
-#>    0.01 
-m2 <- ar(MktRt$`000906.SH`,method = 'mle')
-m2$order
-#>[1] 9
-adfTest(MktRt$`000906.SH`, lag=20)
-#>Title:
-#> Augmented Dickey-Fuller Test
-
-#>Test Results:
-#>  PARAMETER:
-#>    Lag Order: 20
-#>  STATISTIC:
-#>    Dickey-Fuller: -9.4607
+#>    Dickey-Fuller: -11.287
 #>  P VALUE:
 #>    0.01 
 
-lm1 <- lm(Retn$`000001.SZ` ~ MktRt$`000906.SH`)
-summary(lm1)
-#>Call:
-#>lm(formula = Retn$`000001.SZ` ~ MktRt$`000906.SH`)
-
-#>Residuals:
-#>    Min      1Q  Median      3Q     Max 
-#>-7.9264 -0.7988 -0.0487  0.6814  8.7375 
-
-#>Coefficients:
-#>                  Estimate Std. Error t value Pr(>|t|)    
-#>(Intercept)       -0.06283    0.03576  -1.757    0.079 .  
-#>MktRt$`000906.SH`  0.95643    0.02393  39.976   <2e-16 ***
-#>---
-#>Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-#>Residual standard error: 1.726 on 2328 degrees of freedom
-#>Multiple R-squared:  0.407,	Adjusted R-squared:  0.4068 
-#>F-statistic:  1598 on 1 and 2328 DF,  p-value: < 2.2e-16
+lm_1 <- lm(Retn$`300136.SZ` ~ MKT)
 par(mfrow=c(2,2))
-plot(lm1)
+plot(lm_P)
 ## residuals vs Fitted：残差与拟合图，看到一个曲线关系，这暗示着你可能需要对回归模型加上一个二次项
 ## normal Q~Q：正态Q-Q图，针对QLS的统计假设中的正态性，图上的点应该落在呈45度角的直线上；若不是如此，那么就违反了正态性的假设
 ## Scale-Location：尺寸位置图，满足同方差性要求在水平线周围的点是随机分布的
 ## Residuals vs Leverage（残差与杠杆图）：提供了你可能关注的单个观测点的信息。从图形可以鉴别出离群点、高杠杆值点和强影响点
-acf(lm1$residuals)
-## 回归lm1的余值项呈现自相关趋势
+summary(lm_1)
+#>Call:
+#>lm(formula = Retn$`300136.SZ` ~ MKT)
+#>
+#>Residuals:
+#>    Min      1Q  Median      3Q     Max 
+#>-16.060  -1.739  -0.199   1.540  61.446 
+#>
+#>Coefficients:
+#>            Estimate Std. Error t value Pr(>|t|)    
+#>(Intercept)  0.14836    0.06716   2.209   0.0273 *  
+#>MKT          1.35613    0.05099  26.594   <2e-16 ***
+#>---
+#>Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+#>
+#>Residual standard error: 3.233 on 2328 degrees of freedom
+#>Multiple R-squared:  0.233,	Adjusted R-squared:  0.2327 
+#>F-statistic: 707.2 on 1 and 2328 DF,  p-value: < 2.2e-16
+acf(lm_1$residuals)
+# 回归的余值项呈现自相关
+
+
+
+### 3-Factor Model
+
+
+
