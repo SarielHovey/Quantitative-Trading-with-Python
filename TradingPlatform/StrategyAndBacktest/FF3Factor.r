@@ -3,7 +3,7 @@ library(reticulate)
 repl_python()
 import pandas as pd
 import datetime as dt
-
+import numpy as np
 
 # Import Data for HS300
 HS300 = pd.read_csv("D:/R_Quant/DATA_HS300.csv",encoding='UTF8',dtype={'trade_date':str, 'ts_code':str})
@@ -146,6 +146,14 @@ acf(lm_1$residuals)
 
 
 ### 3-Factor Model
+repl_python()
+SMB = np.zeros(2330)
 
-
-
+for i in range(0,2330):
+    tmp = MV.iloc[i,] >= MV.iloc[i,].mean()
+    tmp3 = Retn.iloc[i,] * (1*tmp)
+    tmp31 = tmp3.replace(0, np.NaN).mean()
+    tmp = MV.iloc[i,] < MV.iloc[i,].mean()
+    tmp1 = Retn.iloc[i,] * (1*tmp)
+    tmp11 = tmp1.replace(0, np.NaN).mean()
+    SMB[i] = tmp11 - tmp31
