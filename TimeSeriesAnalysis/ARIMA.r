@@ -39,3 +39,52 @@ Box.test(resid(x_reg), lag=40, type="Ljung-Box")
 #>data:  resid(x_reg)
 #>X-squared = 34.46, df = 40, p-value = 0.7174
 
+
+# Now let's check some real world examples
+library(quantmod)
+getSymbols('INTL',from='2013-01-01')
+intel <- diff(log(Cl(INTL)))
+0 -> intel[1]
+
+reg_aic <- Inf
+reg_order <- numeric(3)
+intel[is.na(intel)] <- 0
+## We use AIC to get the best ARIMA regression on daily log return of INTEL's closing price
+for (a in 1:4) for (b in 0:1) for(c in 1:4) {
+    tempAIC <- AIC(arima(intel, order=c(a, b, c)))
+    if (tempAIC < reg_aic) {
+      reg_aic <- tempAIC
+      reg_order <- c(a, b, c)
+      reg_intel <- arima(intel, order=reg_order)
+    }
+}
+
+reg_order
+#> [1] 2 0 2
+
+reg_intel
+#>
+#>Call:
+#>arima(x = intel, order = reg_order)
+#>
+#>Coefficients:
+#>          ar1      ar2     ma1     ma2  intercept
+#>      -0.4240  -0.9703  0.4045  0.9741      5e-04
+#>s.e.   0.0146   0.0162  0.0134  0.0163      4e-04
+#>
+#>sigma^2 estimated as 0.0002999:  log likelihood = 4398.4,  aic = -8784.8
+
+acf(resid(reg_intel), na.action=na.omit)
+# ACF plot for reg_intel shows pretty good pattern
+# The resid of reg_intel also passes Ljung-Box. But keep the above story in mind
+Box.test(resid(reg_intel), lag=40,type="Ljung-Box")
+#>	Box-Ljung test
+#>
+#>data:  resid(reg_intel)
+#>X-squared = 31.138, df = 40, p-value = 0.8411
+
+# Try plot the resid of reg_intel, we find obvious Volatility-Clustering
+# So the arima model we use here is not right enough. That's why we need ARCH model
+plot(resid(reg_intel))
+
+
