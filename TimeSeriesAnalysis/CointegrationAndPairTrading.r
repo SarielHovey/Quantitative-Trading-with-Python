@@ -83,3 +83,18 @@ summary(pair2)
 #>Multiple R-squared:  0.9513,	Adjusted R-squared:  0.9512 
 #>F-statistic: 2.092e+04 on 1 and 1071 DF,  p-value: < 2.2e-16
 
+# ADF检验的结果告诉我们:想用茅台和五粮液做Pair Trading? 洗洗睡吧
+require(tseries)
+adf.test(pair1$residuals, k=1)
+#>	Augmented Dickey-Fuller Test
+#>
+#>data:  pair1$residuals
+#>Dickey-Fuller = -2.4062, Lag order = 1, p-value = 0.4064
+#>alternative hypothesis: stationary
+
+adf.test(pair2$residuals, k=1)
+#>	Augmented Dickey-Fuller Test
+#>
+#>data:  pair2$residuals
+#>Dickey-Fuller = -2.2355, Lag order = 1, p-value = 0.4786
+#>alternative hypothesis: stationary
