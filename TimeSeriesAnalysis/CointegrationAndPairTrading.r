@@ -98,3 +98,49 @@ adf.test(pair2$residuals, k=1)
 #>data:  pair2$residuals
 #>Dickey-Fuller = -2.2355, Lag order = 1, p-value = 0.4786
 #>alternative hypothesis: stationary
+
+#-------------------------------------------------------------------------------------------------------------------
+# 下面尝试使用Johansen Test以处理多个股票Pair Trading的情况
+# 依然使用 贵州茅台(600519.SH), 五粮液(000858.SZ), 泸州老窖(000568.SZ), 古井贡酒(000596.SZ)
+require(urca)
+ultimate <- ca.jo(data.frame(Cls$"600519.SH",Cls$"000858.SZ",Cls$'000568.SZ',Cls$'000596.SZ'), type="trace", K=2, ecdet="none", spec="longrun")
+summary(ultimate)
+###################### 
+# Johansen-Procedure # 
+###################### 
+
+#>Test type: trace statistic , with linear trend 
+## 选取最大的Eigenvalue作为备用对象用于协整
+#>Eigenvalues (lambda):
+#>[1] 0.018941834 0.009418244 0.004285000 0.001429677
+
+#>Values of teststatistic and critical values of test:
+## r=0的检验值甚至未超过10%显著性的门槛,很可能不存在协整关系
+#>          test 10pct  5pct  1pct
+#>r <= 3 |  1.51  6.50  8.18 11.65
+#>r <= 2 |  6.03 15.66 17.95 23.52
+#>r <= 1 | 15.99 28.71 31.52 37.22
+#>r = 0  | 36.13 45.23 48.28 55.43
+
+#>Eigenvectors, normalised to first column:
+#>(These are the cointegration relations)
+## lambda的最大值在第1列,因此选择第1列参数用于协整
+#>                   Cls..600519.SH..l2 Cls..000858.SZ..l2 Cls..000568.SZ..l2  Cls..000596.SZ..l2
+#>Cls..600519.SH..l2             1.0000           1.000000           1.000000            1.000000
+#>Cls..000858.SZ..l2          1187.9711          -8.178896           7.138486            3.090155
+#>Cls..000568.SZ..l2          -873.9144           1.015275         -68.683530          -12.702950
+#>Cls..000596.SZ..l2          -757.3335          -2.190136          23.398125            1.652166
+
+#>Weights W:
+#>(This is the loading matrix)
+
+#>                  Cls..600519.SH..l2 Cls..000858.SZ..l2 Cls..000568.SZ..l2  Cls..000596.SZ..l2
+#>Cls..600519.SH..d       9.953184e-05      -0.0078032871      -5.028586e-04        0.0020218069
+#>Cls..000858.SZ..d       1.570993e-06       0.0001344772      -5.023433e-06        0.0003473147
+#>Cls..000568.SZ..d       1.659504e-05      -0.0001021475       4.483491e-05        0.0002204364
+#>Cls..000596.SZ..d       2.659893e-05       0.0012774047      -7.140769e-05        0.0002689760
+## 使用Johansen流程给出的最优参数检验建立的portfolio是否平稳
+Portf <- 1*Cls$"600519.SH" + 1187.9711*Cls$"000858.SZ" -873.9144*Cls$'000568.SZ' - 757.3335*Cls$'000596.SZ'
+plot(Portf.type='l')
+adf.test(Portf)
+print('由于之前连存在协整的检验都无法通过(t=0),答案自然是:洗洗睡吧')
