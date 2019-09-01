@@ -27,4 +27,12 @@ print('Hurst for Trending Series %s' % hurst(tr))
 #>Hurst for Trending Series 0.9520874471335533
 
 # Now let's try some real world data
+import tushare as ts
+import pandas as pd
+import numpy as np
+DATA = ts.pro_bar(ts_code='600519.SH', adj='qfq', start_date='20150101', end_date='20190901') 
+GZMT = DATA.close.copy().values
 
+hurst(GZMT)
+#> 0.5069715212421458
+## So, 贵州茅台A shows Geometric Brownian Motion
