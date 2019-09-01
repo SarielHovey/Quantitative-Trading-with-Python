@@ -5,7 +5,11 @@ from numpy import cumsum, log, polyfit, sqrt, std, subtract
 from numpy.random import randn
 
 def hurst(ts):
-    """ Return Hurst Exponent of time series vector ts"""
+    """ Return Hurst Exponent of time series vector ts
+        If < 0.5 then Mean reverting
+        If = 0.5 then Geometric Brownian Motion
+        If > 0.5 then Trending
+    """
     lags = range(2, 100)
     tau = [sqrt(std(subtract(ts[lag:], ts[:-lag]))) for lag in lags]
     poly = polyfit(log(lags), log(tau), 1)
