@@ -18,7 +18,7 @@ private:
     double PutTheta() const;
     double CallRho() const;
     double PutRho() const;
-    /* data */
+
 public:
     double r;
     double sigma;
