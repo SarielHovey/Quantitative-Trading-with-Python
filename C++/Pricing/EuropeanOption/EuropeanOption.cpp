@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include "EuropeanOption.hpp"
 #include <math.h>
 #define pi 3.1415926535897932
@@ -104,7 +103,7 @@ void EuropeanOption::init()
     T = 1.00;
     S0 = 50.00;
     q = 0.00;
-    optType = 'C';
+    optType = 0;
 }
 
 void EuropeanOption::copy(const EuropeanOption& o2)
@@ -129,11 +128,9 @@ EuropeanOption::EuropeanOption(const EuropeanOption& o2)
     copy(o2);
 }
 
-EuropeanOption::EuropeanOption(const string& optionType)
+EuropeanOption::EuropeanOption(const int& optionType)
 {
     optType = optionType;
-    if (optType == 'c')
-        optType == 'C';
 }
 
 EuropeanOption::~EuropeanOption()
@@ -149,36 +146,36 @@ EuropeanOption& EuropeanOption::operator= (const EuropeanOption& opt2)
 
 double EuropeanOption::Price() const
 {
-    if (optType == 'C') {return CallPrice();} else {return PutPrice();}
+    if (optType == 0) {return CallPrice();} else {return PutPrice();}
 }
 
 double EuropeanOption::Delta() const
 {
-    if (optType == 'C') {return CallDelta();} else {return PutDelta();}    
+    if (optType == 0) {return CallDelta();} else {return PutDelta();}    
 }
 
 double EuropeanOption::Gamma() const
 {
-    if (optType == 'C') {return CallGamma();} else {return PutGamma();}
+    if (optType == 0) {return CallGamma();} else {return PutGamma();}
 }
 
 double EuropeanOption::Theta() const
 {
-    if (optType == 'C') {return CallTheta();} else {return PutTheta();}
+    if (optType == 0) {return CallTheta();} else {return PutTheta();}
 }
 
 double EuropeanOption::Vega() const
 {
-    if (optType == 'C') {return CallVega();} else {return PutVega();}
+    if (optType == 0) {return CallVega();} else {return PutVega();}
 }
 
 double EuropeanOption::Rho() const
 {
-    if (optType == 'C') {return CallRho();} else {return PutRho();}
+    if (optType == 0) {return CallRho();} else {return PutRho();}
 }
 
 void EuropeanOption::toggle() const
 {
     //Switch Option Type
-    if (optType == 'C') {optType == 'P';} else {optType == 'C';}
+    if (optType == 0) {optType = 1;} else {optType = 0;}
 }

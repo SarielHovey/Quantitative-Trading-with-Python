@@ -18,18 +18,18 @@ private:
     double PutRho() const;
     /* data */
 public:
-    double r;
-    double sigma;
-    double K;
-    double T;
-    double S0;
-    double q;
-    string optType;
+    double r = 0.08;
+    double sigma =0.30;
+    double K = 50.00;
+    double T = 1.00;
+    double S0 = 50.00;
+    double q = 0.00;
+    int optType = '0';
 
 public:
 EuropeanOption();
 EuropeanOption(const EuropeanOption& option2);
-EuropeanOption(const string& optionType);
+EuropeanOption(const std::string& optionType);
 
 virtual ~EuropeanOption();
 
