@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 class EuropeanOption
 {
 private:
@@ -18,14 +16,14 @@ private:
     double PutTheta() const;
     double CallRho() const;
     double PutRho() const;
-
+    /* data */
 public:
     double r;
     double sigma;
     double K;
     double T;
     double S0;
-    double b;
+    double q;
     string optType;
 
 public:
