@@ -147,3 +147,38 @@ EuropeanOption& EuropeanOption::operator= (const EuropeanOption& opt2)
     return *this;
 }
 
+double EuropeanOption::Price() const
+{
+    if (optType == 'C') {return CallPrice();} else {return PutPrice();}
+}
+
+double EuropeanOption::Delta() const
+{
+    if (optType == 'C') {return CallDelta();} else {return PutDelta();}    
+}
+
+double EuropeanOption::Gamma() const
+{
+    if (optType == 'C') {return CallGamma();} else {return PutGamma();}
+}
+
+double EuropeanOption::Theta() const
+{
+    if (optType == 'C') {return CallTheta();} else {return PutTheta();}
+}
+
+double EuropeanOption::Vega() const
+{
+    if (optType == 'C') {return CallVega();} else {return PutVega();}
+}
+
+double EuropeanOption::Rho() const
+{
+    if (optType == 'C') {return CallRho();} else {return PutRho();}
+}
+
+void EuropeanOption::toggle() const
+{
+    //Switch Option Type
+    if (optType == 'C') {optType == 'P';} else {optType == 'C';}
+}
