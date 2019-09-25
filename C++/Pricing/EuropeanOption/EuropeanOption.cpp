@@ -174,7 +174,7 @@ double EuropeanOption::Rho() const
     if (optType == 0) {return CallRho();} else {return PutRho();}
 }
 
-void EuropeanOption::toggle() const
+void EuropeanOption::toggle()
 {
     //Switch Option Type
     if (optType == 0) {optType = 1;} else {optType = 0;}
