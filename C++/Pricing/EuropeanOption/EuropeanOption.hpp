@@ -40,7 +40,7 @@ double Gamma() const;
 double Vega() const;
 double Theta() const;
 double Rho() const;
-
+double N(double value) const;
 void toggle();
 
 };

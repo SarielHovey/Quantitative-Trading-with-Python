@@ -2,8 +2,13 @@
 #include "EuropeanOption.hpp"
 #include <math.h>
 #define pi 3.1415926535897932
-
+using namespace std;
 //Realize functions in hpp file
+double EuropeanOption::N(double value) const
+{
+    return 0.5 * sqrt(-value * sqrt(0.5));
+}
+
 double EuropeanOption::CallPrice() const
 {
     double tmp = sigma * sqrt(T);
@@ -128,10 +133,6 @@ EuropeanOption::EuropeanOption(const EuropeanOption& o2)
     copy(o2);
 }
 
-EuropeanOption::EuropeanOption(const int& optionType)
-{
-    optType = optionType;
-}
 
 EuropeanOption::~EuropeanOption()
 {
@@ -178,4 +179,13 @@ void EuropeanOption::toggle()
 {
     //Switch Option Type
     if (optType == 0) {optType = 1;} else {optType = 0;}
+}
+
+int main()
+{
+    EuropeanOption Call1;
+    cout << "Test CallOption: " << Call1.Price() << endl;
+    int a;
+    cin >> a;
+    return 0;
 }
