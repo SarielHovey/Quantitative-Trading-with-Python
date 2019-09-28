@@ -1,12 +1,30 @@
 #include <iostream>
 #include "EuropeanOption.hpp"
-#include <math.h>
+#include <cmath>
 #define pi 3.1415926535897932
 using namespace std;
 //Realize functions in hpp file
-double EuropeanOption::N(double value) const
+double EuropeanOption::N(double x) const
 {
-    return 0.5 * sqrt(-value * sqrt(0.5));
+    // constants
+    double a1 =  0.254829592;
+    double a2 = -0.284496736;
+    double a3 =  1.421413741;
+    double a4 = -1.453152027;
+    double a5 =  1.061405429;
+    double p  =  0.3275911;
+
+    // Save the sign of x
+    int sign = 1;
+    if (x < 0)
+        sign = -1;
+    x = fabs(x)/sqrt(2.0);
+
+    // A&S formula 7.1.26
+    double t = 1.0/(1.0 + p*x);
+    double y = 1.0 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t*exp(-x*x);
+
+    return 0.5*(1.0 + sign*y);
 }
 
 double EuropeanOption::CallPrice() const
@@ -185,7 +203,7 @@ int main()
 {
     EuropeanOption Call1;
     cout << "Test CallOption: " << Call1.Price() << endl;
-    int a;
-    cin >> a;
+    cout << "CallDelta: " << Call1.Delta() << endl;
+    cout << "CallRho: " << Call1.Delta() << endl;
     return 0;
 }
