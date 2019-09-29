@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-/* (*f) here is a Function Pointer.
+/* (*f) here is a Function Pointer, which receives 2 double parameter as input.
 for genericFunction, as long as myX, myY are all double, then it will work.    */
 void genericFunction (double myX, double myY, double (*f) (double x, double y))
 {
