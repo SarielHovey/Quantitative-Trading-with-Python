@@ -165,10 +165,8 @@ EuropeanOption& EuropeanOption::operator= (const EuropeanOption& opt2)
 }
 
 double EuropeanOption::Price() const
-{   double ans;
-    if (optType == 0) {ans = CallPrice();} else {ans = PutPrice();}
-    std::cout << ans << std::endl;
-    return ans;
+{
+    if (optType == 0) {return CallPrice();} else {return PutPrice();}
 }
 
 double EuropeanOption::Delta() const
@@ -205,8 +203,9 @@ void EuropeanOption::toggle()
 
 int main()
 {
-    EuropeanOption Call1;
-    Call1.Price();
-    cout << Call1.sigma << endl;
+    EuropeanOption Opt1;
+    double x1;
+    x1 = Opt1.Price();
+    std::cout << x1 << std::endl;
     return 0;
 }
