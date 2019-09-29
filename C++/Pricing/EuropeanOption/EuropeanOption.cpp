@@ -156,6 +156,7 @@ EuropeanOption::~EuropeanOption()
 {
 }
 
+// 此处重载对类的'='运算符,将其等价为 Deep Copy
 EuropeanOption& EuropeanOption::operator= (const EuropeanOption& opt2)
 {   // deep copy
     if (this == &opt2) return *this;
@@ -164,8 +165,10 @@ EuropeanOption& EuropeanOption::operator= (const EuropeanOption& opt2)
 }
 
 double EuropeanOption::Price() const
-{
-    if (optType == 0) {return CallPrice();} else {return PutPrice();}
+{   double ans;
+    if (optType == 0) {ans = CallPrice();} else {ans = PutPrice();}
+    std::cout << ans << std::endl;
+    return ans;
 }
 
 double EuropeanOption::Delta() const
@@ -199,11 +202,11 @@ void EuropeanOption::toggle()
     if (optType == 0) {optType = 1;} else {optType = 0;}
 }
 
+
 int main()
 {
     EuropeanOption Call1;
-    cout << "Test CallOption: " << Call1.Price() << endl;
-    cout << "CallDelta: " << Call1.Delta() << endl;
-    cout << "CallRho: " << Call1.Delta() << endl;
+    Call1.Price();
+    cout << Call1.sigma << endl;
     return 0;
 }
