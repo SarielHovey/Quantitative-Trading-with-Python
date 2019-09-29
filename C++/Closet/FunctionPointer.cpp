@@ -34,3 +34,14 @@ int main() {
     genericFunction(x, y, subtract);
     return 0;
 }
+
+/* 
+Running Result:
+** Adding two numbers: 3, 4
+Result is: 7
+** Multiplying two numbers: 3, 4
+Result is: 12
+** Subtracting two numbers: 3, 4
+Result is: -1
+PS D:\Cpp>
+*/
