@@ -24,10 +24,11 @@ public:
     double T = 1.00;
     double S0 = 50.00;
     double q = 0.00;
-    int optType = '0';
+    int optType = 0;
 
 public:
 EuropeanOption();
+EuropeanOption(double r, double sigma, double K, double T, double S0, double q, int optType);
 EuropeanOption(const EuropeanOption& option2);
 EuropeanOption(const std::string& optionType);
 
