@@ -145,6 +145,17 @@ EuropeanOption::EuropeanOption()
     init();
 }
 
+EuropeanOption::EuropeanOption(double t_r, double t_sigma, double t_K, double t_T, double t_S0, double t_q, int t_optType)
+{
+    r = t_r;
+    sigma = t_sigma;
+    K = t_K;
+    T = t_T;
+    S0 = t_S0;
+    q = t_q;
+    optType = t_optType;    
+}
+
 EuropeanOption::EuropeanOption(const EuropeanOption& o2)
 {
     //Copy Constructer
