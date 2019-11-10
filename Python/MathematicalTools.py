@@ -47,7 +47,7 @@ def Srd(T, M, I, x0, theta, kappa, sigma):
 
 #     Stochastic Volatility Model (Heston(1993))
 def Heston(T, M, I, S0, v0, theta, kappa, sigma, rho):
-            '''
+       '''
       Heston's Stochastic volatility model. BSM for price, Srd for volatility
       params: S0: initial value
             v0: initial volatility value
@@ -77,6 +77,26 @@ def Heston(T, M, I, S0, v0, theta, kappa, sigma, rho):
 
 
 #     Jump Diffusion (Merton Jump Diffusion Model)
-
+def Jdm(S0, r, sigma, lamb, mu, delta, T, M, I):
+      '''
+      Metron's Jump diffusion model
+      param===
+      sigma: constant volatility of S
+      lamb: jump intensity
+      mu: average jump size
+      delta: jump volatility
+      rj: drift correction for jump to maintain risk neutrality
+      '''
+      dt = T/M
+      rj = lamb * (np.exp(mu + 0.5*delta**2) - 1)
+      S = np.zeros((M+1, I))
+      S[0] = S0
+      sn1 = np.random.standard_normal((M+1, I))
+      sn2 = np.random.standard_normal((M+1, I))
+      poi = np.random.poisson(lamb * dt, (M+1, I))
+      for t in range(1, M+1, 1):
+            S[t] = S[t-1] * (np.exp((r - rj - 0.5*sigma**2)*dt + sigma * np.sqrt(dt)*sn1[t])+ (np.exp(mu + delta * sn2[t])-1)*poi[t])
+            S[t] = np.maximum(S[t], 0)
+      return S
 
 
