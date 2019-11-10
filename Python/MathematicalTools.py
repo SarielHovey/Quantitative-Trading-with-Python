@@ -21,3 +21,55 @@ S[0] = 50
 for t in range(1, M + 1):
       S[t] = S[t - 1] * np.exp((r - 0.5* sigma ** 2)*dt + sigma * np.sqrt(dt) * np.random.standard_normal(I))
 S[-1]
+
+
+
+#     Square-root diffusion (Cox, Ingersoll, Ross)
+def Srd(T, M, I, x0, theta, kappa, sigma):
+      '''
+      Stochastic differential equation for square-root diffusion
+      params: x0: initial value
+            kappa: mean reversion factor, [0, 1]
+            theta: long-term mean value
+            sigma: volatility factor
+      '''
+      x = np.zeros((M+1, I))
+      dt = T/M
+      x[0] = x0
+      for t in range(1, M+1):
+            df = 4 * theta * kappa / sigma ** 2
+            c = (sigma ** 2 * (1 - np.exp(-kappa * dt))) / (4 * kappa)
+            nc = np.exp(-kappa * dt) / c * x[t - 1]
+            x[t] = c * np.random.noncentral_chisquare(df, nc, size=I)
+      return x
+
+
+
+#     Stochastic Volatility Model (Heston(1993))
+def Heston(T, M, I, x0, v0, theta, kappa, sigma, rho):
+            '''
+      Heston's Stochastic volatility model. BSM for price, Srd for volatility
+      params: x0: initial value
+            v0: initial volatility value
+            kappa: mean reversion factor for volatility, [0, 1]
+            theta: long-term mean value for volatility
+            sigma: volatility factor for volatility
+            rho: correlation between Brownian Motions for BSM and Srd
+      '''
+      corr_mat = np.zeros((2,2))
+      corr_mat[0, :] = [1, rho]
+      corr_mat[1, :] = [rho, 1]
+      cho_mat = np.linalg.cholesky(corr_mat)
+      dt = T/M
+      ran_num = np.random.standard_normal((2, M+1, I))
+      v = np.zeros_like(ran_num[0])
+      vh = np.zeros_like(v)
+      v[0] = vh[0] = v0
+      for t in range(1, M+1):
+            ran = np.dot(cho_mat, ran_num[:, t, :])
+            vh[t] = (vh[t-1] + 
+            kappa * (theta - np.maximum(vh[t-1], 0)) * dt +
+            sigma * np.sqrt(np.maximum(vh[t-1], 0)) * np.sqrt(dt) * ran[1])
+      v = np.maximum(vh, 0)
+      return v
+
