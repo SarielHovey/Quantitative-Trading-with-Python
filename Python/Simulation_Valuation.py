@@ -8,11 +8,14 @@ def gen_sn(M, I, anti_paths = False, mo_match = True):
         if anti_paths == True and mo_match == False:
                 sn = np.random.standard_normal((M+1, int(I/2)))
                 sn = np.concatenate((sn, -sn), axis=1)
+                return sn
         elif anti_paths == False and mo_match == True:
                 sn = np.random.standard_normal((M+1, I))
                 sn = (sn - sn.mean()) / sn.std()
+                return sn
         else:
                 print('Either anti_paths or mo_match should be True, not both!')
+                return 'Error!'
 
 
 def op_eu_mcs(M, I, T, S0, K, r, sigma, option='C'):
@@ -48,15 +51,15 @@ def op_am_mcs(M, I, T, S0, K, r, sigma, option='C'):
         for t in range(1, M+1):
                 S[t] = S[t-1] * np.exp((r - 0.5*sigma**2)*dt + sigma*np.sqrt(dt)*sn[t])
         if option == 'C':
-                h = np.maximum(S[-1]-K, 0)
+                h = np.maximum(S-K, 0)
         elif option == 'P':
-                h = np.maximum(K-S[-1], 0)
+                h = np.maximum(K-S, 0)
         else:
                 print("Error: option should be 'C' or 'P'. ")
                 return 'Error!'
         V = np.copy(h)
         for t in range(M-1, 0, -1):
-                reg = np.polyfit(S[t], V[t+1], 7)
+                reg = np.polyfit(S[t], V[t+1], 7)       # 使用7阶多项式回归S与V
                 C = np.polyval(reg, S[t])
                 V[t] = np.where(C>h[t], V[t+1]*df, h[t])
         return df * np.mean(V[1])
