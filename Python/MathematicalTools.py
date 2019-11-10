@@ -46,10 +46,10 @@ def Srd(T, M, I, x0, theta, kappa, sigma):
 
 
 #     Stochastic Volatility Model (Heston(1993))
-def Heston(T, M, I, x0, v0, theta, kappa, sigma, rho):
+def Heston(T, M, I, S0, v0, theta, kappa, sigma, rho):
             '''
       Heston's Stochastic volatility model. BSM for price, Srd for volatility
-      params: x0: initial value
+      params: S0: initial value
             v0: initial volatility value
             kappa: mean reversion factor for volatility, [0, 1]
             theta: long-term mean value for volatility
@@ -65,11 +65,18 @@ def Heston(T, M, I, x0, v0, theta, kappa, sigma, rho):
       v = np.zeros_like(ran_num[0])
       vh = np.zeros_like(v)
       v[0] = vh[0] = v0
+      S = np.zeros_like(ran_num[0])
+      S[0] = S0
       for t in range(1, M+1):
             ran = np.dot(cho_mat, ran_num[:, t, :])
-            vh[t] = (vh[t-1] + 
-            kappa * (theta - np.maximum(vh[t-1], 0)) * dt +
-            sigma * np.sqrt(np.maximum(vh[t-1], 0)) * np.sqrt(dt) * ran[1])
+            vh[t] = (vh[t-1] + kappa * (theta - np.maximum(vh[t-1], 0)) * dt + sigma * np.sqrt(np.maximum(vh[t-1], 0)) * np.sqrt(dt) * ran[1])
+            S[t] = S[t-1] * np.exp(r - 0.5*np.maximum(vh[t], 0) * dt + np.sqrt(np.maximum(vh[t], 0)) * ran[0] * np.sqrt(dt))
       v = np.maximum(vh, 0)
-      return v
+      return {'Price': S, 'Volatility': v}
+
+
+
+#     Jump Diffusion (Merton Jump Diffusion Model)
+
+
 
