@@ -1,4 +1,3 @@
-%%cython 
 cdef class Particle: 
         cdef public double mass 
         cdef readonly double position 
@@ -11,7 +10,7 @@ cdef class Particle:
                  return self.mass * self.velocity 
 
 
-%%cythhon 
+
 cdef class Matrix: 
         cdef: 
                 unsigned int nrows, ncols 
