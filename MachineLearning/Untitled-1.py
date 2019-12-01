@@ -52,7 +52,50 @@ housing.incomeCategory.hist()
 plt.savefig('temp.png')
 housing.incomeCategory.value_counts()
 '''
-3    7236                                                                                                                          2    6581                                                                                                                          4    3639                                                                                                                          5    2362                                                                                                                          1     822                                                                                                                          Name: incomeCategory, dtype: int64
+3    7236
+2    6581
+4    3639
+5    2362
+1     822
+Name: incomeCategory, dtype: int64
 '''
 ## Use sklearn's function
 from sklearn.model_selection import StratifiedShuffleSplit
+split = StratifiedShuffleSplit(1,0.2,random_state=43)
+for trainIndex, testIndex in split.split(housing, housing.incomeCategory):
+    trainSet = housing.loc[trainIndex]
+    testSet = housing.loc[testIndex]
+
+len(trainSet), len(testSet), len(housing)
+'''
+(16512, 4128, 20640)
+'''
+
+trn = trainSet.copy()
+plt.cla()
+trn.plot(kind='scatter', x='longitude',y='latitude',alpha=0.4,s=trn.population/100,label='population',figsize=(10,7),c='median_house_value',cmap=plt.get_cmap('jet'),colorbar=True)
+
+corrMatrix = trn.corr()
+corrMatrix.median_house_value.sort_values(ascending=False)
+'''
+latitude             -0.148121
+houseID              -0.040516
+longitude            -0.040318
+population           -0.024069
+total_bedrooms        0.050002
+households            0.066341
+housing_median_age    0.107099
+total_rooms           0.135290
+median_income         0.690551
+median_house_value    1.000000
+Name: median_house_value, dtype: float64
+'''
+
+from pandas.plotting import scatter_matrix
+attributes = ['median_house_value','median_income','total_rooms','housing_median_age']
+plt.cla()
+scatter_matrix(trn[attributes], figsize=(12,8))
+plt.savefig('temp.png')
+# Obvious Trend found between median_house_value and median_income
+plt.cla()
+plt.plot(kind='scatter',y='median_house_value',x='median_income',alpha=0.1)
