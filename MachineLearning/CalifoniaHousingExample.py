@@ -99,3 +99,65 @@ plt.savefig('temp.png')
 # Obvious Trend found between median_house_value and median_income
 plt.cla()
 plt.plot(kind='scatter',y='median_house_value',x='median_income',alpha=0.1)
+
+
+
+# Deal with NaN values in data
+median = housing['total_bedrooms'].median()
+housing.total_bedrooms.fillna(median, inplace=True)
+
+
+# median_house_value is the target we would like to predict based on other data
+housing = trainSet.drop('median_house_value',axis=1)
+housing_labels = trainSet.median_house_value.copy()
+
+
+# Transform string values into categorical attribute
+housing.ocean_proximity.value_counts()
+'''
+<1H OCEAN     7310
+INLAND        5234
+NEAR OCEAN    2142
+NEAR BAY      1822
+ISLAND           4
+Name: ocean_proximity, dtype: int64
+'''
+housing_cat = housing[['ocean_proximity']]
+from sklearn.preprocessing import OrdinalEncoder
+ordinal_encoder = OrdinalEncoder()
+housing_cat_encoded = ordinal_encoder.fit_transform(housing_cat)
+print(housing_cat_encoded[:5])
+'''
+[[0.]
+ [0.]
+ [0.]
+ [0.]
+ [3.]]
+'''
+ordinal_encoder.categories_
+'''
+[array(['<1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'],  dtype=object)]
+'''
+## In case of Dummy Variables
+from sklearn.preprocessing import OneHotEncoder
+dummy_encoder = OneHotEncoder()
+housing_cat_dummy = dummy_encoder.fit_transform(housing_cat)
+housing_cat_dummy
+'''
+<16512x5 sparse matrix of type '<class 'numpy.float64'>'
+        with 16512 stored elements in Compressed Sparse Row format>
+'''
+housing_cat_dummy.toarray()
+'''
+array([[1., 0., 0., 0., 0.],
+       [1., 0., 0., 0., 0.],
+       [1., 0., 0., 0., 0.],
+       ...,
+       [0., 0., 0., 1., 0.],
+       [1., 0., 0., 0., 0.],
+       [1., 0., 0., 0., 0.]])
+'''
+dummy_encoder.categories_
+'''
+[array(['<1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'],  dtype=object)]
+'''
