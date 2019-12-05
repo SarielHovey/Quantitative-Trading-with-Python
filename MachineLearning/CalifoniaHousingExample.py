@@ -102,9 +102,11 @@ plt.plot(kind='scatter',y='median_house_value',x='median_income',alpha=0.1)
 
 
 
-# Deal with NaN values in data
-median = housing['total_bedrooms'].median()
-housing.total_bedrooms.fillna(median, inplace=True)
+## Deal with NaN values in data
+from sklearn.impute import SimpleImputer
+imputer = SimpleImputer(strategy='median')
+housing_num = housing.drop('ocean_proximity',axis=1)
+imputer.fit(housing_num)
 
 
 # median_house_value is the target we would like to predict based on other data
@@ -112,7 +114,7 @@ housing = trainSet.drop('median_house_value',axis=1)
 housing_labels = trainSet.median_house_value.copy()
 
 
-# Transform string values into categorical attribute
+## Transform string values into categorical attribute
 housing.ocean_proximity.value_counts()
 '''
 <1H OCEAN     7310
@@ -161,3 +163,45 @@ dummy_encoder.categories_
 '''
 [array(['<1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'],  dtype=object)]
 '''
+
+
+
+# Use Pipeline to transform data
+## Add a custom transformer
+from sklearn.base import BaseEstimator, TransformerMixin
+rooms_ix, bedrooms_ix, population_ix, households_ix = 3, 4, 5, 6
+class CombinedAttributesAdder(BaseEstimator, TransformerMixin):
+    def __init__(self, add_bedrooms_per_room = True): # no *args or **kargs
+        self.add_bedrooms_per_room = add_bedrooms_per_room
+    def fit(self, X, y=None):
+        return self # nothing else to do
+    def transform(self, X, y=None):
+        rooms_per_household = X[:, rooms_ix] / X[:, households_ix]
+        population_per_household = X[:, population_ix] / X[:, households_ix]
+        if self.add_bedrooms_per_room:
+            bedrooms_per_room = X[:, bedrooms_ix] / X[:, rooms_ix]
+            return np.c_[X, rooms_per_household, population_per_household,bedrooms_per_room]
+        else:
+            return np.c_[X, rooms_per_household, population_per_household]
+
+
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.compose import ColumnTransformer
+
+num_attribs = list(housing_num)     # Get the list for num column names
+cat_attribs = ['ocean_proximity']
+
+num_pipeline = Pipeline([
+    ('imputer',SimpleImputer(strategy='median')),
+    ('attribs_adder',CombinedAttributesAdder()),
+    ('std_scaler',StandardScaler())
+])
+
+#################### Error Occured, debugging
+full_pipeline = Pipeline([
+    ('num',num_pipeline,num_attribs),
+    ('cat',OneHotEncoder(),cat_attribs),
+])
+
+housing_prepared = full_pipeline.fit_transform(housing)
