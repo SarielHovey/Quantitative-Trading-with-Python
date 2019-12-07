@@ -212,3 +212,15 @@ housing_prepared = full_pipeline.fit_transform(housing)
 
 
 # Fit the Model
+from sklearn.linear_model import LinearRegression
+lin_reg = LinearRegression()
+lin_reg.fit(housing_prepared, housing_labels)
+## Mearure Fit with RMSE
+from sklearn.metrics import mean_squared_error
+housing_pred = lin_reg.predict(housing_prepared)
+RMSE = np.sqrt(mean_squared_error(housing_labels, housing_pred))
+RMSE
+'''
+67893.24641275435
+'''
+
