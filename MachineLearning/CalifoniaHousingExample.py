@@ -44,10 +44,6 @@ len(trainSet),len(testSet),len(housing)
 '''
 # -----------------------------------------------------------------------------------
 
-# median_house_value is the target we would like to predict based on other data
-housing = trainSet.drop('median_house_value',axis=1)
-housing_labels = trainSet.median_house_value.copy()
-
 
 # Stratified Sampling
 housing['incomeCategory'] = pd.cut(housing.median_income, bins=[0.,1.5,3.0,4.5,6.,np.Inf], labels=[1,2,3,4,5])
@@ -74,6 +70,10 @@ len(trainSet), len(testSet), len(housing)
 '''
 (16512, 4128, 20640)
 '''
+
+# median_house_value is the target we would like to predict based on other data
+housing = trainSet.drop('median_house_value',axis=1)
+housing_labels = trainSet.median_house_value.copy()
 
 trn = trainSet.copy()
 plt.cla()
@@ -201,10 +201,14 @@ num_pipeline = Pipeline([
     ('std_scaler',StandardScaler())
 ])
 
-#################### Error Occured, debugging
-full_pipeline = Pipeline([
+
+full_pipeline = ColumnTransformer([
     ('num',num_pipeline,num_attribs),
-    ('cat',OneHotEncoder(),cat_attribs),
+    ('cat',OneHotEncoder(),cat_attribs)
 ])
 
 housing_prepared = full_pipeline.fit_transform(housing)
+
+
+
+# Fit the Model
