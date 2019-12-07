@@ -11,9 +11,9 @@ housing.hist(bins=50)
 plt.savefig('temp.png')
 
 
-
-
-# Pure Random Sampling
+# Not recommended way
+# ------------------------------------------------------------------------------------
+## Pure Random Sampling
 def test_set_check(identifier, test_ratio):
     '''
     Count Hash Value for elements in data to make sure same test set used
@@ -42,7 +42,11 @@ len(trainSet),len(testSet),len(housing)
 '''
 (16322, 4318, 20640)
 '''
+# -----------------------------------------------------------------------------------
 
+# median_house_value is the target we would like to predict based on other data
+housing = trainSet.drop('median_house_value',axis=1)
+housing_labels = trainSet.median_house_value.copy()
 
 
 # Stratified Sampling
@@ -59,7 +63,7 @@ housing.incomeCategory.value_counts()
 1     822
 Name: incomeCategory, dtype: int64
 '''
-## Use sklearn's function
+# Use sklearn's function
 from sklearn.model_selection import StratifiedShuffleSplit
 split = StratifiedShuffleSplit(1,0.2,random_state=43)
 for trainIndex, testIndex in split.split(housing, housing.incomeCategory):
@@ -102,18 +106,17 @@ plt.plot(kind='scatter',y='median_house_value',x='median_income',alpha=0.1)
 
 
 
-## Deal with NaN values in data
+# Deal with NaN values in data
 from sklearn.impute import SimpleImputer
 imputer = SimpleImputer(strategy='median')
 housing_num = housing.drop('ocean_proximity',axis=1)
 imputer.fit(housing_num)
+X = imputer.transform(housing_num)
+housing_num = pd.DataFrame(X, columns=housing_num.columns, index=housing_num.index)
 
 
-# median_house_value is the target we would like to predict based on other data
-housing = trainSet.drop('median_house_value',axis=1)
-housing_labels = trainSet.median_house_value.copy()
-
-
+## Not recommended way
+## --------------------------------------------------------------------------------------
 ## Transform string values into categorical attribute
 housing.ocean_proximity.value_counts()
 '''
@@ -163,7 +166,7 @@ dummy_encoder.categories_
 '''
 [array(['<1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'],  dtype=object)]
 '''
-
+## ------------------------------------------------------------------------------------------
 
 
 # Use Pipeline to transform data
