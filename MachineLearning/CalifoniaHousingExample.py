@@ -288,3 +288,78 @@ np.mean(forest_rmse_scores), np.std(forest_rmse_scores)]
 '''
 
 
+
+# Grid Search for optimal hypermeter
+from sklearn.model_selection import GridSearchCV
+param_grid =[
+    {'n_estimators':[3,10,30], 'max_features':[2,4,6,8]},
+    {'bootstrap':[False], 'n_estimators':[3,10], 'max_features':[2,3,4]},
+]
+
+grid_search = GridSearchCV(forest_reg, param_grid, cv=5, scoring='neg_mean_squared_error', return_train_score=True)
+grid_search.fit(housing_prepared, housing_labels)
+grid_search.best_params_
+'''
+{'max_features': 6, 'n_estimators': 30}
+'''
+grid_search.best_estimator_
+'''
+RandomForestRegressor(bootstrap=True, criterion='mse', max_depth=None,
+           max_features=6, max_leaf_nodes=None, min_impurity_decrease=0.0,
+           min_impurity_split=None, min_samples_leaf=1,
+           min_samples_split=2, min_weight_fraction_leaf=0.0,
+           n_estimators=30, n_jobs=None, oob_score=False,
+           random_state=None, verbose=0, warm_start=False)
+'''
+
+temp = grid_search.cv_results_
+for mean_score, params in zip(temp['mean_test_score'],temp['params']):
+    print(np.sqrt(-mean_score), params)
+'''
+64580.46011046554 {'max_features': 2, 'n_estimators': 3}
+55919.85093071957 {'max_features': 2, 'n_estimators': 10}
+52983.29192371335 {'max_features': 2, 'n_estimators': 30}
+61112.98226570783 {'max_features': 4, 'n_estimators': 3}
+53867.05293705798 {'max_features': 4, 'n_estimators': 10}
+51202.059256070075 {'max_features': 4, 'n_estimators': 30}
+59863.76927122745 {'max_features': 6, 'n_estimators': 3}
+52763.24872016367 {'max_features': 6, 'n_estimators': 10}
+50599.636704334844 {'max_features': 6, 'n_estimators': 30}
+59941.685706434044 {'max_features': 8, 'n_estimators': 3}
+52664.04460422652 {'max_features': 8, 'n_estimators': 10}
+50628.861842662925 {'max_features': 8, 'n_estimators': 30}
+62754.62007760419 {'bootstrap': False, 'max_features': 2, 'n_estimators': 3}
+54500.41197810199 {'bootstrap': False, 'max_features': 2, 'n_estimators': 10}
+60573.51835017966 {'bootstrap': False, 'max_features': 3, 'n_estimators': 3}
+52847.07644994367 {'bootstrap': False, 'max_features': 3, 'n_estimators': 10}
+58955.959851912565 {'bootstrap': False, 'max_features': 4, 'n_estimators': 3}
+52704.55074020807 {'bootstrap': False, 'max_features': 4, 'n_estimators': 10}
+'''
+
+
+## Compare score with attribute names
+feature_importances = grid_search.best_estimator_.feature_importances_
+extra_attribs = ['rooms_per_hhold','pop_per_hhold','bedrooms_per_room']
+cat_encoder = full_pipeline.named_transformers_['cat']
+cat_one_hot_attribs = list(cat_encoder.categories_[0])
+attributes = num_attribs + extra_attribs + cat_one_hot_attribs
+sorted(zip(feature_importances, attributes), reverse=True)
+'''
+[(0.32780624505387784, 'median_income'),
+ (0.14609006149967235, 'INLAND'),
+ (0.10252944949686442, 'pop_per_hhold'),
+ (0.08860044823952416, 'incomeCategory'),
+ (0.06098714581050056, 'longitude'),
+ (0.05845207302714993, 'latitude'),
+ (0.04555647524010183, 'bedrooms_per_room'),
+ (0.04463181401100358, 'housing_median_age'),
+ (0.04260731153275952, 'rooms_per_hhold'),
+ (0.01784799811406875, 'population'),
+ (0.017292534702449174, 'total_bedrooms'),
+ (0.01650980211937048, 'total_rooms'),
+ (0.016448100531988384, 'households'),
+ (0.00841027334668516, '<1H OCEAN'),
+ (0.003901573194982507, 'NEAR OCEAN'),
+ (0.0022240709670532104, 'NEAR BAY'),
+ (0.00010462311194808828, 'ISLAND')]
+'''
