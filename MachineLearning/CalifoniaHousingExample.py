@@ -224,3 +224,36 @@ RMSE
 67893.24641275435
 '''
 
+## Use Decision Tree instead of Linear Model
+from sklearn.tree import DecisionTreeRegressor
+tree_reg = DecisionTreeRegressor()
+tree_reg.fit(housing_prepared, housing_labels)
+housing_pred = tree_reg.predict(housing_prepared)
+RMSE1 = np.sqrt(mean_squared_error(housing_pred, housing_labels))
+RMSE1       # o RMSE means Overfit
+'''
+0.0
+'''
+
+
+
+## Cross-Validation
+from sklearn.model_selection import cross_val_score
+### the higher  parameter 'scoring', the better
+scores = cross_val_score(tree_reg, housing_prepared, housing_labels, scoring='neg_mean_squared_error',cv=10)
+tree_rmse_scores = np.sqrt(-scores)
+tree_rmse_scores
+'''
+array([67560.34198935, 69522.12953675, 69730.2335741 , 68120.21655229,
+       67518.09131119, 67932.49436371, 66333.73519186, 71855.61107561,
+       71326.42296684, 72278.494827  ])
+'''
+lin_rmse_scores = np.sqrt(-1 * cross_val_score(lin_reg, housing_prepared, housing_labels, scoring='neg_mean_squared_error',cv=10))
+'''
+array([63922.3229726 , 66992.35929335, 67136.09391283, 67791.47080994,
+       74024.56485282, 67960.18825162, 66902.55421275, 66773.16437535,
+       68584.65777024, 72466.11727215])
+'''
+### In this case, Linear Model behaves better than Decision Tree Model
+np.mean(lin_rmse_scores), np.std(lin_rmse_scores) , np.mean(tree_rmse_scores), np.std(tree_rmse_scores)
+(68255.34937236473, 2776.2399501539917, 69217.77713886923, 1947.7705728667925)
