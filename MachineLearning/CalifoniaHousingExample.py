@@ -363,3 +363,25 @@ sorted(zip(feature_importances, attributes), reverse=True)
  (0.0022240709670532104, 'NEAR BAY'),
  (0.00010462311194808828, 'ISLAND')]
 '''
+
+
+
+# Evaluate with Test Set
+final_model = grid_search.best_estimator_
+X_test = testSet.drop('median_house_value',axis=1)
+Y_test = testSet['median_house_value'].copy()
+
+X_test_prepared = full_pipeline.transform(X_test)
+final_predictions = final_model.predict(X_test_prepared)
+RMSE3 = np.sqrt(mean_squared_error(final_predictions, Y_test))
+'''
+50760.972366398695
+'''
+## Compute Confidence Interval
+from scipy import stats
+conf = 0.99
+squareError = (final_predictions - Y_test) ** 2
+np.sqrt(stats.t.interval(conf, len(squareError)-1, loc=squareError.mean(),scale=stats.sem(squareError)))
+'''
+array([47691.35893216, 53655.25989471])
+'''
