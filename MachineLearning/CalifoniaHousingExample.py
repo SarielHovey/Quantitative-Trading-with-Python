@@ -235,6 +235,17 @@ RMSE1       # o RMSE means Overfit
 0.0
 '''
 
+## Use Random Forest Model
+from sklearn.ensemble import RandomForestRegressor
+forest_reg = RandomForestRegressor()
+forest_reg.fit(housing_prepared, housing_labels)
+housing_pred = forest_reg.predict(housing_prepared)
+RMSE2 = np.sqrt(mean_squared_error(housing_pred, housing_labels))
+RMSE2
+'''
+21999.55734052197
+'''
+
 
 
 ## Cross-Validation
@@ -254,6 +265,26 @@ array([63922.3229726 , 66992.35929335, 67136.09391283, 67791.47080994,
        74024.56485282, 67960.18825162, 66902.55421275, 66773.16437535,
        68584.65777024, 72466.11727215])
 '''
+forest_rmse_scores = np.sqrt(-1 * cross_val_score(forest_reg, housing_prepared, housing_labels, scoring='neg_mean_squared_error',cv=10))
+'''
+array([50610.87544405, 51127.92568734, 52482.36253188, 52495.11085346,
+       53261.67949168, 50171.41042911, 52707.10702427, 52837.53931288,
+       52337.51092088, 56671.38824807])
+'''
 ### In this case, Linear Model behaves better than Decision Tree Model
-np.mean(lin_rmse_scores), np.std(lin_rmse_scores) , np.mean(tree_rmse_scores), np.std(tree_rmse_scores)
-(68255.34937236473, 2776.2399501539917, 69217.77713886923, 1947.7705728667925)
+### Decision Tree Model clearly overfits
+### Random Forest Model is the best among the 3 with lowest RMSE mean and std
+[np.mean(lin_rmse_scores), np.std(lin_rmse_scores), 
+np.mean(tree_rmse_scores), np.std(tree_rmse_scores),
+np.mean(forest_rmse_scores), np.std(forest_rmse_scores)]
+[68255.34937236473, 2776.2399501539917, 69217.77713886923, 1947.7705728667925]
+'''
+[68255.34937236473,
+ 2776.2399501539917,
+ 69217.77713886923,
+ 1947.7705728667925,
+ 52470.29099436223,
+ 1703.7922996422908]
+'''
+
+
