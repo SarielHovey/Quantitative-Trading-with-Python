@@ -2,7 +2,7 @@ import pandas as pd; import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 housing = pd.read_csv('housing.csv')
-
+# From from https://github.com/ageron/handson-ml2/blob/master/02_end_to_end_machine_learning_project.ipynb
 
 
 housing.describe()
