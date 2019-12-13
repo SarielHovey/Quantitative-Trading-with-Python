@@ -2,7 +2,7 @@ from lxml import etree as et
 parser = et.parse('sample.xml')
 root = parser.getroot()
 # In case of namespaces
-nsList = root.path('./class1/class2/*')[0].nsname
+nsList = root.path('./class1/class2/*')[0].nsmap
 '''
 nsList = {'ns0':'subClass:a','ns1':'subClass:b'}
 '''
