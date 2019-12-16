@@ -43,10 +43,39 @@ from sklearn.metrics import precision_score, recall_score
 precision_score(y_train_5, y_train_pred)
 '''
 Probability of correct when make a Positive prediction
-0.8290505226480837 = \frac{TP}{TP+FP}
+0.8290505226480837 = $\frac{TP}{TP+FP}$
 '''
 recall_score(y_train_5, y_train_pred)
 '''
 Detection Rate for '5'
-0.7022689540675152 = \frac{TP}{TP+FN}
+0.7022689540675152 = $\frac{TP}{TP+FN}$
 '''
+from sklearn.metrics import f1_score
+f1_score(y_train_5, y_train_pred)
+'''
+f1 = $\frac{1}{1/precision + 1/recall}$
+0.760411465095376
+'''
+
+## There's always a tradeoff between precision and recall
+y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=3, method='decision_function')
+from sklearn.metrics import precision_recall_curve
+precision, recall, threshold = precision_recall_curve(y_train_5, y_scores)
+import matplotlib.pyplot as plt
+plt.plot(threshold, precision[:-1], 'b--', label='Precision')
+plt.plot(threshold, recall[:-1], 'g-', label='Recall')
+plt.xlabel('Threshold')
+plt.title('Tradeoff Between Precision & Recall')
+plt.legend(loc=0) # Could be interger 0-10
+
+import numpy as np
+threshold_95_precision = threshold[np.argmax(precision >= .95)]
+y_train_pred_95 = (y_scores >= threshold_95_precision)
+precision_score(y_train_5, y_train_pred_95), recall_score(y_train_5, y_train_pred_95)
+'''
+With 90% Precision, Recall is 59.77%
+With 95% Precision, Recall is 44.9%
+With 99% Precision, Recall is 0.5534%
+Obviously, A high Precision classifier tend to have a very low Recall(Detection Rate)
+'''
+
