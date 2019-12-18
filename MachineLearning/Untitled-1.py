@@ -98,3 +98,38 @@ roc_auc_score(y_train_5, y_scores)
 Area Under the Curve. [0.5, 1], 1 is the best.
 0.9593580597259379
 '''
+
+## Random Forest Classifier
+from sklearn.ensemble import RandomForestClassifier
+forest_clf = RandomForestClassifier(random_state=43)
+y_probas_forest = cross_val_predict(forest_clf, X_train, y_train_5, cv=3, method='predict_proba')
+'''
+Probability of not being 5; Probability of being 5
+array([[0. , 1. ],
+       [1. , 0. ],
+       [1. , 0. ],
+       ...,
+       [0. , 1. ],
+       [1. , 0. ],
+       [0.8, 0.2]])
+'''
+y_scores_forest = y_probas_forest[:,1]
+fpr_forest, tpr_forest, threshold_forest = roc_curve(y_train_5, y_scores_forest)
+plt.plot(fpr, tpr, 'b:', label='SGD')
+plt.plot(fpr_forest, tpr_forest, label='Random Forest')
+plt.plot([0,1],[0,1], 'k--', label= 'ROC of a purely random classifier')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.legend(loc=0)
+
+roc_auc_score(y_train_5, y_scores_forest)
+'''
+Larger than SGD's 0.959358, an improvement
+0.9931536262180866
+'''
+
+
+
+# Multiclass Classification
+
+
