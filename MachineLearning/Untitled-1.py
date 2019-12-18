@@ -81,6 +81,8 @@ Obviously, A high Precision classifier tend to have a very low Recall(Detection 
 
 
 # Use a Receiver Operating Characteristic Curve (ROC)
+## PR Curve is preferred when (1) Positive Class is rare
+##                            (2) False Positive is more important than FN
 ## $ROC = \frac{TP/(TP + FN)}{1 - TN/(FP+TN)}$
 from sklearn.metrics import roc_curve
 fpr, tpr, threshold = roc_curve(y_train_5, y_scores)
