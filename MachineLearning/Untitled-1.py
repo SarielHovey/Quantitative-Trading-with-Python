@@ -131,5 +131,16 @@ Larger than SGD's 0.959358, an improvement
 
 
 # Multiclass Classification
+from sklearn.svm import SVC
+svm_clf = SVC()
+svm_clf.fit(X_train, y_train)
+svm_clf.predict(X_train[0])
 
-
+sample_score = svm_clf.decision_function([X_train[0]])
+np.argmax(sample_score)
+'''
+'''
+svm_clf.classes_
+'''
+List of target classes, ordered automatically
+'''
