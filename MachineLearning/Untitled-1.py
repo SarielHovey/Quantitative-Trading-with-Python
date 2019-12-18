@@ -53,7 +53,7 @@ Detection Rate for '5'
 from sklearn.metrics import f1_score
 f1_score(y_train_5, y_train_pred)
 '''
-f1 = $\frac{1}{1/precision + 1/recall}$
+f1 = $\frac{2}{1/precision + 1/recall}$
 0.760411465095376
 '''
 
@@ -68,7 +68,6 @@ plt.xlabel('Threshold')
 plt.title('Tradeoff Between Precision & Recall')
 plt.legend(loc=0) # Could be interger 0-10
 
-import numpy as np
 threshold_95_precision = threshold[np.argmax(precision >= .95)]
 y_train_pred_95 = (y_scores >= threshold_95_precision)
 precision_score(y_train_5, y_train_pred_95), recall_score(y_train_5, y_train_pred_95)
@@ -79,3 +78,21 @@ With 99% Precision, Recall is 0.5534%
 Obviously, A high Precision classifier tend to have a very low Recall(Detection Rate)
 '''
 
+
+
+# Use a Receiver Operating Characteristic Curve (ROC)
+## $ROC = \frac{TP/(TP + FN)}{1 - TN/(FP+TN)}$
+from sklearn.metrics import roc_curve
+fpr, tpr, threshold = roc_curve(y_train_5, y_scores)
+plt.plot(fpr, tpr, linewidth=2)
+plt.plot([0,1],[0,1], 'k--', label= 'ROC of a purely random classifier')
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('Tradeoff between TPR & FPR')
+
+from sklearn.metrics import roc_auc_score
+roc_auc_score(y_train_5, y_scores)
+'''
+Area Under the Curve. [0.5, 1], 1 is the best.
+0.9593580597259379
+'''
