@@ -148,3 +148,29 @@ List of target classes, ordered automatically
 
 
 # Error Analysis
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))
+cross_val_score(sgd_clf, X_train_scaled, y_train, cv=3, scoring='accuracy')
+'''
+array([0.90546891, 0.90819541, 0.9119868 ])
+'''
+y_train_pred = cross_val_predict(sgd_clf, X_train, y_train, cv=3)
+conf_mx = confusion_matrix(y_train, y_train_pred)
+'''
+array([[5710,    1,   17,   28,   25,   52,   33,    4,   33,   20],
+       [   1, 6387,   31,   70,   15,   24,    7,   22,  171,   14],
+       [  94,  109, 4776,  341,  122,   71,  133,  100,  166,   46],
+       [  43,   26,   73, 5356,   32,  227,   27,   84,  128,  135],
+       [  18,   15,   33,   37, 5178,   27,   81,   29,  116,  308],
+       [ 102,   14,   22,  374,   98, 4239,  114,   23,  327,  108],
+       [  61,   28,   35,   19,   86,  172, 5459,    2,   53,    3],
+       [  29,   19,   32,   37,   89,   16,    7, 5631,   40,  365],
+       [  54,  195,   61,  288,  141,  461,   70,   55, 4246,  280],
+       [  32,   22,   23,  110,  272,   82,    7,  353,   48, 5000]],
+      dtype=int64)
+'''
+plt.matshow(conf_mx, cmap=plt.cm.gray) # Lighter the color, more values found
+
+
+
