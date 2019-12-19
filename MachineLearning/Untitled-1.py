@@ -5,10 +5,13 @@ from sklearn.externals import joblib
 joblib.dump(mnist, 'MNIST.pkl')
 mnist = joblib.load('MNIST.pkl')
 
-import numpy as np
+import numpy as np; from matplotlib.pyplot import matshow
 X, y = mnist['data'], mnist['target']
 y = y.astype(int)
 X_train, X_test, y_train, y_test = X[:60000], X[60000:], y[:60000], y[60000:]
+temp = X_train[0].copy()
+temp = temp.reshape(28,28)
+matshow(temp) # Take a look at MNIST pixel images
 y_train_5 = (y_train == 5)
 y_test_5 = (y_test ==5)
 '''
@@ -185,7 +188,7 @@ plt.ylabel('Actual Class')
 '''
 After normalized, it shows:
 (2,3),(5,3),(5,8),(7,9),(8,5) tend to be confused by classifier
-Thus efforts could be spent on above to enhance classifier
+Thus efforts could be spent on above to enhance classifierx
 '''
 
 
