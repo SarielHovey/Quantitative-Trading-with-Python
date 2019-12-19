@@ -171,6 +171,21 @@ array([[5710,    1,   17,   28,   25,   52,   33,    4,   33,   20],
       dtype=int64)
 '''
 plt.matshow(conf_mx, cmap=plt.cm.gray) # Lighter the color, more values found
-
+row_sums = conf_mx.sum(axis=1, keepdims=True)
+norm_conf_mx = conf_mx / row_sums
+'''
+Alternatively:
+conf_mx = np.matrix(conf_mx)
+norm_conf_mx = conf_mx / conf_mx.sum(axis=1)
+'''
+np.fill_diagonal(norm_conf_mx, 0) # Only elements not on diagonal are error
+plt.matshow(norm_conf_mx, cmap=plt.cm.gray)
+plt.xlabel('Predicted Class')
+plt.ylabel('Actual Class')
+'''
+After normalized, it shows:
+(2,3),(5,3),(5,8),(7,9),(8,5) tend to be confused by classifier
+Thus efforts could be spent on above to enhance classifier
+'''
 
 
