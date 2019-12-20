@@ -70,7 +70,7 @@ def learning_schedule(t, t0=5, t1=50):
     
 theta_init = np.random.randn(2,1)
 for epoch in range(n_epochs):
-    for i in range(m):
+    for i in range(m): # Make sure random, not choose from data still sorted by label
         random_index = np.random.randint(m)
         xi = X_b[random_index : random_index+1]
         yi = y[random_index : random_index+1]
@@ -80,4 +80,11 @@ for epoch in range(n_epochs):
 '''
 matrix([[3.41881019],
         [4.05000377]])
+'''
+from sklearn.linear_model import SGDRegressor
+sgd_reg = SGDRegressor(max_iter=10000, tol=1e-3, penalty=None, eta0=0.1) # eta0 is initial learning rate
+sgd_reg.fit(X, y)
+sgd_reg.intercept_, sgd_reg.coef_
+'''
+(array([3.43595316]), array([4.08850395]))
 '''
