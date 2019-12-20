@@ -28,3 +28,19 @@ lin_reg.predict(np.array([[1],[5]]))
 array([[ 7.51759848],
        [23.69023775]])
 '''
+## Least Squares
+theta_best_svd, residual, rank, s = np.linalg.lstsq(X_b, y, rcond=1e-6)
+'''
+Same as above. LinearRegression() defaults lstsq method.
+matrix([[3.47443866],
+        [4.04315982]])
+'''
+## Pseudoinverse of X -- X_b
+np.linalg.pinv(X_b).dot(y)
+'''
+based on SVD decomposion, preferred to Normal Equation
+matrix([[3.47443866],
+        [4.04315982]])
+'''
+
+
