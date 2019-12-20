@@ -44,3 +44,17 @@ matrix([[3.47443866],
 '''
 
 
+
+
+# Gradient Descent
+lnr = 0.1 # Learning Rate
+n_iter = 1000
+m = 100
+theta_init = np.random.randn(2,1) # Random Initialization
+for iteration in range(n_iter):
+        gradient = 2/m * X_b.T.dot(X_b.dot(theta_init) - y)
+        theta_init = theta_init - lnr *gradient
+'''
+matrix([[3.42673069],
+        [4.05257131]])
+'''
