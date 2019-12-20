@@ -47,14 +47,37 @@ matrix([[3.47443866],
 
 
 # Gradient Descent
+## Batch Gradient Descent
 lnr = 0.1 # Learning Rate
 n_iter = 1000
 m = 100
 theta_init = np.random.randn(2,1) # Random Initialization
-for iteration in range(n_iter):
-        gradient = 2/m * X_b.T.dot(X_b.dot(theta_init) - y)
-        theta_init = theta_init - lnr *gradient
+for iteration in range(n_iter): # All data in training set is used
+    gradient = 2/m * X_b.T * (X_b * theta_init - y)
+    theta_init = theta_init - lnr * gradient
 '''
 matrix([[3.42673069],
         [4.05257131]])
+'''
+
+## Random Gradient Descent
+n_epochs = 50; m = 100
+def learning_schedule(t, t0=5, t1=50):
+    '''
+    t0 and t1 are learning schedule hyperparameters
+    '''
+    return t0 / (t + t1)
+    
+theta_init = np.random.randn(2,1)
+for epoch in range(n_epochs):
+    for i in range(m):
+        random_index = np.random.randint(m)
+        xi = X_b[random_index : random_index+1]
+        yi = y[random_index : random_index+1]
+        gradient = 2 * xi.T *(xi * theta_init - yi)
+        lnr = learning_schedule(epoch *m + i)
+        theta_init = theta_init - lnr * gradient
+'''
+matrix([[3.41881019],
+        [4.05000377]])
 '''
