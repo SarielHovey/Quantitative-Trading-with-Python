@@ -14,3 +14,17 @@ theta_best = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y)
 matrix([[2.88706337],
         [4.10890596]])
 '''
+
+## Linear Regression with Sckit-Learn
+from sklearn.linear_model import LinearRegression
+lin_reg = LinearRegression()
+lin_reg.fit(X, y)
+lin_reg.intercept_, lin_reg.coef_
+'''
+(array([3.47443866]), array([[4.04315982]]))
+'''
+lin_reg.predict(np.array([[1],[5]]))
+'''
+array([[ 7.51759848],
+       [23.69023775]])
+'''
