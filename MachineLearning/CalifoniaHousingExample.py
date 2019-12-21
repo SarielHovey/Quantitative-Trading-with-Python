@@ -230,7 +230,7 @@ tree_reg = DecisionTreeRegressor()
 tree_reg.fit(housing_prepared, housing_labels)
 housing_pred = tree_reg.predict(housing_prepared)
 RMSE1 = np.sqrt(mean_squared_error(housing_pred, housing_labels))
-RMSE1       # o RMSE means Overfit
+RMSE1       # o RMSE infers Overfit
 '''
 0.0
 '''
@@ -250,8 +250,9 @@ RMSE2
 
 ## Cross-Validation
 from sklearn.model_selection import cross_val_score
-### the higher  parameter 'scoring', the better
-scores = cross_val_score(tree_reg, housing_prepared, housing_labels, scoring='neg_mean_squared_error',cv=10)
+### This method is used to detect potential Overfitting
+### If an algo shows great RMSE or similar, but behaves bad with cross-validation, then Overfit proved
+scores = cross_val_score(tree_reg, housing_prepared, housing_labels, scoring='neg_mean_squared_error',cv=10) # the higher  parameter 'scoring', the better
 tree_rmse_scores = np.sqrt(-scores)
 tree_rmse_scores
 '''
@@ -277,7 +278,6 @@ array([50610.87544405, 51127.92568734, 52482.36253188, 52495.11085346,
 [np.mean(lin_rmse_scores), np.std(lin_rmse_scores), 
 np.mean(tree_rmse_scores), np.std(tree_rmse_scores),
 np.mean(forest_rmse_scores), np.std(forest_rmse_scores)]
-[68255.34937236473, 2776.2399501539917, 69217.77713886923, 1947.7705728667925]
 '''
 [68255.34937236473,
  2776.2399501539917,
@@ -286,6 +286,7 @@ np.mean(forest_rmse_scores), np.std(forest_rmse_scores)]
  52470.29099436223,
  1703.7922996422908]
 '''
+
 
 
 
