@@ -88,3 +88,36 @@ sgd_reg.intercept_, sgd_reg.coef_
 '''
 (array([3.43595316]), array([4.08850395]))
 '''
+
+## Mini-batch Gradient Descent
+
+
+
+
+# Polynomial Regression
+m = 1000
+X = 6 * np.random.rand(m,1) - 3
+y = .5 * X **2 + 3 * X + 2 + np.random.randn(m,1)
+from sklearn.preprocessing import PolynomialFeatures
+poly_features = PolynomialFeatures(degree=2, include_bias=False) # plot(x,y) shows the pattern for degree 2
+X_poly = poly_features.fit_transform(X)
+X_poly[:7]
+'''
+         X             X^2 
+array([[ 2.13777298,  4.57007334],
+       [-2.53950476,  6.44908441],
+       [ 1.23612852,  1.52801372],
+       [-1.93231843,  3.7338545 ],
+       [-1.06654474,  1.13751768],
+       [-0.76977576,  0.59255472],
+       [ 1.69972438,  2.88906297]])
+More columns if degree set to n>2
+'''
+lin_reg = LinearRegression()
+lin_reg.fit(X_poly, y)
+lin_reg.intercept_, lin_reg.coef_
+'''
+Result: $y = 1.9845 + 2.9922 * X + 0.5096 * X^2$
+Underlying real model: $y = 2 + norm(0,1) + 3X + 0.5X^2$
+(array([1.98446473]), array([[2.99220428, 0.5096327 ]]))
+'''
