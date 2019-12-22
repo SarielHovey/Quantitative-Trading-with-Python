@@ -168,7 +168,7 @@ RMSE for val approaches RMSE for train, gap diminishes with more sample
 ## Ridge Regression (Tikhonov regularization)
 r'''
 Ridge Regression cost function, used on re-scaled data
-$J(\theta) = MSE(\theta) + \alpha * 0.5 * \sigma^{n}_{i=1}{\theta_i}^2$
+$J(\theta) = MSE(\theta) + \alpha * 0.5 * \sum^{n}_{i=1}{\theta_i}^2$
 MSE adds a regularization term, consisting of model's $\theta$
 Minimize J requires minimize model parameter for training
 $0 <= \alpha <= 1$ is Hyperparameter: (1) $\alpha = 0$ degrade model to unregularized status
@@ -189,5 +189,22 @@ sgd_reg.fit(X, y)
 sgd_reg.predict([[1.5]])
 '''
 Stochastic Gradient Descent solution:
+    l2 penalty means regularization term is 0.5 * square of paras
 array([7.94317489])
+'''
+
+
+## Lasso Regression (Lease Absolute Shrinkage and Selection Operator Regression)
+r'''
+Lasso Regression cost function:
+$J(\theta) = MSE(\theta) + \alpha * \sum^n_{i=1}{abs(\theta_i)}$
+The model performs feature selection, para for not important feature will be set to almost zero
+'''
+from sklearn.linear_model import Lasso
+lasso_reg = Lasso(alpha=0.1)
+lasso_reg.fit(X, y)
+lasso_reg.predict([[1.5]])
+'''
+array([7.85139348])
+With SGDRegressor(penalty='l1'), predict is array([7.9381351])
 '''
