@@ -159,3 +159,20 @@ RMSE stables on a level lower than linear model
 RMSE(val) >= RMSE(train)
 RMSE for val approaches RMSE for train, gap diminishes with more sample
 '''
+
+
+
+# Reqularized Linear Model
+## reduce the degrees of freedom of the model could reduce overfit
+
+## Ridge Regression (Tikhonov regularization)
+r'''
+Ridge Regression cost function, used on re-scaled data
+$J(\theta) = MSE(\theta) + \alpha * 0.5 * \sigma^{n}_{i=1}{\theta_i}^2$
+MSE adds a regularization term, consisting of model's $\theta$
+Minimize J requires minimize model parameter for training
+$0 <= \alpha <= 1$ is Hyperparameter: (1) $\alpha = 0$ degrade model to simple linear
+                                      (2) $\alpha = 1$ force all para to be 0 and take mean as model value
+'''
+
+
