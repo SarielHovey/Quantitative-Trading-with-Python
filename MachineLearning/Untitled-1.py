@@ -143,5 +143,19 @@ def plot_learning_curve(model, X, y):
     plt.legend(loc=0)
     #plt.show()
 '''
-
+val: Model Performance on test set
+train: Model Performance on train set
+In this case RMSE for both val and train reaches a plateau of 2 quickly
+A simple linear model underfits
+'''
+from sklearn.pipeline import Pipeline
+polynomial_regression = Pipeline([
+    ('poly_features',PolynomialFeatures(degree=10,include_bias=False)),
+    ('lin_reg', LinearRegression())
+])
+plot_learning_curve(polynomial_regression, X, y)
+'''
+RMSE stables on a level lower than linear model
+RMSE(val) >= RMSE(train)
+RMSE for val approaches RMSE for train, gap diminishes with more sample
 '''
