@@ -171,8 +171,23 @@ Ridge Regression cost function, used on re-scaled data
 $J(\theta) = MSE(\theta) + \alpha * 0.5 * \sigma^{n}_{i=1}{\theta_i}^2$
 MSE adds a regularization term, consisting of model's $\theta$
 Minimize J requires minimize model parameter for training
-$0 <= \alpha <= 1$ is Hyperparameter: (1) $\alpha = 0$ degrade model to simple linear
+$0 <= \alpha <= 1$ is Hyperparameter: (1) $\alpha = 0$ degrade model to unregularized status
                                       (2) $\alpha = 1$ force all para to be 0 and take mean as model value
 '''
+from sklearn.linear_model import Ridge
+ridge_reg = Ridge(alpha=1, solver='cholesky')
+ridge_reg.fit(X, y)
+ridge_reg.predict([[1.5]])
+'''
+Closed-form solution:
+    $\theta = (X^T X + \alpha A)^{-1} X^T y$
+array([[7.9003517]])
+'''
 
-
+sgd_reg = SGDRegressor(penalty='l2')
+sgd_reg.fit(X, y)
+sgd_reg.predict([[1.5]])
+'''
+Stochastic Gradient Descent solution:
+array([7.94317489])
+'''
