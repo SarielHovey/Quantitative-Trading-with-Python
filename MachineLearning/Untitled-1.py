@@ -289,3 +289,60 @@ Definitely not ideal. With too many unneeded coef for poly, this method could no
          8.37837493e-02, -1.51667757e-01]))
 array([4.93216085])
 '''
+
+
+
+
+# Logistic Regression
+r'''
+Logistic Regression Model estimated probability:
+$\hat{p} = h_{\theta}(x) = \sigma(x^T \theta)$
+$\sigma(t) = \frac{1}{1+ exp(-t)}$
+$\hat{y} = 0$ if $\hat{p}<0.5$; $hat{y} = 1$ if $\hat{p}>=0.5$
+
+Single training cost function:
+$c(\theta) = -log(\hat{p})$ if $y=1$. cost high when y=1 but p is near 0
+$c(\theta) = -log(1 - \hat{p})$ if $y=0$. cost high when y=0 but p is near 1
+
+Logistic Regression cost function:
+J(\theta) = - \frac{1}{m} \sum^m_{i=1}[y_i*log(\hat{p_i}) + (1-y_i)*log(1-\hat{p_i})]
+no closed-form resolution, but the function is convex
+
+Logistic Cost function partial derivatives:
+$\frac{\partial}{\partial\theta_j}J(\theta) = (1/m)\sum^m_{i=1}((\sigma(\theta^T*x_i)-y_i)x_ji)$
+'''
+## Decision Boundaries (example with iris plant)
+from sklearn import datasets
+iris = datasets.load_iris()
+[iris.keys()]
+'''
+[dict_keys(['data', 'target', 'target_names', 'DESCR', 'feature_names', 'filename'])]
+'''
+### Train a model to classify Iris Virginica based on petal width
+X = iris['data'][:,3:]
+y = (iris['target']==2).astype(np.int)
+
+from sklearn.linear_model import LogisticRegression
+log_reg = LogisticRegression()
+log_reg.fit(X, y)
+
+X_new = np.linspace(0,3,1000).reshape(-1,1)
+y_proba = log_reg.predict_proba(X_new)
+plt.plot(X_new, y_proba[:,1],'g-',label='Iris Virginica')
+plt.plot(X_new,y_proba[:,0],'b--',label='Not Iris Virginica')
+plt.xlabel('Petal width(cm)'); plt.ylabel('Probability')
+plt.title('Estimated probabilities and decision boundary')
+plt.legend(loc=0)
+'''
+There is a Decision Boundary around 1.61cm, where both probability is 0.50
+Near 1.61cm, the classifier cannot clearly divide between 2 categories
+'''
+log_reg.predict([[1.60],[1.62]])
+'''
+a difference of 2mm in width leads to 2 categories:
+array([0, 1])
+Of course, more paras are needed to enhance the classifier
+'''
+
+
+## Softmax Regression (Multinomial Logistic Regression)
