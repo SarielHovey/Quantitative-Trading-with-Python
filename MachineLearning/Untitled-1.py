@@ -346,3 +346,34 @@ Of course, more paras are needed to enhance the classifier
 
 
 ## Softmax Regression (Multinomial Logistic Regression)
+'''
+Softmax score for class k: (k is independent variable)
+$s_k(x)=x^T*\theta_k$
+$\theta_k$ is parameter vector of class k
+
+Softmax function: (estimated probability that x belongs to class k, based on softmax score)
+$\hat{p_k} = \sigma(s(x))_k = \frac{exp(s_k(x))}{\sum^K_{j=1}exp(s_j(x))}$
+K is number of classes
+
+Softmax Regression classifier prediction:
+$\hat{y} = argmax_k \sigma(s(x))_k = argmax_k s_k(x) = argmax_k(\theta_k^T * x)$
+argmax returns k that maxmizes $\sigma(s(x))_k$
+The prediction returns the most possible category
+
+Cross Entropy Cost Function:
+$J(\Theta) = (1/m) \sum^m_{i=1} \sum^K_{k=1}(y_ki log(\hat{p_ki}))$
+$y_ki$ is target probability that i-th instance belongs to class k
+
+Cross Entropy Gradient Vector for class k:
+$\nabla_{\theta_k} J(\Theta) = (1/m) \sum^m_{i=1}{(\hat{p_ki}-y_ki)x_i}$
+'''
+### Use petal length, petal width to predict multi-classes
+X = iris['data'][:,(2,3)]
+y = iris['target']
+softmax_reg = LogisticRegression(multi_class='multinomial',solver='lbfgs',C=10) # $C = 1/{\alpha}$
+softmax_reg.fit(X,y)
+softmax_reg.predict([[5,2]]);softmax_reg.predict_proba([[5,2]])
+'''
+array([2])
+array([[6.38014896e-07, 5.74929995e-02, 9.42506362e-01]])
+'''
