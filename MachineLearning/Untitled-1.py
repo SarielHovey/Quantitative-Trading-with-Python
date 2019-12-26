@@ -11,8 +11,8 @@ Normal Equation: $\theta = (X^T X)^(-1) X^T y$
 '''
 theta_best = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y)
 '''
-matrix([[2.88706337],
-        [4.10890596]])
+matrix([[3.5422845 ],
+        [3.97416522]])
 '''
 
 ## Linear Regression with Sckit-Learn
@@ -21,26 +21,26 @@ lin_reg = LinearRegression()
 lin_reg.fit(X, y)
 lin_reg.intercept_, lin_reg.coef_
 '''
-(array([3.47443866]), array([[4.04315982]]))
+(array([3.5422845]), array([[3.97416522]]))
 '''
 lin_reg.predict(np.array([[1],[5]]))
 '''
-array([[ 7.51759848],
-       [23.69023775]])
+array([[ 7.51644971],
+       [23.41311059]])
 '''
 ## Least Squares
 theta_best_svd, residual, rank, s = np.linalg.lstsq(X_b, y, rcond=1e-6)
 '''
 Same as above. LinearRegression() defaults lstsq method.
-matrix([[3.47443866],
-        [4.04315982]])
+matrix([[3.5422845 ],
+        [3.97416522]])
 '''
 ## Pseudoinverse of X -- X_b
 np.linalg.pinv(X_b).dot(y)
 '''
 based on SVD decomposion, preferred to Normal Equation
-matrix([[3.47443866],
-        [4.04315982]])
+matrix([[3.5422845 ],
+        [3.97416522]])
 '''
 
 
@@ -56,8 +56,8 @@ for iteration in range(n_iter): # All data in training set is used
     gradient = 2/m * X_b.T * (X_b * theta_init - y)
     theta_init = theta_init - lnr * gradient
 '''
-matrix([[3.42673069],
-        [4.05257131]])
+matrix([[3.5422845 ],
+        [3.97416522]])
 '''
 
 ## Random Gradient Descent
@@ -78,15 +78,15 @@ for epoch in range(n_epochs):
         lnr = learning_schedule(epoch *m + i)
         theta_init = theta_init - lnr * gradient
 '''
-matrix([[3.41881019],
-        [4.05000377]])
+matrix([[3.55054384],
+        [3.98230242]])
 '''
 from sklearn.linear_model import SGDRegressor
 sgd_reg = SGDRegressor(max_iter=10000, tol=1e-3, penalty=None, eta0=0.1) # eta0 is initial learning rate
 sgd_reg.fit(X, y)
 sgd_reg.intercept_, sgd_reg.coef_
 '''
-(array([3.43595316]), array([4.08850395]))
+(array([3.53459864]), array([3.97474713]))
 '''
 
 ## Mini-batch Gradient Descent
@@ -104,22 +104,22 @@ X_poly = poly_features.fit_transform(X)
 X_poly[:7]
 '''
          X             X^2 
-array([[ 2.13777298,  4.57007334],
-       [-2.53950476,  6.44908441],
-       [ 1.23612852,  1.52801372],
-       [-1.93231843,  3.7338545 ],
-       [-1.06654474,  1.13751768],
-       [-0.76977576,  0.59255472],
-       [ 1.69972438,  2.88906297]])
+array([[-1.03041035,  1.06174548],
+       [-1.21462745,  1.47531984],
+       [-0.64801849,  0.41992796],
+       [-0.79582731,  0.6333411 ],
+       [ 2.93309789,  8.60306322],
+       [-0.8987783 ,  0.80780243],
+       [ 2.07503555,  4.30577253]])
 More columns if degree set to n>2
 '''
 lin_reg = LinearRegression()
 lin_reg.fit(X_poly, y)
 lin_reg.intercept_, lin_reg.coef_
 '''
-Result: $y = 1.9845 + 2.9922 * X + 0.5096 * X^2$
+Result: $y = 2.0767 + 3.0159 * X + 0.4792 * X^2$
 Underlying real model: $y = 2 + norm(0,1) + 3X + 0.5X^2$
-(array([1.98446473]), array([[2.99220428, 0.5096327 ]]))
+(array([2.07674669]), array([[3.01589423, 0.47915133]]))
 '''
 
 ## Learning curve for Overfitting detection
@@ -181,7 +181,7 @@ ridge_reg.predict([[1.5]])
 '''
 Closed-form solution:
     $\theta = (X^T X + \alpha A)^{-1} X^T y$
-array([[7.9003517]])
+array([[8.06299998]])
 '''
 
 sgd_reg = SGDRegressor(penalty='l2')
@@ -190,7 +190,7 @@ sgd_reg.predict([[1.5]])
 '''
 Stochastic Gradient Descent solution:
     l2 penalty means regularization term is 0.5 * square of paras
-array([7.94317489])
+array([8.10229213])
 '''
 
 
@@ -205,6 +205,21 @@ lasso_reg = Lasso(alpha=0.1)
 lasso_reg.fit(X, y)
 lasso_reg.predict([[1.5]])
 '''
-array([7.85139348])
+array([8.0150082])
 With SGDRegressor(penalty='l1'), predict is array([7.9381351])
+'''
+
+
+## Elastic Net
+r'''
+Elastic Net Cost Function:
+$J(\theta) = MSE(\theta) + r\alpha \sum^n_{i=1}abs(\theta_i) + \frac{1-r}{2} \alpha sum^n_{i=1}\theta^2_i$
+r is mix ratio. $r=0$:Ridge Regression; $r=1$:Lasso Regression
+'''
+from sklearn.linear_model import ElasticNet
+elastic_net = ElasticNet(alpha=0.1,l1_ratio=0.5) # r=0.5
+elastic_net.fit(X, y)
+elastic_net.predict([[1.5]])
+'''
+array([9.50522404])
 '''
