@@ -166,7 +166,7 @@ RMSE for val approaches RMSE for train, gap diminishes with more sample
 ## reduce the degrees of freedom of the model could reduce overfit
 
 ## Ridge Regression (Tikhonov regularization)
-r'''
+'''
 Ridge Regression cost function, used on re-scaled data
 $J(\theta) = MSE(\theta) + \alpha * 0.5 * \sum^{n}_{i=1}{\theta_i}^2$
 MSE adds a regularization term, consisting of model's $\theta$
@@ -195,7 +195,7 @@ array([8.10229213])
 
 
 ## Lasso Regression (Lease Absolute Shrinkage and Selection Operator Regression)
-r'''
+'''
 Lasso Regression cost function:
 $J(\theta) = MSE(\theta) + \alpha * \sum^n_{i=1}{abs(\theta_i)}$
 The model performs feature selection, para for not important feature will be set to almost zero
@@ -211,7 +211,7 @@ With SGDRegressor(penalty='l1'), predict is array([7.9381351])
 
 
 ## Elastic Net
-r'''
+'''
 Elastic Net Cost Function:
 $J(\theta) = MSE(\theta) + r\alpha \sum^n_{i=1}abs(\theta_i) + \frac{1-r}{2} \alpha sum^n_{i=1}\theta^2_i$
 r is mix ratio. $r=0$:Ridge Regression; $r=1$:Lasso Regression
@@ -294,7 +294,7 @@ array([4.93216085])
 
 
 # Logistic Regression
-r'''
+'''
 Logistic Regression Model estimated probability:
 $\hat{p} = h_{\theta}(x) = \sigma(x^T \theta)$
 $\sigma(t) = \frac{1}{1+ exp(-t)}$
