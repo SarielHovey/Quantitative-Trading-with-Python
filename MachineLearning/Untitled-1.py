@@ -217,9 +217,50 @@ $J(\theta) = MSE(\theta) + r\alpha \sum^n_{i=1}abs(\theta_i) + \frac{1-r}{2} \al
 r is mix ratio. $r=0$:Ridge Regression; $r=1$:Lasso Regression
 '''
 from sklearn.linear_model import ElasticNet
-elastic_net = ElasticNet(alpha=0.1,l1_ratio=0.5) # r=0.5
+elastic_net = ElasticNet(alpha=0.1,l1_ratio=0.6) # r=0.5
 elastic_net.fit(X, y)
 elastic_net.predict([[1.5]])
 '''
-array([9.50522404])
+array([7.97596988])
+'''
+
+
+## Early Stopping
+### Stop training once validation error(Validation Set) reaches a minimum
+from sklearn.base import clone
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+poly_scaler = Pipeline([
+    ('poly_features',PolynomialFeatures(degree=90,include_bias=False)),
+    ('std_scaler',StandardScaler())
+])
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=.2)
+X_train_poly_scaled = poly_scaler.fit_transform(X_train)
+X_val_poly_scaled = poly_scaler.transform(X_val)
+# warm_start 'True' will keep record of previous training, and continue it for next training
+sgd_reg=SGDRegressor(max_iter=1,tol=-np.infty,warm_start=True,penalty=None,learning_rate='constant',eta0=0.0005)
+min_val_error = float('inf')
+best_epoch = None; best_model = None
+for epoch in range(1000):
+    sgd_reg.fit(X_train_poly_scaled,y_train)
+    y_val_pred = sgd_reg.predict(X_val_poly_scaled)
+    val_err = mean_squared_error(y_val, y_val_pred)
+    if val_err < min_val_error:
+        min_val_error = val_err
+        best_epoch = epoch
+        best_model = clone(sgd_reg)
+'''
+best_epoch: 297
+best_model: SGDRegressor(alpha=0.0001, average=False, early_stopping=False, epsilon=0.1,
+       eta0=0.0005, fit_intercept=True, l1_ratio=0.15,
+       learning_rate='constant', loss='squared_loss', max_iter=1,
+       n_iter=None, n_iter_no_change=5, penalty=None, power_t=0.25,
+       random_state=None, shuffle=True, tol=-inf, validation_fraction=0.1,
+       verbose=0, warm_start=True)
+'''
+best_model.fit(X, y)
+best_model.predict([[1.5]])
+'''
+Definitely not ideal
+array([4.93216085])
 '''
