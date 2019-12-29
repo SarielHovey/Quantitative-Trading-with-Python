@@ -22,7 +22,7 @@ array([1.])
 
 
 
-# Nonlinear SVM Classification with linear Kernal
+## Nonlinear SVM Classification with linear Kernal
 from sklearn.datasets import make_moons
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import PolynomialFeatures
@@ -74,10 +74,48 @@ plot_dataset(X,y,[-1.5,2.5,-1,1.5]); plot_predictions(polynomial_svm_clf,[-1.5,2
 
 
 
-# Polynomial Kernel
+## Polynomial Kernel
 from sklearn.svm import SVC
 poly_kernel_svm_clf = Pipeline([
     ('scaler',StandardScaler()),
     ('svm_clf',SVC(kernel='poly',degree=3,coef0=1,C=5)), # coef0 controls how much the model is influenced by high-degree polynomials
 ])
 poly_kernel_svm_clf.fit(X,y)
+
+
+
+## Gaussian RBF Kernel
+'''
+Gaussian Radial Basis Function: a bell shape curve. when $\gamma$ increases, the curve narrows
+$\phi_{\gamma}(x,l) = exp(- \gamma ||x-l||^2)$
+l is landmark.
+'''
+rbf_kernel_svm_clf = Pipeline([
+    ('scaler',StandardScaler()),
+    ('svm_clf',SVC(kernel='rbf',gamma=5,C=0.001)) # smaller gamma will cause smoother boundary
+])
+rbf_kernel_svm_clf.fit(X,y)
+
+
+
+
+# SVM Regression
+X = np.random.randn(100,1)
+y = np.random.randn(100,1) + 2*X + 3*X**2
+from sklearn.svm import LinearSVR
+svm_reg = LinearSVR(epsilon=1.5) # larger epsilon means wider street
+svm_reg.fit(X,y)
+temp = np.linspace(-1.5,2.5,100).reshape(100,1)
+y_pred = svm_reg.predict(temp)
+plt.plot(temp, y_pred)
+plt.plot(temp, y_pred + svm_reg.epsilon, "k--")
+plt.plot(temp, y_pred - svm_reg.epsilon, "k--")
+plt.scatter(X,y) # Obviously, for a quardic relationship, liner SVM does poorly
+'''
+for Polynomial Situation
+'''
+from sklearn.svm import SVR
+svm_poly_reg = SVR(kernel='poly',degree=2,C=100,epsilon=0.1)
+svm_poly_reg.fit(X,y)
+temp = np.linspace(-1.5,2.5,100)
+y_pred = svm_poly_reg.predict(temp)
