@@ -22,15 +22,62 @@ array([1.])
 
 
 
-# Nonlinear SVM Classification
+# Nonlinear SVM Classification with linear Kernal
 from sklearn.datasets import make_moons
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import PolynomialFeatures
 
 X, y = make_moons(n_samples=5000, noise=0.15)
+import matplotlib.pyplot as plt
+plt.plot(X[:,0][y==0],X[:,1][y==0],'bs')
+plt.plot(X[:,0][y==1],X[:,1][y==1],'g^')
+plt.axis([-1.5,2.5,-1,1.5])
+plt.grid(True,which='both')
+plt.xlabel('$X_1$',fontsize=14); plt.ylabel('$X_2$',fontsize=14,rotation=0) # shows pattern of degree 3
+
 polynomial_svm_clf = Pipeline([
     ('poly_features',PolynomialFeatures(degree=3)),
     ('scaler',StandardScaler()),
     ('svm_clf',LinearSVC(C=10,loss='hinge'))
 ])
 polynomial_svm_clf.fit(X,y)
+
+def plot_dataset(X, y, axes):
+    '''
+    Require matplotlib.pyplot as plt
+    axes is a 4 element list, specifying range on X, Y axis
+    y is classified into 2 categories
+    '''
+    plt.plot(X[:, 0][y==0], X[:, 1][y==0], "bs")
+    plt.plot(X[:, 0][y==1], X[:, 1][y==1], "g^")
+    plt.axis(axes)
+    plt.grid(True, which='both')
+    plt.xlabel(r"$x_1$", fontsize=14)
+    plt.ylabel(r"$x_2$", fontsize=14, rotation=0)
+
+def plot_predictions(clf, axes):
+    '''
+    Require matplotlib.pyplot as plt
+    axes is a 4 element list, specifying range on X, Y axis
+    For modify, x0s & x1s length should = sample length in plot_dataset()
+    '''
+    x0s = np.linspace(axes[0], axes[1], 5000)
+    x1s = np.linspace(axes[2], axes[3], 5000)
+    x0, x1 = np.meshgrid(x0s, x1s) # x0.shape: (5000,5000), both 5000^2 elements in total
+    X = np.c_[x0.ravel(), x1.ravel()] # X shape: (5000^2,2), degrade x0 and x1 to 1-stage-vector and in 2 columns
+    y_pred = clf.predict(X).reshape(x0.shape) # predicted type based on model
+    y_decision = clf.decision_function(X).reshape(x0.shape) # score of every sample in X
+    plt.contourf(x0, x1, y_pred, cmap=plt.cm.brg, alpha=0.2)
+    plt.contourf(x0, x1, y_decision, cmap=plt.cm.brg, alpha=0.1)
+
+plot_dataset(X,y,[-1.5,2.5,-1,1.5]); plot_predictions(polynomial_svm_clf,[-1.5,2.5,-1,1.5])
+
+
+
+# Polynomial Kernel
+from sklearn.svm import SVC
+poly_kernel_svm_clf = Pipeline([
+    ('scaler',StandardScaler()),
+    ('svm_clf',SVC(kernel='poly',degree=3,coef0=1,C=5)), # coef0 controls how much the model is influenced by high-degree polynomials
+])
+poly_kernel_svm_clf.fit(X,y)
