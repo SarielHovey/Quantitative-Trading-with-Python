@@ -1,5 +1,28 @@
 # Linear SVM Classification
+'''
+Linear SVM Classifier Prediction:
+$\hat{y} = 0$ if $w^T x + b < 0$
+$\hat{y} = 1$ if $w^T x + b >= 0$
+'''
+
+## Hard Margin Classification
+'''
+Hard Margin Linear SVM classifier objective: (an instance of Quadratic Programming problem)
+    $t_i = -1$ if $\hat{y}=0$, $t_i = 1$ if $\hat{y}=1$
+    $min_{w,b} \frac{1}{2} w^T w$
+      subject to $t_i * (w^T x_i +b) >= 1$ for i = 1,2,...,m
+$w$ is the slope of $(x,wx)$. smaller $w$ means wider margin for x
+This means no outlier on the svm margin, which may not be possible
+'''
+
 ## Soft Margin Classification
+'''
+Soft Margin Linear SVM classifier objective:
+    $t_i = -1$ if $\hat{y}=0$, $t_i = 1$ if $\hat{y}=1$
+    $min_{w,b,\zeta} \frac{1}{2} w^T w + C \sum_i^m{\zeta_i}$
+      subject to $t_i * (w^T x_i +b) >= 1 - \zeta_i$ and $\zeta >=0$ for i = 1,2,...,m
+$\zeta_i$ controls how much the ith instance is allowed to violate the margin
+'''
 import numpy as np
 from sklearn import datasets
 from sklearn.pipeline import Pipeline
@@ -117,5 +140,18 @@ for Polynomial Situation
 from sklearn.svm import SVR
 svm_poly_reg = SVR(kernel='poly',degree=2,C=100,epsilon=0.1)
 svm_poly_reg.fit(X,y)
-temp = np.linspace(-1.5,2.5,100)
+temp = np.linspace(-1.5,2.5,100).reshape(100,1)
 y_pred = svm_poly_reg.predict(temp)
+plt.plot(temp, y_pred)
+plt.plot(temp, y_pred + svm_poly_reg.epsilon, "k--")
+plt.plot(temp, y_pred - svm_poly_reg.epsilon, "k--")
+plt.scatter(X,y)
+
+svm_poly_reg2 = SVR(kernel='poly',degree=3,C=100,epsilon=0.1) # delibreately overfit
+svm_poly_reg2.fit(X,y)
+temp = np.linspace(-1.5,2.5,100).reshape(100,1)
+y_pred = svm_poly_reg2.predict(temp)
+plt.plot(temp, y_pred)
+plt.plot(temp, y_pred + svm_poly_reg2.epsilon, "k--")
+plt.plot(temp, y_pred - svm_poly_reg2.epsilon, "k--")
+plt.scatter(X,y)
