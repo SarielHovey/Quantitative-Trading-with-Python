@@ -46,6 +46,14 @@ array([1.])
 
 
 ## Nonlinear SVM Classification with linear Kernal
+'''
+Common Kernels: 
+    Linear: $K(a,b) = a^T b$
+    Polynomial: $K(a,b) = (\gamma a^T b + r)^d$
+    Gaussian RBF: $K(a,b) = exp(-\gamma||a-b||^2)$
+    Sigmoid: $K(a,b) = tanh(\gamma a^T b + r)$
+$K(a,b)=\phi(a)^T \phi(b)$. With kernel, the product could be computed directly even $\phi(x)$ is unknown
+'''
 from sklearn.datasets import make_moons
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import PolynomialFeatures
@@ -57,7 +65,9 @@ plt.plot(X[:,0][y==1],X[:,1][y==1],'g^')
 plt.axis([-1.5,2.5,-1,1.5])
 plt.grid(True,which='both')
 plt.xlabel('$X_1$',fontsize=14); plt.ylabel('$X_2$',fontsize=14,rotation=0) # shows pattern of degree 3
-
+'''
+Hinge Loss: $max(0,1-t)$
+'''
 polynomial_svm_clf = Pipeline([
     ('poly_features',PolynomialFeatures(degree=3)),
     ('scaler',StandardScaler()),
