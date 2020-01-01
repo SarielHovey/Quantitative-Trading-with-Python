@@ -68,6 +68,11 @@ tree_clf.fit(X,y)
 
 
 # Decision Tree Regression
+'''
+CART Cost function for regression:
+    $J(k,t_k) = \frac{m_l}{m}MSE_l + \frac{m_r}{m}MSE_r$
+    where $\hat{y}_{node} = mean_{node}(y_i)$; $MSE_{node} = \sum_{i in node}(\hat{y}_{node}-y_i)^2 $
+'''
 from sklearn.tree import DecisionTreeRegressor
 import numpy as np
 tree_reg = DecisionTreeRegressor(max_depth=2)
@@ -81,3 +86,32 @@ export_graphviz(
     rounded=True,
     filled=True
 )
+tree_reg.predict([[.3],[.4],[.7]])
+def f(x):
+    return .5*x**2 + 3*x
+[f(x) for x in [0.3,0.4,0.7]]
+'''
+Very bad regression, mean value is used on large range
+array([-0.24079714, -0.24079714,  2.95530098])
+Benchmk:[0.945, 1.2800000000000002, 2.3449999999999998]
+'''
+tree_reg2 = DecisionTreeRegressor()
+tree_reg2.fit(X,y)
+tree_reg2.predict([[.3],[.4],[.5]])
+'''
+Better, but severe overfit, since with no regularization,
+regressor fit every sample
+array([2.11641395, 0.57564429, 2.34127743])
+Benchmk:[0.945, 1.2800000000000002, 2.3449999999999998]
+'''
+tree_reg3 = DecisionTreeRegressor(min_samples_leaf=10)
+tree_reg3.fit(X,y)
+tree_reg3.predict([[.3],[.4],[.5]])
+'''
+Set min samples every leaf to reduce overfit
+array([1.02829425, 1.23962784, 1.23962784])
+Benchmk:[0.945, 1.2800000000000002, 2.3449999999999998]
+With 3 tree_reg, it could also be found that for predict x value away from training sample,
+    the predicted y could be extremely wrong. Try tree_reg.predict([[3],[4],[7]])
+    Besides, model is over sensitive to samples. Even the same samples could lead to different models.
+'''
