@@ -140,4 +140,32 @@ bag_clf = BaggingClassifier(
     n_estimators=500,max_samples=1.0,bootstrap=True,n_jobs=-1
 )
 '''
+## Extremely Randomized Tree
+'''
+Use random threshold for each feature rather than find the best threshold
+'''
+from sklearn.ensemble import ExtraTreesClassifier
+ext_clf = ExtraTreesClassifier(n_estimators=500,max_leaf_nodes=16,n_jobs=-1)
+ext_clf.fit(X_train,y_train)
+y_pred = ext_clf.predict(X_val)
+accuracy_score(y_val,y_pred)
+'''
+0.972
+'''
 
+
+## Feature Importance
+from sklearn.datasets import load_iris
+iris = load_iris()
+rnd_clf = RandomForestClassifier(n_estimators=500,n_jobs=-1)
+rnd_clf.fit(iris['data'],iris['target'])
+for name, score in zip(iris['feature_names'], rnd_clf.feature_importances_):
+    print(name, score)
+'''
+features that reduce more tree node impurity on average are more important
+e.g. in below iris case, petal length and petal width are more important
+sepal length (cm) 0.09689148671472861
+sepal width (cm) 0.02361549853925849
+petal length (cm) 0.4537043793462725
+petal width (cm) 0.42578863539974043
+'''
