@@ -169,3 +169,35 @@ sepal width (cm) 0.02361549853925849
 petal length (cm) 0.4537043793462725
 petal width (cm) 0.42578863539974043
 '''
+
+
+
+# Boosting (Hypothesis Boosting)
+'''
+Train predictors sequentially, each trying to correct the previous one
+'''
+
+## AdaBoost
+'''
+Train and evaluate the 1st predictor, then increase the relative weight of misclassified training instances for the next predictor.
+Weighted error rate of the j-th predictor:
+    $r_j = \sum^m_{i=1, \hat{y_ij}!=y_i}w_i / \sum^m_i{w_i}$
+    $\hat{y_ij}$ is the j-th predictor's prediction for the i-th instance
+
+Predictor weight:
+    $\alpha_j = \eta log(\frac{1-r_j}{r_j})$
+    $\eta$ is learning rate hypermeter(default 1)
+    better predictor j will have higher alpha
+
+Weight update rule:
+    Initial weight for i-th instance: $1/m$
+    for j = 1:
+        for i = 1 to m:
+            if $\hat{y_ij} == y_i$, $w_i = w_i$
+            if $\hat{y_ij} != y_i$, $w_i = w_i*exp(\alpha_j)$
+            $w_i / \sum^m_i{w_i}$ to normalize
+            j += 1
+
+AdaBoost Predictions:
+    $\hat{y}(x) = argmax_k \sum^N_{j=1,\hat{y_j}(x)=k}\alpha_j$
+'''
