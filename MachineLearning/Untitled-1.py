@@ -201,3 +201,72 @@ Weight update rule:
 AdaBoost Predictions:
     $\hat{y}(x) = argmax_k \sum^N_{j=1,\hat{y_j}(x)=k}\alpha_j$
 '''
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import make_moons
+X, y = make_moons(n_samples=5000, noise=0.15)
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=.2)
+
+from sklearn.ensemble import AdaBoostClassifier
+ada_clf = AdaBoostClassifier(
+    DecisionTreeClassifier(max_depth=1), n_estimators=200,
+    algorithm='SAMME.R',learning_rate=.5
+)
+ada_clf.fit(X_train,y_train)
+y_pred = ada_clf.predict(X_val)
+accuracy_score(y_pred,y_val)
+'''
+0.99
+'''
+
+
+## Gradient Boosting
+'''
+fit new predictor to residual errors made by the previous predictor
+'''
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.metrics import mean_squared_error
+tree_reg1 = DecisionTreeRegressor(max_depth=2)
+tree_reg1.fit(X_train,y_train)
+y_pred1 = tree_reg1.predict(X_val)
+mean_squared_error(y_pred1,y_val)
+y2_train = y_train - tree_reg1.predict(X_train)
+tree_reg2 = DecisionTreeRegressor(max_depth=2)
+tree_reg2.fit(X_train, y2_train)
+y_pred2 = sum(tree.predict(X_val) for tree in (tree_reg1,tree_reg2))
+mean_squared_error(y_pred2,y_val)
+y3_train = y2_train - tree_reg2.predict(X_train)
+tree_reg3 = DecisionTreeRegressor(max_depth=2)
+tree_reg3.fit(X_train, y3_train)
+y_pred3 = sum(tree.predict(X_val) for tree in (tree_reg1,tree_reg2,tree_reg3))
+mean_squared_error(y_val,y_pred3)
+'''
+Theoretically, score should increase by stage
+1st-stage RMSE: 0.07250688154031396
+2nd-stage RMSE: 0.06358319167774763
+3rd-stage RMSE: 0.05591011157360547
+Or use the provided class in sklearn
+'''
+from sklearn.ensemble import GradientBoostingRegressor
+gbrt = GradientBoostingRegressor(max_depth=2, n_estimators=3, learning_rate=1.0)
+gbrt.fit(X_train,y_train)
+y_pred = gbrt.predict(X_val)
+mean_squared_error(y_pred,y_val)
+'''
+RMSE: 0.05591011157360515
+Notice that this almost equals 3rd-stage RMSE above since these 2 ways are equivalent
+'''
+gbrt2 = GradientBoostingRegressor(max_depth=2, n_estimators=300, learning_rate=0.1)
+gbrt2.fit(X_train,y_train)
+y_pred2 = gbrt2.predict(X_val)
+mean_squared_error(y_pred2,y_val)
+gbrt3 = GradientBoostingRegressor(max_depth=2, n_estimators=3, learning_rate=0.1)
+gbrt3.fit(X_train,y_train)
+y_pred3 = gbrt3.predict(X_val)
+mean_squared_error(y_pred3,y_val)
+'''
+gbrt RMSE: 0.05591011157360515
+gbrt2 RMSE: 0.014771576749491906
+gbrt3 RMSE: 0.1671436853369599
+Higher Learning Rate requires less trees, but may cause underfit
+Lower Learning Rate need more trees to fit the model, but may cause overfit
+'''
