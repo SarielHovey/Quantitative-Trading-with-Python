@@ -270,3 +270,70 @@ gbrt3 RMSE: 0.1671436853369599
 Higher Learning Rate requires less trees, but may cause underfit
 Lower Learning Rate need more trees to fit the model, but may cause overfit
 '''
+
+### Try Gradiant Boosting with early stopping
+### increase n_estimators if len(error) == np.argmin(errors)
+import numpy as np
+gbrt = GradientBoostingRegressor(max_depth=2,n_estimators=1200)
+gbrt.fit(X_train,y_train)
+errors = [mean_squared_error(y_val, y_pred) for y_pred in gbrt.staged_predict(X_val)]
+bst_n_estimators = np.argmin(errors) +1
+'''
+Error should decrease with increase of number of estimators, then increase again
+len(errors):1200
+best_number_of_estimators:900
+'''
+gbrt_best = GradientBoostingRegressor(max_depth=2,n_estimators=bst_n_estimators)
+gbrt_best.fit(X_train,y_train)
+[mean_squared_error(y_val, y_pred) for y_pred in [gbrt.predict(X_val),gbrt_best.predict(X_val)]]
+'''
+We see a decrease in RMSE (almost)
+0.012676838548715512
+0.012269630397207795
+Alternatively, use warm_start param
+'''
+gbrt = GradientBoostingRegressor(max_depth=2, warm_start=True)
+min_val_error = float('inf')
+error_going_up = 0
+for n_estimators in range(1,1200):
+    gbrt.n_estimators = n_estimators
+    gbrt.fit(X_train,y_train)
+    y_pred = gbrt.predict(X_val)
+    val_err = mean_squared_error(y_val,y_pred)
+    if val_err < min_val_error:
+        min_val_error = val_err
+        error_going_up = 0
+    else:
+        error_going_up += 1
+        if error_going_up == 10:
+            break
+'''
+error_going_up = 5:
+    gbrt.n_estimators: 627
+    RMSE: 0.012722023493901148
+With error_going_up = 5, we may be trapped in a local min
+If ignore overfit, 10 may be the best choice
+error_going_up = 10:
+    gbrt.n_estimators: 707
+    RMSE: 0.012564108480654278
+error_going_up = 20:
+    gbrt.n_estimators: 717
+    RMSE: 0.01256978293815527
+'''
+## For Performance, use xgboost for Extreme Gradiant Boosting
+import xgboost
+xgb_reg = xgboost.XGBRegressor()
+xgb_reg.fit(X_train,y_train)
+y_pred = xgb_reg.predict(X_val)
+mean_squared_error(y_pred,y_val)
+xgb_reg.fit(X_train,y_train,eval_set=[(X_val, y_val)],early_stopping_rounds=3)
+y_pred = xgb_reg.predict(X_val)
+mean_squared_error(y_pred,y_val)
+'''
+RMSE: 0.01322858967276241
+RMSE with early stopping: 0.01322858967276241
+'''
+
+
+
+# Stacking
