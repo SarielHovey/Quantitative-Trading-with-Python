@@ -89,3 +89,11 @@ With d = 154, the Explained Variance already reaches 0.95 level
 Increase d to 700 only makes an increase of 0.05
 Obviously, reduce X's dimension to 154 will keep most features of original data
 '''
+### PCA for Compression
+'''
+Recover the originate dimensions (inevitable decrease in quality)
+$X_{recovered} = X_{d-projection}W_d^T $
+'''
+pca = PCA(n_components=154)
+X_reduced = pca.fit_transform(X_train)
+X_recovered = pca.inverse_transform(X_reduced)
