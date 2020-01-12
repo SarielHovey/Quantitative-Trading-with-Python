@@ -336,4 +336,13 @@ RMSE with early stopping: 0.01322858967276241
 
 
 
-# Stacking
+# Stacked Generalization (Stacking)
+'''
+1. Split training set, train 1st model on Part 1
+2. Use 1st model to predict data in Part 2, result as input for 2nd model(Blender 1)
+3. Use 2nd model to predict data in Part 3, result as input for 3nd model(Blender 2)
+4. Repeat the process if enough data
+'''
+
+
+
