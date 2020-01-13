@@ -97,3 +97,38 @@ $X_{recovered} = X_{d-projection}W_d^T $
 pca = PCA(n_components=154)
 X_reduced = pca.fit_transform(X_train)
 X_recovered = pca.inverse_transform(X_reduced)
+### Randomized PCA
+'''
+Quickly approximate the first d PCs, rather than compute the whole SVD
+If fully compute required:
+    PCA(n_components=154, svd_solver='full')
+'''
+rnd_pca = PCA(n_components=154, svd_solver='randomized')
+X_reduced = rnd_pca.fit_transform(X_train)
+
+
+
+# Invremental PCA
+'''
+Instead of loading whole training set into memory, incremental PCA could read partial data everytime
+'''
+from sklearn.decomposition import IncrementalPCA
+n_batches = 100
+inc_pca = IncrementalPCA(n_components=154)
+for X_batch in np.array_split(X_train,n_batches):
+    inc_pca.partial_fit(X_batch)
+X_reduced = inc_pca.transform(X_train)
+'''
+X.shape: (52500, 154)
+Or technically equivalently use np.memmap
+'''
+m, n = 52500, 784
+X_mm = np.memmap('data', dtype='float32',mode='readonly',shape=(m,n))
+batch_size = m // n_batches
+inc_pca = IncrementalPCA(n_components=154, batch_size=batch_size)
+inc_pca.fit(X_mm)
+
+
+
+
+# Kernel PCA
