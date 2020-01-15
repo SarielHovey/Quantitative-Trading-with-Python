@@ -132,3 +132,34 @@ inc_pca.fit(X_mm)
 
 
 # Kernel PCA
+from sklearn.decomposition import KernelPCA
+rbf_pca = KernelPCA(n_components=2, kernel='rbf', gamma=0.04)
+rbf2_pca = KernelPCA(n_components=2, kernel='sigmoid', gamma=0.001)
+from sklearn.datasets import make_swiss_roll
+DATA = make_swiss_roll(n_samples=5000, noise=0.15)
+X = DATA[0]; y = DATA[1]
+X_reduced = rbf_pca.fit_transform(X)
+'''
+Use RBF Kernel to reduce the 3 dimensions of a Swiss Roll to 2 dimensions
+Please be noticed this is unsupervised learning, and this is in data processing stage
+X shape: (5000,3)
+X_reduced shape: (5000,2)
+'''
+## (1) Use Grid Search to find best kernel and parameter
+from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+clf = Pipeline([
+    ('kpca',KernelPCA(n_components=2)),
+    ('log_reg',LogisticRegression()),
+])
+param_grid = [{
+    'kpca_gamma':np.linspace(0.03,0.05,10),
+    'kpca_kernel':['rbf','sigmoid']
+}]
+grid_search = GridSearchCV(clf, param_grid, cv=3)
+grid_search.fit(X,y)
+grid_search.best_params_
+'''
+
+'''
