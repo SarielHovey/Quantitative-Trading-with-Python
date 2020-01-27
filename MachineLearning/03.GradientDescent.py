@@ -91,7 +91,10 @@ sgd_reg.intercept_, sgd_reg.coef_
 
 ## Mini-batch Stochastic Gradient Descent
 '''
-Loss function: $l(w_1,w_2,b) = 1/n * \sum^n_{i=1}{l_i(w_1,w_2,b)}$
+$\hat{y} = w_1 x_1 + w_2 x_2 + b$, b is bias in estimation
+Loss function: 
+    $l_i(w_1,w_2,b) = 1/2 (\hat{y_i}-y_i)^2$
+    $l(w_1,w_2,b) = 1/n * \sum^n_{i=1}{l_i(w_1,w_2,b)}$
 Set $\eta$ as learning rate, $|B|$ as batch size for every random choose
 Start Iteration:
 \equation
