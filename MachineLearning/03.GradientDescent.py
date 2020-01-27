@@ -89,7 +89,17 @@ sgd_reg.intercept_, sgd_reg.coef_
 (array([3.53459864]), array([3.97474713]))
 '''
 
-## Mini-batch Gradient Descent
+## Mini-batch Stochastic Gradient Descent
+'''
+Loss function: $l(w_1,w_2,b) = 1/n * \sum^n_{i=1}{l_i(w_1,w_2,b)}$
+Set $\eta$ as learning rate, $|B|$ as batch size for every random choose
+Start Iteration:
+\equation
+w_1 \leftarrow w_1 - \frac{\eta}{|B|} \sum_{i \in B}{\frac{\partial l_i(w_1,w_2,b)}{\partial w_1}}
+w_2 \leftarrow w_2 - \frac{\eta}{|B|} \sum_{i \in B}{\frac{\partial l_i(w_1,w_2,b)}{\partial w_2}}
+b \leftarrow b - \frac{\eta}{|B|} \sum_{i \in B}{\frac{\partial l_i(w_1,w_2,b)}{\partial b}}
+\equation
+'''
 
 
 
