@@ -89,6 +89,7 @@ sgd_reg.intercept_, sgd_reg.coef_
 (array([3.53459864]), array([3.97474713]))
 '''
 
+
 ## Mini-batch Stochastic Gradient Descent
 '''
 $\hat{y} = w_1 x_1 + w_2 x_2 + b$, b is bias in estimation
@@ -103,6 +104,50 @@ w_2 \leftarrow w_2 - \frac{\eta}{|B|} \sum_{i \in B}{\frac{\partial l_i(w_1,w_2,
 b \leftarrow b - \frac{\eta}{|B|} \sum_{i \in B}{\frac{\partial l_i(w_1,w_2,b)}{\partial b}}
 \equation
 '''
+from mxnet import nd, autograd
+import random
+num_inputs = 2; num_examples = 1000
+true_w = [2,3.4]
+true_b = 2.5
+features = nd.random.normal(scale=1, shape=(num_examples, num_inputs)) # 1000x2 NDArray
+labels = true_w[0]*features[:,0] + true_w[1]*features[:,1] + true_b
+labels += nd.random.normal(scale=0.01,shape = labels.shape)
+def data_iter(batch_size,features,labels):
+    '''
+    Function used to execute Mini-batch Stochastic Sampling
+    '''
+    num_examples = len(features)
+    indices = list(range(num_examples))
+    random.shuffle(indices) # set random sample reading order
+    for i in range(0,num_examples,batch_size):
+        j = nd.array(indices[i: min(i + batch_size,num_examples)])
+        yield features.take(j), labels.take(j) # return element according to indices
+
+for X, y in data_iter(10,features,labels):
+    print(X,y)
+'''
+X: 10x2 NDArray
+y: 10x1 NDArray
+'''
+
+w = nd.random.normal(scale=0.01,shape=(num_inputs,1))
+b = nd.zeros(shape=(1,))
+w.attach_grad(); b.attach_grad()
+
+def linreg(X,w,b):
+    return nd.dot(X,w) + b
+
+def squared_loss(y_hat,y):
+    return (y_hat - y.reshape(y_hat.shape)) ** 2 * .5
+
+def sgd(params,lr,batch_size):
+    '''
+    Perform Gradient Descent on "params"
+    '''
+    for param in params:
+        param[:] = param - lr * param.grad / batch_size
+
+
 
 
 
