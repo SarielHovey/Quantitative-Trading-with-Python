@@ -152,7 +152,7 @@ lr = 0.03
 num_epochs = 3
 net = linreg
 loss = squared_loss
-batch_size = 10
+batch_size = 10 # 如果batch_size不能整除num_examples, 则data_iter生成的最后一批样本数量将小于batch_size, 训练仍可正常运行
 for epoch in range(num_epochs):
     for X, y in data_iter(batch_size, features, labels):
         with autograd.record():
@@ -160,14 +160,12 @@ for epoch in range(num_epochs):
         l.backward()  # if without autograd.record() and backward() in advance, grad() method will return 0
         sgd([w,b],lr,batch_size)
     train_l = loss(net(features,w,b),labels)
-    print('epoch %d, loss %f' % (epoch +1, train_l.mean().asnumpy()))
-    
+    print('epoch %d, loss %f' % (epoch +1, train_l.mean().asnumpy()))    
 '''
 epoch 1, loss 0.016662
 epoch 2, loss 0.000077
 epoch 3, loss 0.000050
 '''
-
 
 
 
