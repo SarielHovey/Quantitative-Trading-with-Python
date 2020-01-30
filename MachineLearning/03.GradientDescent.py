@@ -157,7 +157,7 @@ for epoch in range(num_epochs):
     for X, y in data_iter(batch_size, features, labels):
         with autograd.record():
             l = loss(net(X,w,b),y)
-        l.backward()
+        l.backward()  # if without autograd.record() and backward() in advance, grad() method will return 0
         sgd([w,b],lr,batch_size)
     train_l = loss(net(features,w,b),labels)
     print('epoch %d, loss %f' % (epoch +1, train_l.mean().asnumpy()))
