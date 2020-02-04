@@ -1,6 +1,6 @@
 """
 sudo apt-get install libmysqlclient-dev
-pip install mysqlclient
+pip install mysqlclient # Take the place of MySQLdb below since it does not support Python3
 pip install requests
 pip install beautifulsoup4
 """
