@@ -47,8 +47,7 @@ def insert_snp500_symbols(symbols):
     db_name = 'securities_master'
     con = mdb.connect( host=db_host, user=db_user, passwd=db_pass, db=db_name)
     # Create the insert strings
-    column_str = ( "name, instrument, ticker, sector, "
-        "currency, created_date, last_updated_date")
+    column_str = ( "ticker, instrument, name, sector, currency, created_date, last_updated_date")
     insert_str = ("%s, " * 7)[:-2]
     final_str = "INSERT INTO symbol (%s) VALUES (%s)" % (column_str, insert_str)
     # Using the MySQL connection, carry out an INSERT INTO for every symbol
