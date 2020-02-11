@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import quandl
 
-AUTH_TOKEN = 'MY_AUTH_TOKEN'
+AUTH_TOKEN = 'Your_AUTH_Here'
 
 def futures_rollover_weights(start_date, expiry_dates, contracts, rollover_days=5): 
     """
@@ -29,7 +29,7 @@ def futures_rollover_weights(start_date, expiry_dates, contracts, rollover_days=
         else: 
             roll_weights.loc[prev_date:, item] = 1
         prev_date = ex_date
-        return roll_weights
+    return roll_weights
 
 if __name__ == "__main__":
     # Download the current Front and Back (near and far) futures contracts
@@ -40,9 +40,21 @@ if __name__ == "__main__":
     cme_far = quandl.get("CHRIS/CME_CL2", authtoken=AUTH_TOKEN)
     cme = pd.DataFrame({'CL1': cme_near['Settle'], 'CL2': cme_far['Settle']}, index=cme_far.index)
     # Create the dictionary of expiry dates for each contract
-    expiry_dates = pd.Series({'CL1': datetime.datetime(2020, 1, 1), 'CL2': datetime.datetime(2020, 2, 11)}).sort_values()
+    expiry_dates = pd.Series({'CL1': datetime.datetime(2020, 1, 21), 'CL2': datetime.datetime(2020, 2, 11)}).sort_values()
     # Obtain the rollover weighting matrix/DataFrame
     weights = futures_rollover_weights(cme_near.index[0], expiry_dates, cme.columns)
+    """
+    Typical weights before and after
+        Date,CL1,CL2
+        2020-01-10,1,0
+        2020-01-13,1,0
+        2020-01-14,0.8,0.2
+        2020-01-15,0.6,0.4
+        2020-01-16,0.4,0.6
+        2020-01-17,0.2,0.8
+        2020-01-20,0,1
+        2020-01-21,0,1
+    """
     # Construct the continuous future of the WTI CL contracts
     cme_cts = (cme * weights).sum(axis=1).dropna()
     # Output the merged series of contract settle prices
