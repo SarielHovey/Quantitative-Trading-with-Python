@@ -80,7 +80,7 @@ class TuShare(object):
         """
         DB_HOST = 'localhost'
         DB_USER = 'sec_user'
-        DB_PASS = 'shuangshuang'
+        DB_PASS = 'Your_Password_Here'
         DB_NAME = 'securities_master'
         con = mdb.connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)
         sql = "SELECT sym.ticker, dp.price_date, dp.open_price, dp.high_price, dp.low_price, dp.close_price, dp.adj_factor, dp.volume FROM daily_price AS dp INNER JOIN symbol AS sym ON sym.id = dp.symbol_id where " + "sym.ticker = '" + ticker + "' AND " + "dp.price_date BETWEEN ' " + startdate + "' AND '" + enddate + "' ORDER BY dp.price_date ASC;"
