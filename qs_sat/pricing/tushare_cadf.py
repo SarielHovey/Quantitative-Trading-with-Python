@@ -12,7 +12,7 @@ import pandas as pd
 import statsmodels.api as sm
 import statsmodels.tsa.stattools as ts
 import MySQLdb as mdb
-from tushare import TuShare
+from tu_share import TuShare
 
 def plot_price_series(df, ts1, ts2, start_date, end_date):
     """
