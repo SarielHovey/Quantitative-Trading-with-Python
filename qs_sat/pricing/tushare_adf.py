@@ -6,7 +6,7 @@ import sys
 # Default: Get daily OHLCV data from DATABASE securities_master
 sys.path.append(os.path.join('..', 'pricing'))
 import statsmodels.tsa.stattools as ts
-from tushare import TuShare
+from tu_share import TuShare
 
 if __name__ == "__main__":
     # Create an Tushare API instance
