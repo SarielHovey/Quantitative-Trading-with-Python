@@ -6,7 +6,7 @@ sys.path.append(os.path.join('..', 'pricing'))
 from numpy import array, cumsum, log, polyfit, sqrt, std, subtract
 from numpy.random import randn
 # Requires 'tushare.py' in current path
-from tushare import TuShare
+from tu_share import TuShare
 # Default: Get daily OHLCV data from DATABASE securities_master
 def hurst(time_series):
     """
