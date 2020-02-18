@@ -44,8 +44,8 @@ def create_lagged_series(Vendor, symbol, start_date, end_date, lags=5):
     print(ts.head(10))
     # Create the new lagged DataFrame
     tslag = pd.DataFrame(index=ts.index)
-    tslag['Today'] = ts['close'] * ts['adj_factor']
-    tslag['Volume'] = ts['vol']
+    tslag['Today'] = ts['close_price'] * ts['adj_factor']
+    tslag['Volume'] = ts['volume']
     print(tslag.head(10))
     # Create the shifted lag series of prior trading period close values
     for i in range(0, lags):
