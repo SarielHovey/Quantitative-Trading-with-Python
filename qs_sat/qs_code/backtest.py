@@ -90,14 +90,14 @@ class Backtest(object):
                             self.portfolio.update_fill(event)                        
             time.sleep(self.heartbeat)
 
-    def _output_performance(self):
+    def _output_performance(self, frequency = 252):
         """
         Outputs the strategy performance from the backtest.
         """
         self.portfolio.create_equity_curve_dataframe()
 
         print("Creating summary stats...")
-        stats = self.portfolio.output_summary_stats()
+        stats = self.portfolio.output_summary_stats(frequency=frequency)
         print("Creating equity curve...")
         print(self.portfolio.equity_curve.tail(10))
         pprint.pprint(stats)
@@ -106,10 +106,10 @@ class Backtest(object):
         print("Orders: %s" % self.orders)
         print("Fills: %s" % self.fills)
 
-    def simulate_trading(self):
+    def simulate_trading(self, frequency=252):
         """
         Simulates the backtest and outputs portfolio performance.
         """
         self._run_backtest()
-        self._output_performance()
+        self._output_performance(frequency=frequency)
         

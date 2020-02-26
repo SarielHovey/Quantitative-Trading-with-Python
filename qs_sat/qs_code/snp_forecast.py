@@ -90,5 +90,5 @@ if __name__ == "__main__":
     start_date = dt(2017,1,3)
 
     backtest = Backtest(csv_dir, symbol_list, initial_capital, heartbeat, start_date, HistoricCSVDataHandler, SimulatedExecutionHandler, Portfolio, SPYDailyForecastStrategy)
-    backtest.simulate_trading()
+    backtest.simulate_trading(frequency=252)
 
