@@ -61,7 +61,7 @@ def configure_sample_stoch_vol_model(log_returns, samples):
     print("Fitting the stochastic volatility model...")
     with model:
         trace = pm.sample(samples, cores=12)
-    pm.traceplot(trace, model.vars[:-1])
+    pm.traceplot(trace)
     plt.show()
     plt.savefig('TracePlot.png')
     plt.clf()
@@ -80,7 +80,8 @@ def configure_sample_stoch_vol_model(log_returns, samples):
     plt.plot(np.abs(np.exp(log_returns))-1.0, linewidth=0.5)
     plt.plot(np.exp(trace[s][::k].T), 'r', alpha=opacity)
     plt.xlabel("Trading Days")
-    plt.ylabel("UBS.NYSE Absolute Returns/Volatility")
+    plt.ylabel("Absolute Returns/Volatility")
+    plt.title('UBS.NYSE Returns/Volatility 2010-2020')
     plt.show()
     plt.savefig('AbsoluteReturns_Volatility.png')
 
@@ -92,5 +93,5 @@ if __name__ == "__main__":
     log_returns = np.array(ubs_df["log_returns"])
 
     # Configure the stochastic volatility model and carry out MCMC sampling using NUTS, plotting the trace
-    samples = 2000
+    samples = 2558
     configure_sample_stoch_vol_model(log_returns, samples)
