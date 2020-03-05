@@ -60,30 +60,34 @@ def configure_sample_stoch_vol_model(log_returns, samples):
 
     print("Fitting the stochastic volatility model...")
     with model:
-        trace = pm.sample(samples, cores=12)
-    pm.traceplot(trace)
-    plt.show()
-    plt.savefig('TracePlot.png')
-    plt.clf()
+        trace = pm.sample(samples, cores=6)
 
     print("Plotting the log volatility...")
     k = 10
-    opacity = 0.03
+    opacity = 0.01
     plt.plot(trace[s][::k].T, 'b', alpha=opacity)
     plt.xlabel('Time')
     plt.ylabel('Log Volatility')
-    plt.show()
+    # plt.show()
     plt.savefig('LogVolatility.png')
     plt.clf()
 
     print("Plotting the absolute returns overlaid with vol...")
-    plt.plot(np.abs(np.exp(log_returns))-1.0, linewidth=0.5)
+    plt.plot(np.abs(np.exp(log_returns))-1.0, linewidth=0.5, label='Absolute Return')
     plt.plot(np.exp(trace[s][::k].T), 'r', alpha=opacity)
+    plt.legend(loc=0)
     plt.xlabel("Trading Days")
     plt.ylabel("Absolute Returns/Volatility")
     plt.title('UBS.NYSE Returns/Volatility 2010-2020')
-    plt.show()
+    # plt.show()
     plt.savefig('AbsoluteReturns_Volatility.png')
+
+    print('Plotting Trace Plot...')
+    # Caution: Memory Leaking Bug found for this plot
+    pm.traceplot(trace)
+    #plt.show()
+    plt.savefig('TracePlot.png')
+    plt.clf()
 
 if __name__ == "__main__":
     start_date = dt(2010, 1, 1)
@@ -93,5 +97,5 @@ if __name__ == "__main__":
     log_returns = np.array(ubs_df["log_returns"])
 
     # Configure the stochastic volatility model and carry out MCMC sampling using NUTS, plotting the trace
-    samples = 2558
+    samples = 2000
     configure_sample_stoch_vol_model(log_returns, samples)
