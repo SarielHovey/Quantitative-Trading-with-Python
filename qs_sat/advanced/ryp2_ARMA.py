@@ -88,6 +88,80 @@ x <- w <- rnorm(100)
 for (t in 2:100) {x[t] <- w[t] + 0.6*w[t-1]}
 """
 r(str)
-r('x.ma <- arima(x, order=c(0,0,1))')
+x_ma = r('x.ma <- arima(x, order=c(0,0,1))')
 #> [0.5939098442993538, 0.08514836477533867] ma1 and intercept
 #> AIC: 270.864588
+
+
+# Financial Data
+str = """
+ubs <- read.csv('UBS.csv',sep=',',header=TRUE)
+names(ubs) <- c('Date','Op','Hi','Lo','Cl','Ad','Vo')
+ubsrt <- diff(log(ubs$Cl))
+plot(ubsrt, type='l')
+acf(ubsrt)
+ubsrt.ma <- arima(ubsrt, order=c(0,0,2))
+acf(ubsrt.ma$res)
+"""
+r(str)
+
+
+# ARIMA(1,1)
+str = """
+x <- arima.sim(n=1000, model=list(ar=0.5, ma=-0.5))
+plot(x)
+acf(x)
+x.ma <- arima(x, order=c(1,0,1))
+acf(x.ma$resid)
+"""
+r(str)
+
+
+# Choose the best ARMA model
+str = """
+x <- arima.sim(n=1000, model=list(ar=c(0.5, -0.25, 0.4), ma=c(0.5, -0.3)))
+final.aic <- Inf
+final.order <- c(0,0,0)
+for (i in 0:4) for (j in 0:4) {
+    current.aic <- AIC(arima(x, order=c(i, 0, j)))
+    if (current.aic < final.aic) {
+        final.aic <- current.aic
+        final.order <- c(i, 0, j)
+        final.arma <- arima(x, order=final.order)
+        }}
+final.order
+"""
+r(str)
+#> 3 0 2
+r("Box.test(final.arma$resid, lag=20, type='Ljung-Box')")
+#>        Box-Ljung test
+#> H0:No autocorrelation
+#> data:  final.arma$resid
+#> X-squared = 25.558, df = 20, p-value = 0.1809
+
+
+# Financial Data
+str = """
+final.aic <- Inf
+final.order <- c(0,0,0)
+for (i in 0:4) for (j in 0:4) {
+    current.aic <- AIC(arima(ubsrt, order=c(i, 0, j)))
+    if (current.aic < final.aic) {
+        final.aic <- current.aic
+        final.order <- c(i, 0, j)
+        final.arma <- arima(ubsrt, order=final.order)
+        }}
+Box.test(final.arma$resid, lag=20, type='Ljung-Box')
+"""
+r(str)
+#>Coefficients:
+#>         ar1      ar2      ar3      ar4      ma1     ma2     ma3  intercept
+#>      0.0063  -0.2509  -0.8302  -0.0481  -0.0899  0.2685  0.7791     -2e-04
+#>s.e.  0.1781   0.1242   0.1452   0.0354   0.1761  0.1477  0.1637      4e-04
+#>
+#>sigma^2 estimated as 0.0004227:  log likelihood = 6303.99,  aic = -12589.99
+#>
+#>        Box-Ljung test
+#>
+#>data:  final.arma$resid
+#>X-squared = 19.485, df = 20, p-value = 0.4905
