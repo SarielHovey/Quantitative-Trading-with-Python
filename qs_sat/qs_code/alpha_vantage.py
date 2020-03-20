@@ -185,4 +185,5 @@ class AlphaVantage(object):
         """
         prices = pd.read_csv('./' + ticker + '.csv',encoding='UTF-8')
         prices.loc[:,'Date'] = prices.loc[:,'Date'].apply(lambda x: pd.to_datetime(x, format='%Y-%m-%d'))
-        return prices.set_index('Date').sort_index()
+        prices =  prices.set_index('Date').sort_index()
+        return prices[(prices.index >= start_date) & (prices.index <= end_date)]
