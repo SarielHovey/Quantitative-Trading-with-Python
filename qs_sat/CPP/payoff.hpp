@@ -1,8 +1,7 @@
 #ifndef PAY_OFF_H
 #define PAY_OFF_H
-#endif
-
 #include <algorithm>
+#endif
 
 class PayOff
 {
