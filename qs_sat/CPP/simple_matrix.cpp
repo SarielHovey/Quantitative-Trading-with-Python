@@ -29,6 +29,7 @@ template <typename Type> SimpleMatrix<Type>& SimpleMatrix<Type>::operator= (cons
 
 template <typename Type> SimpleMatrix<Type>::~SimpleMatrix(){};
 
+// Return a copyed mat
 template <typename Type> SimpleMatrix<Type> SimpleMatrix<Type>::get_mat() const {
     return mat;
 };
