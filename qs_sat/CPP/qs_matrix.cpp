@@ -193,7 +193,7 @@ for (unsigned i=0; i<rows; i++) {
 return result;
 }
 
-std::vector<T> QSMatrix<T>::operator*(const std::vector<T>& rhs) {
+template <typename T> std::vector<T> QSMatrix<T>::operator*(const std::vector<T>& rhs) {
     std::vector<T> result(rhs.size(), 0.0);
     for (unsigned i=0; i<rows; i++) {
         for (unsigned j=0; j<cols; j++) {
@@ -203,5 +203,28 @@ std::vector<T> QSMatrix<T>::operator*(const std::vector<T>& rhs) {
     return result;
 }
 
+template <typename T> std::vector<T> QSMatrix<T>::diag_vec() {
+    std::vector<T> result(rows, 0.0);
+    for (unsigned i=0; i<rows; i++) {
+        result[i] = this->mat[i][i];
+    }
+    return result;
+}
+
+template <typename T> T& QSMatrix<T>::operator() (const unsigned& row, const unsigned& col) {
+    return this->mat[row][col];
+}
+
+template <typename T> const T& QSMatrix<T>::operator() (const unsigned& row, const unsigned& col) const {
+    return this->mat[row][col];
+}
+
+template <typename T> unsigned QSMatrix<T>::get_rows() {
+    return this->rows;
+}
+
+template <typename T> unsigned QSMatrix<T>::get_cols() {
+    return this->cols;
+}
 
 #endif
