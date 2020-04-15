@@ -10,7 +10,7 @@ private:
     unsigned cols;
 
 public:
-    QSMatrix(unsigned& _rows, unsigned& _cols, const T& _initial);
+    QSMatrix(unsigned _rows, unsigned _cols, const T& _initial);
     QSMatrix(const QSMatrix<T>& rhs);
     virtual ~QSMatrix();
 
