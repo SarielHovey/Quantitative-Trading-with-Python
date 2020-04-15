@@ -10,13 +10,13 @@ template <typename T> QSMatrix<T>::QSMatrix(unsigned& _rows, unsigned& _cols, co
     }
     rows = _rows;
     cols = _cols;
-};
+}
 
 template <typename T> QSMatrix::QSMatrix(const QSMatrix<T>& rhs) {
     mat = rhs.mat;
     rows = rhs.get_rows();
     cols = rhs.get_cols();
-};
+}
 
 template <typename T> QSMatrix<T>::~QSMatrix() {};
 
@@ -41,7 +41,7 @@ template <typename T> QSMatrix<T>& QSMatrix<T>::operator=(const QSMatrix<T>& rhs
     cols = new_cols;
 
     return *this;
-};
+}
 
 template <typename T> QSMatrix<T> QSMatrix<T>::operator+(const QSMatrix<T>& rhs) {
     QSMatrix result(rows, cols, 0.0);
@@ -52,7 +52,17 @@ template <typename T> QSMatrix<T> QSMatrix<T>::operator+(const QSMatrix<T>& rhs)
         }
     }
     return result;
-};
+}
+
+template <typename T> QSMatrix<T> QSMatrix<T>::operator+(const T& rhs) {
+    QSMatrix result(rows, cols, 0.0);
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j = 0; i < cols; j++) {
+            result(i,j) = this->mat[i][j] + rhs;
+        }
+    }
+    return result;
+}
 
 template <typename T> QSMatrix<T>& QSMatrix<T>::operator+=(const QSMatrix<T>& rhs) {
     unsigned rows = rhs.get_rows();
@@ -64,36 +74,61 @@ template <typename T> QSMatrix<T>& QSMatrix<T>::operator+=(const QSMatrix<T>& rh
         }
     }
     return *this;
-};
+}
+
+template <typename T> QSMatrix<T>& QSMatrix<T>::operator+= (const T& rhs) {
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j=0; j<cols; j++) {
+            this->mat[i][j] += rhs;
+        }
+    }
+    return *this; 
+}
 
 template <typename T> QSMatrix<T> QSMatrix<T>::operator-(const QSMatrix<T>& rhs) {
     QSMatrix result(rows, cols, 0.0);
-
     for (unsigned i=0; i<rows; i++) {
         for (unsigned j=0; j<cols; j++) {
         result(i,j) = this->mat[i][j] - rhs(i,j);
         }
     }
     return result;
-};
+}
 
-template <typename T> QSMatrix<T>& QSMatrix<T>::operator+=(const QSMatrix<T>& rhs) {
+template <typename T> QSMatrix<T> QSMatrix<T>::operator- (const T& rhs) {
+    QSMatrix result(rows, cols, 0.0);
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j = 0; i < cols; j++) {
+            result(i,j) = this->mat[i][j] - rhs;
+        }
+    }
+    return result;
+}
+
+template <typename T> QSMatrix<T>& QSMatrix<T>::operator-=(const QSMatrix<T>& rhs) {
     unsigned rows = rhs.get_rows();
     unsigned cols = rhs.get_cols();
-
     for (unsigned i=0; i<rows; i++) {
         for (unsigned j=0; j<cols; j++) {
             this->mat[i][j] -= rhs(i,j);
         }
     }
     return *this;
-};
+}
+
+template <typename T> QSMatrix<T>& QSMatrix<T>::operator-= (const T& rhs) {
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j=0; j<cols; j++) {
+            this->mat[i][j] -= rhs;
+        }
+    }
+    return *this;
+}
 
 template <typename T> QSMatrix<T> QSMatrix<T>::operator*(const QSMatrix<T>& rhs) {
     unsigned rows = rhs.get_rows(); // k
     unsigned cols = rhs.get_cols(); // j
     QSMatrix result(this->get_rows(), cols, 0.0);
-
     for (unsigned i=0; i<this->get_rows(); i++) {
         for (unsigned j=0; j<cols; j++) {
             for (unsigned k=0; k<rows; k++) {
@@ -101,6 +136,72 @@ template <typename T> QSMatrix<T> QSMatrix<T>::operator*(const QSMatrix<T>& rhs)
             }
         }
     }
-};
+    return result;
+}
+
+template <typename T> QSMatrix<T> QSMatrix<T>::operator* (const T& rhs) {
+    QSMatrix result(rows, cols, 0.0);
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j=0; j<cols; j++) {
+        result(i,j) = this->mat[i][j] * rhs;
+        }
+    }
+    return result;
+}
+
+template <typename T> QSMatrix<T>& QSMatrix<T>::operator*= (const QSMatrix<T>& rhs) {
+    QSMatrix result = (*this) * rhs;
+    (*this) = result;
+    return *this;
+}
+
+template <typename T> QSMatrix<T>& QSMatrix<T>::operator*= (const T& rhs) {
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j=0; j<cols; j++) {
+        result(i,j) = this->mat[i][j] *= rhs;
+        }
+    }
+    return *this;
+}
+
+template <typename T> QSMatrix<T> QSMatrix<T>::operator/ (const T& rhs) {
+    QSMatrix result(rows, cols, 0.0);
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j=0; j<cols; j++) {
+        result(i,j) = this->mat[i][j] / rhs;
+        }
+    }
+    return result;
+}
+
+template <typename T> QSMatrix<T> QSMatrix<T>::operator/= (const T& rhs) {
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j=0; j<cols; j++) {
+        result(i,j) = this->mat[i][j] /= rhs;
+        }
+    }
+    return *this;
+}
+
+template <typename T> QSMatrix<T> QSMatrix<T>::transpose() {
+QSMatrix result(rows, cols, 0.0);
+for (unsigned i=0; i<rows; i++) {
+    for (unsigned j=0; j<cols; j++) {
+        result(i,j) = this->mat[j][i];
+    }
+  }
+return result;
+}
+
+std::vector<T> QSMatrix<T>::operator*(const std::vector<T>& rhs) {
+    std::vector<T> result(rhs.size(), 0.0);
+    for (unsigned i=0; i<rows; i++) {
+        for (unsigned j=0; j<cols; j++) {
+            result[i] += this->mat[i][j] * rhs[j]
+        }
+    }
+    return result;
+}
+
 
 #endif
