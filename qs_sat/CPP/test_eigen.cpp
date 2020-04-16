@@ -36,4 +36,11 @@ int main() {
 
     std::cout << "r.s=\n" << r.dot(s) << std::endl;
     std::cout << "rxs=\n" << r.cross(s) << std::endl;
+
+    std::cout << "p.sum(): " << p.sum() << std::endl;
+    std::cout << "p.prod(): " << p.prod() << std::endl;
+    std::cout << "p.mean(): " << p.mean() << std::endl;
+    std::cout << "p.minCoeff(): " << p.minCoeff() << std::endl;
+    std::cout << "p.maxCoeff(): " << p.maxCoeff() << std::endl;
+    std::cout << "p.trace(): " << p.trace() << std::endl;
 }
