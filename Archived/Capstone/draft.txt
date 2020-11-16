@@ -15,7 +15,19 @@ boxplot(gdp_per_capita ~ wto)
 # Africa and Sub-Saharan Africa have the lowerst gdp per capita in 2017 worldwide
 boxplot(log(gdp_per_capita) ~ region)
 
+
+# Rename levels in region for plotting
+    We find for some regions be a WTO member means higher gdp per_capita
+levels(DATA$region)
+-----------------------------------------------------------------------------------------
+[1] "East Asia & Pacific"        "Europe & Central Asia"      "Latin America & Caribbean" 
+[4] "Middle East & North Africa" "North America"              "South Asia"                
+[7] "Sub-Saharan Africa" 
+-----------------------------------------------------------------------------------------
+ levels(DATA$region) <- c("EAP","ECA","LAC","MENA","NoA","SA","SSA")
+ attach(DATA)
 boxplot(log(gdp_per_capita) ~ region + wto)
+
 
 # perform linear regression, with region and wto status as dummay variable. In this case, the base case is East Asia & Pacific countries who are not WTO member
 lm1 <- lm(log(gdp_per_capita) ~ region + wto)
