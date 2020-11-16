@@ -1,1 +1,45 @@
+data <- read.csv("world_GDP_2017.csv", na.strings=c(""))
 
+colnames(data) <- c("full_name","country","indicator","code","gdp_per_capita","region","income_group","wto_date","wto")
+DATA <- subset(data, select=c("country","gdp_per_capita","region","income_group","wto"))
+DATA <- na.omit(DATA)
+attach(DATA)
+
+# countries with higher gdp_per_capita is in superior income group, because that's how income group is defined
+boxplot(log(gdp_per_capita) ~ income_group)
+
+# in year 2017, countries as WTO member have slightly lower gdp_per_capita than the ones not in WTO, but the 2 group means are almost the same
+boxplot(gdp_per_capita ~ wto)
+
+# Africa and Sub-Saharan Africa have the lowerst gdp per capita in 2017 worldwide
+boxplot(log(gdp_per_capita) ~ region)
+
+boxplot(log(gdp_per_capita) ~ region + wto)
+
+# perform linear regression, with region and wto status as dummay variable. In this case, the base case is East Asia & Pacific countries who are not WTO member
+lm1 <- lm(log(gdp_per_capita) ~ region + wto)
+summary(lm1)
+Call:
+lm(formula = log(gdp_per_capita) ~ region + wto)
+---------------------------------------------------------------------------
+Residuals:
+     Min       1Q   Median       3Q      Max
+-3.05376 -0.78560 -0.09173  0.86284  2.44096
+
+Coefficients:
+                                 Estimate Std. Error t value Pr(>|t|)
+(Intercept)                       9.03514    0.23599  38.286  < 2e-16 ***
+regionEurope & Central Asia       0.83611    0.24257   3.447 0.000695 ***
+regionLatin America & Caribbean   0.23405    0.26393   0.887 0.376297
+regionMiddle East & North Africa  0.08531    0.31402   0.272 0.786152
+regionNorth America               1.94977    0.81283   2.399 0.017394 *
+regionSouth Asia                 -1.30713    0.43913  -2.977 0.003283 **
+regionSub-Saharan Africa         -1.67629    0.25574  -6.555 4.87e-10 ***
+wtoTRUE                          -0.12535    0.19616  -0.639 0.523556
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.114 on 195 degrees of freedom
+Multiple R-squared:  0.4381,    Adjusted R-squared:  0.4179
+F-statistic: 21.72 on 7 and 195 DF,  p-value: < 2.2e-16
+--------------------------------------------------------------------------
