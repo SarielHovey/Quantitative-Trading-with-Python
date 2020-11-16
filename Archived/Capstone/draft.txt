@@ -5,7 +5,8 @@ DATA <- subset(data, select=c("country","gdp_per_capita","region","income_group"
 DATA <- na.omit(DATA)
 attach(DATA)
 
-# countries with higher gdp_per_capita is in superior income group, because that's how income group is defined
+# countries with higher gdp_per_capita is in superior income group, because that's how income group is defined by world bank. so afterwards we wont use income
+group as independent variable
 boxplot(log(gdp_per_capita) ~ income_group)
 
 # in year 2017, countries as WTO member have slightly lower gdp_per_capita than the ones not in WTO, but the 2 group means are almost the same
