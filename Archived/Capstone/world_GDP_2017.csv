@@ -1,265 +1,265 @@
-Country Name,Country Code,Indicator Name,Indicator Code,2017 GDP,Region,IncomeGroup,WTO_date,WTO
-Aruba,ABW,GDP (current US$),NY.GDP.MKTP.CD,3056424581.00559000,Latin America & Caribbean,High income,,FALSE
-Afghanistan,AFG,GDP (current US$),NY.GDP.MKTP.CD,20191760000.05870000,South Asia,Low income,29 July 2016,TRUE
-Angola,AGO,GDP (current US$),NY.GDP.MKTP.CD,122123822333.59000000,Sub-Saharan Africa,Lower middle income,23 November 1996,TRUE
-Albania,ALB,GDP (current US$),NY.GDP.MKTP.CD,13019693450.88160000,Europe & Central Asia,Upper middle income,8 September 2000,TRUE
-Andorra,AND,GDP (current US$),NY.GDP.MKTP.CD,3000180750.11297000,Europe & Central Asia,High income,,FALSE
-Arab World,ARB,GDP (current US$),NY.GDP.MKTP.CD,2513494434830.30000000,,,,FALSE
-United Arab Emirates,ARE,GDP (current US$),NY.GDP.MKTP.CD,385605506854.88100000,Middle East & North Africa,High income,10 April 1996,TRUE
-Argentina,ARG,GDP (current US$),NY.GDP.MKTP.CD,642695864756.35000000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Armenia,ARM,GDP (current US$),NY.GDP.MKTP.CD,11527458565.73340000,Europe & Central Asia,Upper middle income,5 February 2003,TRUE
-American Samoa,ASM,GDP (current US$),NY.GDP.MKTP.CD,602000000.00000000,East Asia & Pacific,Upper middle income,,FALSE
-Antigua and Barbuda,ATG,GDP (current US$),NY.GDP.MKTP.CD,1467977777.77778000,Latin America & Caribbean,High income,1 January 1995,TRUE
-Australia,AUS,GDP (current US$),NY.GDP.MKTP.CD,1330135756844.41000000,East Asia & Pacific,High income,1 January 1995,TRUE
-Austria,AUT,GDP (current US$),NY.GDP.MKTP.CD,418316161095.68300000,Europe & Central Asia,High income,1 January 1995,TRUE
-Azerbaijan,AZE,GDP (current US$),NY.GDP.MKTP.CD,40865558912.38670000,Europe & Central Asia,Upper middle income,,FALSE
-Burundi,BDI,GDP (current US$),NY.GDP.MKTP.CD,3172292379.36329000,Sub-Saharan Africa,Low income,23 July 1995,TRUE
-Belgium,BEL,GDP (current US$),NY.GDP.MKTP.CD,503788776542.82400000,Europe & Central Asia,High income,1 January 1995,TRUE
-Benin,BEN,GDP (current US$),NY.GDP.MKTP.CD,12701656930.68890000,Sub-Saharan Africa,Lower middle income,22 February 1996,TRUE
-Burkina Faso,BFA,GDP (current US$),NY.GDP.MKTP.CD,14169905602.39810000,Sub-Saharan Africa,Low income,3 June 1995,TRUE
-Bangladesh,BGD,GDP (current US$),NY.GDP.MKTP.CD,249711052937.01200000,South Asia,Lower middle income,1 January 1995,TRUE
-Bulgaria,BGR,GDP (current US$),NY.GDP.MKTP.CD,58950125036.01270000,Europe & Central Asia,Upper middle income,1 December 1996,TRUE
-Bahrain,BHR,GDP (current US$),NY.GDP.MKTP.CD,35423643617.02130000,Middle East & North Africa,High income,1 January 1995,TRUE
-"Bahamas, The",BHS,GDP (current US$),NY.GDP.MKTP.CD,12150400000.00000000,Latin America & Caribbean,High income,,FALSE
-Bosnia and Herzegovina,BIH,GDP (current US$),NY.GDP.MKTP.CD,18080118128.38540000,Europe & Central Asia,Upper middle income,,FALSE
-Belarus,BLR,GDP (current US$),NY.GDP.MKTP.CD,54726595249.18490000,Europe & Central Asia,Upper middle income,,FALSE
-Belize,BLZ,GDP (current US$),NY.GDP.MKTP.CD,1836600000.00000000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Bermuda,BMU,GDP (current US$),NY.GDP.MKTP.CD,,North America,High income,,FALSE
-Bolivia,BOL,GDP (current US$),NY.GDP.MKTP.CD,37508642112.87990000,Latin America & Caribbean,Lower middle income,12 September 1995,TRUE
-Brazil,BRA,GDP (current US$),NY.GDP.MKTP.CD,2062831045935.95000000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Barbados,BRB,GDP (current US$),NY.GDP.MKTP.CD,4978000000.00000000,Latin America & Caribbean,High income,1 January 1995,TRUE
-Brunei Darussalam,BRN,GDP (current US$),NY.GDP.MKTP.CD,12128104859.14980000,East Asia & Pacific,High income,1 January 1995,TRUE
-Bhutan,BTN,GDP (current US$),NY.GDP.MKTP.CD,2450364928.07302000,South Asia,Lower middle income,,FALSE
-Botswana,BWA,GDP (current US$),NY.GDP.MKTP.CD,17405538618.39690000,Sub-Saharan Africa,Upper middle income,31 May 1995,TRUE
-Central African Republic,CAF,GDP (current US$),NY.GDP.MKTP.CD,2072350151.13061000,Sub-Saharan Africa,Low income,31 May 1995,TRUE
-Canada,CAN,GDP (current US$),NY.GDP.MKTP.CD,1649878054226.82000000,North America,High income,1 January 1995,TRUE
-Central Europe and the Baltics,CEB,GDP (current US$),NY.GDP.MKTP.CD,1458696736645.45000000,,,,FALSE
-Switzerland,CHE,GDP (current US$),NY.GDP.MKTP.CD,679950482029.06100000,Europe & Central Asia,High income,1 July 1995,TRUE
-Channel Islands,CHI,GDP (current US$),NY.GDP.MKTP.CD,,Europe & Central Asia,High income,,FALSE
-Chile,CHL,GDP (current US$),NY.GDP.MKTP.CD,277044950259.00900000,Latin America & Caribbean,High income,1 January 1995,TRUE
-China,CHN,GDP (current US$),NY.GDP.MKTP.CD,12310408652423.50000000,East Asia & Pacific,Upper middle income,11 December 2001,TRUE
-Cote d'Ivoire,CIV,GDP (current US$),NY.GDP.MKTP.CD,51588158717.53480000,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
-Cameroon,CMR,GDP (current US$),NY.GDP.MKTP.CD,35009262788.15000000,Sub-Saharan Africa,Lower middle income,13 December 1995,TRUE
-"Congo, Dem. Rep.",COD,GDP (current US$),NY.GDP.MKTP.CD,38019265625.88450000,Sub-Saharan Africa,Low income,1 January 1997,TRUE
-"Congo, Rep.",COG,GDP (current US$),NY.GDP.MKTP.CD,9035182061.96536000,Sub-Saharan Africa,Lower middle income,27 March 1997,TRUE
-Colombia,COL,GDP (current US$),NY.GDP.MKTP.CD,311883730442.04500000,Latin America & Caribbean,Upper middle income,30 April 1995,TRUE
-Comoros,COM,GDP (current US$),NY.GDP.MKTP.CD,1077439662.57980000,Sub-Saharan Africa,Lower middle income,,FALSE
-Cabo Verde,CPV,GDP (current US$),NY.GDP.MKTP.CD,1769787215.42141000,Sub-Saharan Africa,Lower middle income,23 July 2008,TRUE
-Costa Rica,CRI,GDP (current US$),NY.GDP.MKTP.CD,58481858042.57210000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Caribbean small states,CSS,GDP (current US$),NY.GDP.MKTP.CD,69913144887.41430000,,,,FALSE
-Cuba,CUB,GDP (current US$),NY.GDP.MKTP.CD,96851000000.00000000,Latin America & Caribbean,Upper middle income,20 April 1995,TRUE
-Curacao,CUW,GDP (current US$),NY.GDP.MKTP.CD,3116610111.73184000,Latin America & Caribbean,High income,,FALSE
-Cayman Islands,CYM,GDP (current US$),NY.GDP.MKTP.CD,5141833913.35653000,Latin America & Caribbean,High income,,FALSE
-Cyprus,CYP,GDP (current US$),NY.GDP.MKTP.CD,22638608224.13010000,Europe & Central Asia,High income,30 July 1995,TRUE
-Czech Republic,CZE,GDP (current US$),NY.GDP.MKTP.CD,215913545038.43000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Germany,DEU,GDP (current US$),NY.GDP.MKTP.CD,3665804120835.30000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Djibouti,DJI,GDP (current US$),NY.GDP.MKTP.CD,2751461055.59307000,Middle East & North Africa,Lower middle income,31 May 1995,TRUE
-Dominica,DMA,GDP (current US$),NY.GDP.MKTP.CD,519837037.03703700,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Denmark,DNK,GDP (current US$),NY.GDP.MKTP.CD,329417067127.81700000,Europe & Central Asia,High income,1 January 1995,TRUE
-Dominican Republic,DOM,GDP (current US$),NY.GDP.MKTP.CD,79997975621.86540000,Latin America & Caribbean,Upper middle income,9 March 1995,TRUE
-Algeria,DZA,GDP (current US$),NY.GDP.MKTP.CD,167389364980.67100000,Middle East & North Africa,Lower middle income,,FALSE
-East Asia & Pacific (excluding high income),EAP,GDP (current US$),NY.GDP.MKTP.CD,14835611946612.90000000,,,,FALSE
-Early-demographic dividend,EAR,GDP (current US$),NY.GDP.MKTP.CD,11377092504041.20000000,,,,FALSE
-East Asia & Pacific,EAS,GDP (current US$),NY.GDP.MKTP.CD,24223285701971.40000000,,,,FALSE
-Europe & Central Asia (excluding high income),ECA,GDP (current US$),NY.GDP.MKTP.CD,3108431403073.36000000,,,,FALSE
-Europe & Central Asia,ECS,GDP (current US$),NY.GDP.MKTP.CD,21581860912437.00000000,,,,FALSE
-Ecuador,ECU,GDP (current US$),NY.GDP.MKTP.CD,104295862000.00000000,Latin America & Caribbean,Upper middle income,21 January 1996,TRUE
-"Egypt, Arab Rep.",EGY,GDP (current US$),NY.GDP.MKTP.CD,235369129337.71100000,Middle East & North Africa,Lower middle income,30 June 1995,TRUE
-Euro area,EMU,GDP (current US$),NY.GDP.MKTP.CD,12655504662573.80000000,,,,FALSE
-Eritrea,ERI,GDP (current US$),NY.GDP.MKTP.CD,,Sub-Saharan Africa,Low income,,FALSE
-Spain,ESP,GDP (current US$),NY.GDP.MKTP.CD,1312551705955.30000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Estonia,EST,GDP (current US$),NY.GDP.MKTP.CD,26859101053.81390000,Europe & Central Asia,High income,13 November 1999,TRUE
-Ethiopia,ETH,GDP (current US$),NY.GDP.MKTP.CD,81770791970.98200000,Sub-Saharan Africa,Low income,,FALSE
-European Union,EUU,GDP (current US$),NY.GDP.MKTP.CD,14735710571465.30000000,,,1 January 1995,TRUE
-Fragile and conflict affected situations,FCS,GDP (current US$),NY.GDP.MKTP.CD,1550106897220.83000000,,,,FALSE
-Finland,FIN,GDP (current US$),NY.GDP.MKTP.CD,255122545770.77800000,Europe & Central Asia,High income,1 January 1995,TRUE
-Fiji,FJI,GDP (current US$),NY.GDP.MKTP.CD,5353404422.08138000,East Asia & Pacific,Upper middle income,14 January 1996,TRUE
-France,FRA,GDP (current US$),NY.GDP.MKTP.CD,2595151045197.65000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Faroe Islands,FRO,GDP (current US$),NY.GDP.MKTP.CD,2833300519.46872000,Europe & Central Asia,High income,,FALSE
-"Micronesia, Fed. Sts.",FSM,GDP (current US$),NY.GDP.MKTP.CD,366666800.00000000,East Asia & Pacific,Lower middle income,,FALSE
-Gabon,GAB,GDP (current US$),NY.GDP.MKTP.CD,14929488770.73150000,Sub-Saharan Africa,Upper middle income,1 January 1995,TRUE
-United Kingdom,GBR,GDP (current US$),NY.GDP.MKTP.CD,2666229179958.01000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Georgia,GEO,GDP (current US$),NY.GDP.MKTP.CD,16242916915.72030000,Europe & Central Asia,Upper middle income,14 June 2000,TRUE
-Ghana,GHA,GDP (current US$),NY.GDP.MKTP.CD,58998132329.61730000,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
-Gibraltar,GIB,GDP (current US$),NY.GDP.MKTP.CD,,Europe & Central Asia,High income,,FALSE
-Guinea,GIN,GDP (current US$),NY.GDP.MKTP.CD,10336634798.75930000,Sub-Saharan Africa,Low income,25 October 1995,TRUE
-"Gambia, The",GMB,GDP (current US$),NY.GDP.MKTP.CD,1498044491.43040000,Sub-Saharan Africa,Low income,23 October 1996,TRUE
-Guinea-Bissau,GNB,GDP (current US$),NY.GDP.MKTP.CD,1346841897.00437000,Sub-Saharan Africa,Low income,31 May 1995,TRUE
-Equatorial Guinea,GNQ,GDP (current US$),NY.GDP.MKTP.CD,12200914929.59610000,Sub-Saharan Africa,Upper middle income,,FALSE
-Greece,GRC,GDP (current US$),NY.GDP.MKTP.CD,203588424288.42800000,Europe & Central Asia,High income,1 January 1995,TRUE
-Grenada,GRD,GDP (current US$),NY.GDP.MKTP.CD,1125685185.18519000,Latin America & Caribbean,Upper middle income,22 February 1996,TRUE
-Greenland,GRL,GDP (current US$),NY.GDP.MKTP.CD,2826651925.66902000,Europe & Central Asia,High income,,FALSE
-Guatemala,GTM,GDP (current US$),NY.GDP.MKTP.CD,71612352781.06670000,Latin America & Caribbean,Upper middle income,21 July 1995,TRUE
-Guam,GUM,GDP (current US$),NY.GDP.MKTP.CD,5851000000.00000000,East Asia & Pacific,High income,,FALSE
-Guyana,GUY,GDP (current US$),NY.GDP.MKTP.CD,3555205811.13802000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-High income,HIC,GDP (current US$),NY.GDP.MKTP.CD,51416068828736.80000000,,,,FALSE
-"Hong Kong SAR, China",HKG,GDP (current US$),NY.GDP.MKTP.CD,341244161576.75900000,East Asia & Pacific,High income,1 January 1995,TRUE
-Honduras,HND,GDP (current US$),NY.GDP.MKTP.CD,23136232229.60690000,Latin America & Caribbean,Lower middle income,1 January 1995,TRUE
-Heavily indebted poor countries (HIPC),HPC,GDP (current US$),NY.GDP.MKTP.CD,705521452844.01400000,,,,FALSE
-Croatia,HRV,GDP (current US$),NY.GDP.MKTP.CD,55319605060.53930000,Europe & Central Asia,High income,30 November 2000,TRUE
-Haiti,HTI,GDP (current US$),NY.GDP.MKTP.CD,8409497402.45890000,Latin America & Caribbean,Low income,30 January 1996,TRUE
-Hungary,HUN,GDP (current US$),NY.GDP.MKTP.CD,141510583019.55600000,Europe & Central Asia,High income,1 January 1995,TRUE
-IBRD only,IBD,GDP (current US$),NY.GDP.MKTP.CD,28851320771455.00000000,,,,FALSE
-IDA & IBRD total,IBT,GDP (current US$),NY.GDP.MKTP.CD,30941555943939.80000000,,,,FALSE
-IDA total,IDA,GDP (current US$),NY.GDP.MKTP.CD,2096707795621.73000000,,,,FALSE
-IDA blend,IDB,GDP (current US$),NY.GDP.MKTP.CD,920435301795.34000000,,,,FALSE
-Indonesia,IDN,GDP (current US$),NY.GDP.MKTP.CD,1015618742565.81000000,East Asia & Pacific,Upper middle income,1 January 1995,TRUE
-IDA only,IDX,GDP (current US$),NY.GDP.MKTP.CD,1177370035220.26000000,,,,FALSE
-Isle of Man,IMN,GDP (current US$),NY.GDP.MKTP.CD,6770532818.53282000,Europe & Central Asia,High income,,FALSE
-India,IND,GDP (current US$),NY.GDP.MKTP.CD,2652754685834.59000000,South Asia,Lower middle income,1 January 1995,TRUE
-Not classified,INX,GDP (current US$),NY.GDP.MKTP.CD,,,,,FALSE
-Ireland,IRL,GDP (current US$),NY.GDP.MKTP.CD,335663113959.72400000,Europe & Central Asia,High income,1 January 1995,TRUE
-"Iran, Islamic Rep.",IRN,GDP (current US$),NY.GDP.MKTP.CD,445345282122.68200000,Middle East & North Africa,Upper middle income,,FALSE
-Iraq,IRQ,GDP (current US$),NY.GDP.MKTP.CD,195473049875.12700000,Middle East & North Africa,Upper middle income,,FALSE
-Iceland,ISL,GDP (current US$),NY.GDP.MKTP.CD,24488176539.65490000,Europe & Central Asia,High income,1 January 1995,TRUE
-Israel,ISR,GDP (current US$),NY.GDP.MKTP.CD,353253406954.97000000,Middle East & North Africa,High income,21 April 1995,TRUE
-Italy,ITA,GDP (current US$),NY.GDP.MKTP.CD,1961796197354.36000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Jamaica,JAM,GDP (current US$),NY.GDP.MKTP.CD,14806340821.08710000,Latin America & Caribbean,Upper middle income,9 March 1995,TRUE
-Jordan,JOR,GDP (current US$),NY.GDP.MKTP.CD,40708943661.97180000,Middle East & North Africa,Upper middle income,11 April 2000,TRUE
-Japan,JPN,GDP (current US$),NY.GDP.MKTP.CD,4866864409657.68000000,East Asia & Pacific,High income,1 January 1995,TRUE
-Kazakhstan,KAZ,GDP (current US$),NY.GDP.MKTP.CD,166805800595.70400000,Europe & Central Asia,Upper middle income,30 November 2015,TRUE
-Kenya,KEN,GDP (current US$),NY.GDP.MKTP.CD,78965004656.18230000,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
-Kyrgyz Republic,KGZ,GDP (current US$),NY.GDP.MKTP.CD,7702934800.12836000,Europe & Central Asia,Lower middle income,20 December 1998,TRUE
-Cambodia,KHM,GDP (current US$),NY.GDP.MKTP.CD,22177200511.58110000,East Asia & Pacific,Lower middle income,13 October 2004,TRUE
-Kiribati,KIR,GDP (current US$),NY.GDP.MKTP.CD,187276210.91355000,East Asia & Pacific,Lower middle income,,FALSE
-St. Kitts and Nevis,KNA,GDP (current US$),NY.GDP.MKTP.CD,996937037.03703700,Latin America & Caribbean,High income,21 February 1996,TRUE
-"Korea, Rep.",KOR,GDP (current US$),NY.GDP.MKTP.CD,1623901496835.79000000,East Asia & Pacific,High income,1 January 1995,TRUE
-Kuwait,KWT,GDP (current US$),NY.GDP.MKTP.CD,120707220573.68900000,Middle East & North Africa,High income,1 January 1995,TRUE
-Latin America & Caribbean (excluding high income),LAC,GDP (current US$),NY.GDP.MKTP.CD,5416130983383.76000000,,,,FALSE
-Lao PDR,LAO,GDP (current US$),NY.GDP.MKTP.CD,16853087485.41180000,East Asia & Pacific,Lower middle income,2 February 2013,TRUE
-Lebanon,LBN,GDP (current US$),NY.GDP.MKTP.CD,53140638269.12110000,Middle East & North Africa,Upper middle income,,FALSE
-Liberia,LBR,GDP (current US$),NY.GDP.MKTP.CD,3285455000.00000000,Sub-Saharan Africa,Low income,14 July 2016,TRUE
-Libya,LBY,GDP (current US$),NY.GDP.MKTP.CD,37883243650.45200000,Middle East & North Africa,Upper middle income,,FALSE
-St. Lucia,LCA,GDP (current US$),NY.GDP.MKTP.CD,1999090407.40741000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Latin America & Caribbean,LCN,GDP (current US$),NY.GDP.MKTP.CD,5985647360814.57000000,,,,FALSE
-Least developed countries: UN classification,LDC,GDP (current US$),NY.GDP.MKTP.CD,1027031212048.55000000,,,,FALSE
-Low income,LIC,GDP (current US$),NY.GDP.MKTP.CD,494892781230.87900000,,,,FALSE
-Liechtenstein,LIE,GDP (current US$),NY.GDP.MKTP.CD,6552858738.70214000,Europe & Central Asia,High income,1 September 1995,TRUE
-Sri Lanka,LKA,GDP (current US$),NY.GDP.MKTP.CD,87428125557.57300000,South Asia,Lower middle income,1 January 1995,TRUE
-Lower middle income,LMC,GDP (current US$),NY.GDP.MKTP.CD,5761733418445.18000000,,,,FALSE
-Low & middle income,LMY,GDP (current US$),NY.GDP.MKTP.CD,29845120321213.10000000,,,,FALSE
-Lesotho,LSO,GDP (current US$),NY.GDP.MKTP.CD,2405289382.35938000,Sub-Saharan Africa,Lower middle income,31 May 1995,TRUE
-Late-demographic dividend,LTE,GDP (current US$),NY.GDP.MKTP.CD,20551045153102.90000000,,,,FALSE
-Lithuania,LTU,GDP (current US$),NY.GDP.MKTP.CD,47750908128.25900000,Europe & Central Asia,High income,31 May 2001,TRUE
-Luxembourg,LUX,GDP (current US$),NY.GDP.MKTP.CD,64181944722.72830000,Europe & Central Asia,High income,1 January 1995,TRUE
-Latvia,LVA,GDP (current US$),NY.GDP.MKTP.CD,30273007510.30240000,Europe & Central Asia,High income,10 February 1999,TRUE
-"Macao SAR, China",MAC,GDP (current US$),NY.GDP.MKTP.CD,50751059058.06130000,East Asia & Pacific,High income,1 January 1995,TRUE
-St. Martin (French part),MAF,GDP (current US$),NY.GDP.MKTP.CD,,Latin America & Caribbean,High income,,FALSE
-Morocco,MAR,GDP (current US$),NY.GDP.MKTP.CD,109714300453.98300000,Middle East & North Africa,Lower middle income,1 January 1995,TRUE
-Monaco,MCO,GDP (current US$),NY.GDP.MKTP.CD,6431314957.07185000,Europe & Central Asia,High income,,FALSE
-Moldova,MDA,GDP (current US$),NY.GDP.MKTP.CD,9669759987.02633000,Europe & Central Asia,Lower middle income,26 July 2001,TRUE
-Madagascar,MDG,GDP (current US$),NY.GDP.MKTP.CD,13176313233.19780000,Sub-Saharan Africa,Low income,17 November 1995,TRUE
-Maldives,MDV,GDP (current US$),NY.GDP.MKTP.CD,4735989972.05433000,South Asia,Upper middle income,31 May 1995,TRUE
-Middle East & North Africa,MEA,GDP (current US$),NY.GDP.MKTP.CD,3270329262072.42000000,,,,FALSE
-Mexico,MEX,GDP (current US$),NY.GDP.MKTP.CD,1157736189998.15000000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Marshall Islands,MHL,GDP (current US$),NY.GDP.MKTP.CD,212881000.00000000,East Asia & Pacific,Upper middle income,,FALSE
-Middle income,MIC,GDP (current US$),NY.GDP.MKTP.CD,29337418670054.40000000,,,,FALSE
-North Macedonia,MKD,GDP (current US$),NY.GDP.MKTP.CD,11307058382.34350000,Europe & Central Asia,Upper middle income,4 April 2003,TRUE
-Mali,MLI,GDP (current US$),NY.GDP.MKTP.CD,15375605991.63020000,Sub-Saharan Africa,Low income,31 May 1995,TRUE
-Malta,MLT,GDP (current US$),NY.GDP.MKTP.CD,12747857570.04070000,Middle East & North Africa,High income,1 January 1995,TRUE
-Myanmar,MMR,GDP (current US$),NY.GDP.MKTP.CD,68945867477.60540000,East Asia & Pacific,Lower middle income,1 January 1995,TRUE
-Middle East & North Africa (excluding high income),MNA,GDP (current US$),NY.GDP.MKTP.CD,1428592790217.68000000,,,,FALSE
-Montenegro,MNE,GDP (current US$),NY.GDP.MKTP.CD,4856632399.45775000,Europe & Central Asia,Upper middle income,29 April 2012,TRUE
-Mongolia,MNG,GDP (current US$),NY.GDP.MKTP.CD,11425755279.52540000,East Asia & Pacific,Lower middle income,29 January 1997,TRUE
-Northern Mariana Islands,MNP,GDP (current US$),NY.GDP.MKTP.CD,1601000000.00000000,East Asia & Pacific,High income,,FALSE
-Mozambique,MOZ,GDP (current US$),NY.GDP.MKTP.CD,13219084261.36640000,Sub-Saharan Africa,Low income,26 August 1995,TRUE
-Mauritania,MRT,GDP (current US$),NY.GDP.MKTP.CD,6758390728.71734000,Sub-Saharan Africa,Lower middle income,31 May 1995,TRUE
-Mauritius,MUS,GDP (current US$),NY.GDP.MKTP.CD,13259351418.44590000,Sub-Saharan Africa,High income,1 January 1995,TRUE
-Malawi,MWI,GDP (current US$),NY.GDP.MKTP.CD,6303292264.18905000,Sub-Saharan Africa,Low income,31 May 1995,TRUE
-Malaysia,MYS,GDP (current US$),NY.GDP.MKTP.CD,318958236443.12200000,East Asia & Pacific,Upper middle income,1 January 1995,TRUE
-North America,NAC,GDP (current US$),NY.GDP.MKTP.CD,21141594444340.10000000,,,,FALSE
-Namibia,NAM,GDP (current US$),NY.GDP.MKTP.CD,12741746433.67160000,Sub-Saharan Africa,Upper middle income,1 January 1995,TRUE
-New Caledonia,NCL,GDP (current US$),NY.GDP.MKTP.CD,,East Asia & Pacific,High income,,FALSE
-Niger,NER,GDP (current US$),NY.GDP.MKTP.CD,11166063886.85550000,Sub-Saharan Africa,Low income,13 December 1996,TRUE
-Nigeria,NGA,GDP (current US$),NY.GDP.MKTP.CD,375745486520.65600000,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
-Nicaragua,NIC,GDP (current US$),NY.GDP.MKTP.CD,13785943183.06610000,Latin America & Caribbean,Lower middle income,3 September 1995,TRUE
-Netherlands,NLD,GDP (current US$),NY.GDP.MKTP.CD,833869641687.06000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Norway,NOR,GDP (current US$),NY.GDP.MKTP.CD,398393955268.99000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Nepal,NPL,GDP (current US$),NY.GDP.MKTP.CD,25180583770.27190000,South Asia,Lower middle income,23 April 2004,TRUE
-Nauru,NRU,GDP (current US$),NY.GDP.MKTP.CD,109585941.62455700,East Asia & Pacific,High income,,FALSE
-New Zealand,NZL,GDP (current US$),NY.GDP.MKTP.CD,205415864857.98400000,East Asia & Pacific,High income,1 January 1995,TRUE
-OECD members,OED,GDP (current US$),NY.GDP.MKTP.CD,50257605239562.00000000,,,,FALSE
-Oman,OMN,GDP (current US$),NY.GDP.MKTP.CD,70600000000.00000000,Middle East & North Africa,High income,9 November 2000,TRUE
-Other small states,OSS,GDP (current US$),NY.GDP.MKTP.CD,404126868252.70100000,,,,FALSE
-Pakistan,PAK,GDP (current US$),NY.GDP.MKTP.CD,304567253219.09700000,South Asia,Lower middle income,1 January 1995,TRUE
-Panama,PAN,GDP (current US$),NY.GDP.MKTP.CD,62219000000.00000000,Latin America & Caribbean,High income,6 September 1997,TRUE
-Peru,PER,GDP (current US$),NY.GDP.MKTP.CD,211007207483.51500000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Philippines,PHL,GDP (current US$),NY.GDP.MKTP.CD,328480738147.72900000,East Asia & Pacific,Lower middle income,1 January 1995,TRUE
-Palau,PLW,GDP (current US$),NY.GDP.MKTP.CD,286321800.00000000,East Asia & Pacific,High income,,FALSE
-Papua New Guinea,PNG,GDP (current US$),NY.GDP.MKTP.CD,22742613553.68790000,East Asia & Pacific,Lower middle income,9 June 1996,TRUE
-Poland,POL,GDP (current US$),NY.GDP.MKTP.CD,526380811261.34500000,Europe & Central Asia,High income,1 July 1995,TRUE
-Pre-demographic dividend,PRE,GDP (current US$),NY.GDP.MKTP.CD,1265557357216.69000000,,,,FALSE
-Puerto Rico,PRI,GDP (current US$),NY.GDP.MKTP.CD,103445500000.00000000,Latin America & Caribbean,High income,,FALSE
-"Korea, Dem. People’s Rep.",PRK,GDP (current US$),NY.GDP.MKTP.CD,,East Asia & Pacific,Low income,,FALSE
-Portugal,PRT,GDP (current US$),NY.GDP.MKTP.CD,221357874718.93000000,Europe & Central Asia,High income,1 January 1995,TRUE
-Paraguay,PRY,GDP (current US$),NY.GDP.MKTP.CD,39008900331.67330000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-West Bank and Gaza,PSE,GDP (current US$),NY.GDP.MKTP.CD,14498100000.00000000,Middle East & North Africa,Lower middle income,,FALSE
-Pacific island small states,PSS,GDP (current US$),NY.GDP.MKTP.CD,10008508092.04960000,,,,FALSE
-Post-demographic dividend,PST,GDP (current US$),NY.GDP.MKTP.CD,47415034220935.90000000,,,,FALSE
-French Polynesia,PYF,GDP (current US$),NY.GDP.MKTP.CD,,East Asia & Pacific,High income,,FALSE
-Qatar,QAT,GDP (current US$),NY.GDP.MKTP.CD,166928571428.57100000,Middle East & North Africa,High income,13 January 1996,TRUE
-Romania,ROU,GDP (current US$),NY.GDP.MKTP.CD,211695422578.65500000,Europe & Central Asia,High income,1 January 1995,TRUE
-Russian Federation,RUS,GDP (current US$),NY.GDP.MKTP.CD,1574199387070.90000000,Europe & Central Asia,Upper middle income,22 August 2012,TRUE
-Rwanda,RWA,GDP (current US$),NY.GDP.MKTP.CD,9253098954.27769000,Sub-Saharan Africa,Low income,22 May 1996,TRUE
-South Asia,SAS,GDP (current US$),NY.GDP.MKTP.CD,3347019816218.73000000,,,,FALSE
-Saudi Arabia,SAU,GDP (current US$),NY.GDP.MKTP.CD,688586133333.33300000,Middle East & North Africa,High income,11 December 2005,TRUE
-Sudan,SDN,GDP (current US$),NY.GDP.MKTP.CD,45379127306.43600000,Sub-Saharan Africa,Low income,,FALSE
-Senegal,SEN,GDP (current US$),NY.GDP.MKTP.CD,20996564751.59940000,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
-Singapore,SGP,GDP (current US$),NY.GDP.MKTP.CD,341863349989.13800000,East Asia & Pacific,High income,1 January 1995,TRUE
-Solomon Islands,SLB,GDP (current US$),NY.GDP.MKTP.CD,1309631133.19979000,East Asia & Pacific,Lower middle income,26 July 1996,TRUE
-Sierra Leone,SLE,GDP (current US$),NY.GDP.MKTP.CD,3739577973.23943000,Sub-Saharan Africa,Low income,23 July 1995,TRUE
-El Salvador,SLV,GDP (current US$),NY.GDP.MKTP.CD,24979200000.00000000,Latin America & Caribbean,Lower middle income,7 May 1995,TRUE
-San Marino,SMR,GDP (current US$),NY.GDP.MKTP.CD,1528468142.79259000,Europe & Central Asia,High income,,FALSE
-Somalia,SOM,GDP (current US$),NY.GDP.MKTP.CD,,Sub-Saharan Africa,Low income,,FALSE
-Serbia,SRB,GDP (current US$),NY.GDP.MKTP.CD,44120425319.85760000,Europe & Central Asia,Upper middle income,,FALSE
-Sub-Saharan Africa (excluding high income),SSA,GDP (current US$),NY.GDP.MKTP.CD,1624372548153.57000000,,,,FALSE
-South Sudan,SSD,GDP (current US$),NY.GDP.MKTP.CD,,Sub-Saharan Africa,Low income,,FALSE
-Sub-Saharan Africa,SSF,GDP (current US$),NY.GDP.MKTP.CD,1639171578758.92000000,,,,FALSE
-Small states,SST,GDP (current US$),NY.GDP.MKTP.CD,484048521232.16500000,,,,FALSE
-Sao Tome and Principe,STP,GDP (current US$),NY.GDP.MKTP.CD,375040835.10034000,Sub-Saharan Africa,Lower middle income,,FALSE
-Suriname,SUR,GDP (current US$),NY.GDP.MKTP.CD,3210064505.78949000,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-Slovak Republic,SVK,GDP (current US$),NY.GDP.MKTP.CD,95481955557.69080000,Europe & Central Asia,High income,1 January 1995,TRUE
-Slovenia,SVN,GDP (current US$),NY.GDP.MKTP.CD,48561672400.84370000,Europe & Central Asia,High income,30 July 1995,TRUE
-Sweden,SWE,GDP (current US$),NY.GDP.MKTP.CD,541018749769.09700000,Europe & Central Asia,High income,1 January 1995,TRUE
-Eswatini,SWZ,GDP (current US$),NY.GDP.MKTP.CD,4446248676.29633000,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
-Sint Maarten (Dutch part),SXM,GDP (current US$),NY.GDP.MKTP.CD,,Latin America & Caribbean,High income,,FALSE
-Seychelles,SYC,GDP (current US$),NY.GDP.MKTP.CD,1524486801.19044000,Sub-Saharan Africa,High income,26 April 2015,TRUE
-Syrian Arab Republic,SYR,GDP (current US$),NY.GDP.MKTP.CD,,Middle East & North Africa,Low income,,FALSE
-Turks and Caicos Islands,TCA,GDP (current US$),NY.GDP.MKTP.CD,962525840.00000000,Latin America & Caribbean,High income,,FALSE
-Chad,TCD,GDP (current US$),NY.GDP.MKTP.CD,10000395242.14570000,Sub-Saharan Africa,Low income,19 October 1996,TRUE
-East Asia & Pacific (IDA & IBRD countries),TEA,GDP (current US$),NY.GDP.MKTP.CD,14807303641278.00000000,,,,FALSE
-Europe & Central Asia (IDA & IBRD countries),TEC,GDP (current US$),NY.GDP.MKTP.CD,3901827241973.90000000,,,,FALSE
-Togo,TGO,GDP (current US$),NY.GDP.MKTP.CD,4819949975.18151000,Sub-Saharan Africa,Low income,31 May 1995,TRUE
-Thailand,THA,GDP (current US$),NY.GDP.MKTP.CD,456294704152.64700000,East Asia & Pacific,Upper middle income,1 January 1995,TRUE
-Tajikistan,TJK,GDP (current US$),NY.GDP.MKTP.CD,7157865188.25222000,Europe & Central Asia,Low income,2 March 2013,TRUE
-Turkmenistan,TKM,GDP (current US$),NY.GDP.MKTP.CD,37926285714.28570000,Europe & Central Asia,Upper middle income,,FALSE
-Latin America & the Caribbean (IDA & IBRD countries),TLA,GDP (current US$),NY.GDP.MKTP.CD,5745984224045.25000000,,,,FALSE
-Timor-Leste,TLS,GDP (current US$),NY.GDP.MKTP.CD,1609669330.12439000,East Asia & Pacific,Lower middle income,,FALSE
-Middle East & North Africa (IDA & IBRD countries),TMN,GDP (current US$),NY.GDP.MKTP.CD,1413870262588.08000000,,,,FALSE
-Tonga,TON,GDP (current US$),NY.GDP.MKTP.CD,430174168.74010400,East Asia & Pacific,Upper middle income,27 July 2007,TRUE
-South Asia (IDA & IBRD),TSA,GDP (current US$),NY.GDP.MKTP.CD,3347019816218.73000000,,,,FALSE
-Sub-Saharan Africa (IDA & IBRD countries),TSS,GDP (current US$),NY.GDP.MKTP.CD,1639171578758.92000000,,,,FALSE
-Trinidad and Tobago,TTO,GDP (current US$),NY.GDP.MKTP.CD,22474828527.17750000,Latin America & Caribbean,High income,1 March 1995,TRUE
-Tunisia,TUN,GDP (current US$),NY.GDP.MKTP.CD,39802430354.63340000,Middle East & North Africa,Lower middle income,29 March 1995,TRUE
-Turkey,TUR,GDP (current US$),NY.GDP.MKTP.CD,852676779693.53900000,Europe & Central Asia,Upper middle income,26 March 1995,TRUE
-Tuvalu,TUV,GDP (current US$),NY.GDP.MKTP.CD,40619251.99264260,East Asia & Pacific,Upper middle income,,FALSE
-Tanzania,TZA,GDP (current US$),NY.GDP.MKTP.CD,53320625958.56280000,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
-Uganda,UGA,GDP (current US$),NY.GDP.MKTP.CD,30756466548.05430000,Sub-Saharan Africa,Low income,1 January 1995,TRUE
-Ukraine,UKR,GDP (current US$),NY.GDP.MKTP.CD,112190355158.17800000,Europe & Central Asia,Lower middle income,16 May 2008,TRUE
-Upper middle income,UMC,GDP (current US$),NY.GDP.MKTP.CD,23570009724735.50000000,,,,FALSE
-Uruguay,URY,GDP (current US$),NY.GDP.MKTP.CD,59530088536.21790000,Latin America & Caribbean,High income,1 January 1995,TRUE
-United States,USA,GDP (current US$),NY.GDP.MKTP.CD,19485393853000.00000000,North America,High income,1 January 1995,TRUE
-Uzbekistan,UZB,GDP (current US$),NY.GDP.MKTP.CD,59159945320.56670000,Europe & Central Asia,Lower middle income,,FALSE
-St. Vincent and the Grenadines,VCT,GDP (current US$),NY.GDP.MKTP.CD,792177777.77777800,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-"Venezuela, RB",VEN,GDP (current US$),NY.GDP.MKTP.CD,,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
-British Virgin Islands,VGB,GDP (current US$),NY.GDP.MKTP.CD,,Latin America & Caribbean,High income,,FALSE
-Virgin Islands (U.S.),VIR,GDP (current US$),NY.GDP.MKTP.CD,3855000000.00000000,Latin America & Caribbean,High income,,FALSE
-Vietnam,VNM,GDP (current US$),NY.GDP.MKTP.CD,223779865815.18300000,East Asia & Pacific,Lower middle income,11 January 2007,TRUE
-Vanuatu,VUT,GDP (current US$),NY.GDP.MKTP.CD,880043553.74844200,East Asia & Pacific,Lower middle income,24 August 2012,TRUE
-World,WLD,GDP (current US$),NY.GDP.MKTP.CD,81229182706392.50000000,,,,FALSE
-Samoa,WSM,GDP (current US$),NY.GDP.MKTP.CD,831903809.74917200,East Asia & Pacific,Upper middle income,10 May 2012,TRUE
-Kosovo,XKX,GDP (current US$),NY.GDP.MKTP.CD,7245707184.81699000,Europe & Central Asia,Upper middle income,,FALSE
-"Yemen, Rep.",YEM,GDP (current US$),NY.GDP.MKTP.CD,24561327989.31200000,Middle East & North Africa,Low income,26 June 2014,TRUE
-South Africa,ZAF,GDP (current US$),NY.GDP.MKTP.CD,349554116683.81800000,Sub-Saharan Africa,Upper middle income,1 January 1995,TRUE
-Zambia,ZMB,GDP (current US$),NY.GDP.MKTP.CD,25868142076.78970000,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
-Zimbabwe,ZWE,GDP (current US$),NY.GDP.MKTP.CD,22040902300.00000000,Sub-Saharan Africa,Lower middle income,5 March 1995,TRUE
+Country Name,Country Code,Indicator Name,Indicator Code,2017 GDP per Capita,Region,IncomeGroup,WTO_date,WTO
+Aruba,ABW,GDP per capita (current US$),NY.GDP.PCAP.CD,29007.69300348870,Latin America & Caribbean,High income,,FALSE
+Afghanistan,AFG,GDP per capita (current US$),NY.GDP.PCAP.CD,556.30200240406,South Asia,Low income,29 July 2016,TRUE
+Angola,AGO,GDP per capita (current US$),NY.GDP.PCAP.CD,4095.81294155857,Sub-Saharan Africa,Lower middle income,23 November 1996,TRUE
+Albania,ALB,GDP per capita (current US$),NY.GDP.PCAP.CD,4531.02080555986,Europe & Central Asia,Upper middle income,8 September 2000,TRUE
+Andorra,AND,GDP per capita (current US$),NY.GDP.PCAP.CD,38962.88035367030,Europe & Central Asia,High income,,FALSE
+Arab World,ARB,GDP per capita (current US$),NY.GDP.PCAP.CD,6102.21106679858,,,,FALSE
+United Arab Emirates,ARE,GDP per capita (current US$),NY.GDP.PCAP.CD,40644.80404339200,Middle East & North Africa,High income,10 April 1996,TRUE
+Argentina,ARG,GDP per capita (current US$),NY.GDP.PCAP.CD,14591.86338105410,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Armenia,ARM,GDP per capita (current US$),NY.GDP.PCAP.CD,3914.50126841280,Europe & Central Asia,Upper middle income,5 February 2003,TRUE
+American Samoa,ASM,GDP per capita (current US$),NY.GDP.PCAP.CD,10823.44480402730,East Asia & Pacific,Upper middle income,,FALSE
+Antigua and Barbuda,ATG,GDP per capita (current US$),NY.GDP.PCAP.CD,15383.41518849980,Latin America & Caribbean,High income,1 January 1995,TRUE
+Australia,AUS,GDP per capita (current US$),NY.GDP.PCAP.CD,54066.47126861170,East Asia & Pacific,High income,1 January 1995,TRUE
+Austria,AUT,GDP per capita (current US$),NY.GDP.PCAP.CD,47549.07904023490,Europe & Central Asia,High income,1 January 1995,TRUE
+Azerbaijan,AZE,GDP per capita (current US$),NY.GDP.PCAP.CD,4147.08971569171,Europe & Central Asia,Upper middle income,,FALSE
+Burundi,BDI,GDP per capita (current US$),NY.GDP.PCAP.CD,292.99763068442,Sub-Saharan Africa,Low income,23 July 1995,TRUE
+Belgium,BEL,GDP per capita (current US$),NY.GDP.PCAP.CD,44288.50804031240,Europe & Central Asia,High income,1 January 1995,TRUE
+Benin,BEN,GDP per capita (current US$),NY.GDP.PCAP.CD,1136.59284704681,Sub-Saharan Africa,Lower middle income,22 February 1996,TRUE
+Burkina Faso,BFA,GDP per capita (current US$),NY.GDP.PCAP.CD,738.27415894008,Sub-Saharan Africa,Low income,3 June 1995,TRUE
+Bangladesh,BGD,GDP per capita (current US$),NY.GDP.PCAP.CD,1563.91385693051,South Asia,Lower middle income,1 January 1995,TRUE
+Bulgaria,BGR,GDP per capita (current US$),NY.GDP.PCAP.CD,8331.05802460260,Europe & Central Asia,Upper middle income,1 December 1996,TRUE
+Bahrain,BHR,GDP per capita (current US$),NY.GDP.PCAP.CD,23709.43046798300,Middle East & North Africa,High income,1 January 1995,TRUE
+"Bahamas, The",BHS,GDP per capita (current US$),NY.GDP.PCAP.CD,31827.24269896610,Latin America & Caribbean,High income,,FALSE
+Bosnia and Herzegovina,BIH,GDP per capita (current US$),NY.GDP.PCAP.CD,5394.59122017677,Europe & Central Asia,Upper middle income,,FALSE
+Belarus,BLR,GDP per capita (current US$),NY.GDP.PCAP.CD,5761.74712023007,Europe & Central Asia,Upper middle income,,FALSE
+Belize,BLZ,GDP per capita (current US$),NY.GDP.PCAP.CD,4887.57720833810,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Bermuda,BMU,GDP per capita (current US$),NY.GDP.PCAP.CD,,North America,High income,,FALSE
+Bolivia,BOL,GDP per capita (current US$),NY.GDP.PCAP.CD,3351.12403975607,Latin America & Caribbean,Lower middle income,12 September 1995,TRUE
+Brazil,BRA,GDP per capita (current US$),NY.GDP.PCAP.CD,9925.38623770041,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Barbados,BRB,GDP per capita (current US$),NY.GDP.PCAP.CD,17391.42586633970,Latin America & Caribbean,High income,1 January 1995,TRUE
+Brunei Darussalam,BRN,GDP per capita (current US$),NY.GDP.PCAP.CD,28572.14677765090,East Asia & Pacific,High income,1 January 1995,TRUE
+Bhutan,BTN,GDP per capita (current US$),NY.GDP.PCAP.CD,3286.57470287488,South Asia,Lower middle income,,FALSE
+Botswana,BWA,GDP per capita (current US$),NY.GDP.PCAP.CD,7893.21010771116,Sub-Saharan Africa,Upper middle income,31 May 1995,TRUE
+Central African Republic,CAF,GDP per capita (current US$),NY.GDP.PCAP.CD,450.90024497906,Sub-Saharan Africa,Low income,31 May 1995,TRUE
+Canada,CAN,GDP per capita (current US$),NY.GDP.PCAP.CD,45148.55270616550,North America,High income,1 January 1995,TRUE
+Central Europe and the Baltics,CEB,GDP per capita (current US$),NY.GDP.PCAP.CD,14198.12985717700,,,,FALSE
+Switzerland,CHE,GDP per capita (current US$),NY.GDP.PCAP.CD,80449.99456083660,Europe & Central Asia,High income,1 July 1995,TRUE
+Channel Islands,CHI,GDP per capita (current US$),NY.GDP.PCAP.CD,,Europe & Central Asia,High income,,FALSE
+Chile,CHL,GDP per capita (current US$),NY.GDP.PCAP.CD,14999.37008855120,Latin America & Caribbean,High income,1 January 1995,TRUE
+China,CHN,GDP per capita (current US$),NY.GDP.PCAP.CD,8879.43814888506,East Asia & Pacific,Upper middle income,11 December 2001,TRUE
+Cote d'Ivoire,CIV,GDP per capita (current US$),NY.GDP.PCAP.CD,2111.02707557541,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
+Cameroon,CMR,GDP per capita (current US$),NY.GDP.PCAP.CD,1425.10781805333,Sub-Saharan Africa,Lower middle income,13 December 1995,TRUE
+"Congo, Dem. Rep.",COD,GDP per capita (current US$),NY.GDP.PCAP.CD,467.07423746489,Sub-Saharan Africa,Low income,1 January 1997,TRUE
+"Congo, Rep.",COG,GDP per capita (current US$),NY.GDP.PCAP.CD,1767.89452055028,Sub-Saharan Africa,Lower middle income,27 March 1997,TRUE
+Colombia,COL,GDP per capita (current US$),NY.GDP.PCAP.CD,6377.85136303665,Latin America & Caribbean,Upper middle income,30 April 1995,TRUE
+Comoros,COM,GDP per capita (current US$),NY.GDP.PCAP.CD,1323.81158996501,Sub-Saharan Africa,Lower middle income,,FALSE
+Cabo Verde,CPV,GDP per capita (current US$),NY.GDP.PCAP.CD,3292.64575508590,Sub-Saharan Africa,Lower middle income,23 July 2008,TRUE
+Costa Rica,CRI,GDP per capita (current US$),NY.GDP.PCAP.CD,11814.62656876650,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Caribbean small states,CSS,GDP per capita (current US$),NY.GDP.PCAP.CD,9557.51749317693,,,,FALSE
+Cuba,CUB,GDP per capita (current US$),NY.GDP.PCAP.CD,8541.21067346640,Latin America & Caribbean,Upper middle income,20 April 1995,TRUE
+Curacao,CUW,GDP per capita (current US$),NY.GDP.PCAP.CD,19457.53152322050,Latin America & Caribbean,High income,,FALSE
+Cayman Islands,CYM,GDP per capita (current US$),NY.GDP.PCAP.CD,81124.51347948210,Latin America & Caribbean,High income,,FALSE
+Cyprus,CYP,GDP per capita (current US$),NY.GDP.PCAP.CD,26338.69434431360,Europe & Central Asia,High income,30 July 1995,TRUE
+Czech Republic,CZE,GDP per capita (current US$),NY.GDP.PCAP.CD,20379.89603964170,Europe & Central Asia,High income,1 January 1995,TRUE
+Germany,DEU,GDP per capita (current US$),NY.GDP.PCAP.CD,44349.58965527570,Europe & Central Asia,High income,1 January 1995,TRUE
+Djibouti,DJI,GDP per capita (current US$),NY.GDP.PCAP.CD,2914.38385631251,Middle East & North Africa,Lower middle income,31 May 1995,TRUE
+Dominica,DMA,GDP per capita (current US$),NY.GDP.PCAP.CD,7274.72133332918,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Denmark,DNK,GDP per capita (current US$),NY.GDP.PCAP.CD,57141.05983504140,Europe & Central Asia,High income,1 January 1995,TRUE
+Dominican Republic,DOM,GDP per capita (current US$),NY.GDP.PCAP.CD,7609.33879943715,Latin America & Caribbean,Upper middle income,9 March 1995,TRUE
+Algeria,DZA,GDP per capita (current US$),NY.GDP.PCAP.CD,4044.27660039876,Middle East & North Africa,Lower middle income,,FALSE
+East Asia & Pacific (excluding high income),EAP,GDP per capita (current US$),NY.GDP.PCAP.CD,7173.39830759621,,,,FALSE
+Early-demographic dividend,EAR,GDP per capita (current US$),NY.GDP.PCAP.CD,3548.28805066882,,,,FALSE
+East Asia & Pacific,EAS,GDP per capita (current US$),NY.GDP.PCAP.CD,10467.70219161070,,,,FALSE
+Europe & Central Asia (excluding high income),ECA,GDP per capita (current US$),NY.GDP.PCAP.CD,7863.67904931560,,,,FALSE
+Europe & Central Asia,ECS,GDP per capita (current US$),NY.GDP.PCAP.CD,23597.42400545000,,,,FALSE
+Ecuador,ECU,GDP per capita (current US$),NY.GDP.PCAP.CD,6213.50127649921,Latin America & Caribbean,Upper middle income,21 January 1996,TRUE
+"Egypt, Arab Rep.",EGY,GDP per capita (current US$),NY.GDP.PCAP.CD,2440.51017311107,Middle East & North Africa,Lower middle income,30 June 1995,TRUE
+Euro area,EMU,GDP per capita (current US$),NY.GDP.PCAP.CD,37095.12027033130,,,,FALSE
+Eritrea,ERI,GDP per capita (current US$),NY.GDP.PCAP.CD,,Sub-Saharan Africa,Low income,,FALSE
+Spain,ESP,GDP per capita (current US$),NY.GDP.PCAP.CD,28170.43456598070,Europe & Central Asia,High income,1 January 1995,TRUE
+Estonia,EST,GDP per capita (current US$),NY.GDP.PCAP.CD,20388.20955303380,Europe & Central Asia,High income,13 November 1999,TRUE
+Ethiopia,ETH,GDP per capita (current US$),NY.GDP.PCAP.CD,768.52230757939,Sub-Saharan Africa,Low income,,FALSE
+European Union,EUU,GDP per capita (current US$),NY.GDP.PCAP.CD,33029.98795035220,,,1 January 1995,TRUE
+Fragile and conflict affected situations,FCS,GDP per capita (current US$),NY.GDP.PCAP.CD,2030.05691862279,,,,FALSE
+Finland,FIN,GDP per capita (current US$),NY.GDP.PCAP.CD,46316.74545883260,Europe & Central Asia,High income,1 January 1995,TRUE
+Fiji,FJI,GDP per capita (current US$),NY.GDP.PCAP.CD,6101.03084255946,East Asia & Pacific,Upper middle income,14 January 1996,TRUE
+France,FRA,GDP per capita (current US$),NY.GDP.PCAP.CD,38812.16103416820,Europe & Central Asia,High income,1 January 1995,TRUE
+Faroe Islands,FRO,GDP per capita (current US$),NY.GDP.PCAP.CD,58622.84081580600,Europe & Central Asia,High income,,FALSE
+"Micronesia, Fed. Sts.",FSM,GDP per capita (current US$),NY.GDP.PCAP.CD,3289.70114571277,East Asia & Pacific,Lower middle income,,FALSE
+Gabon,GAB,GDP per capita (current US$),NY.GDP.PCAP.CD,7230.39639268426,Sub-Saharan Africa,Upper middle income,1 January 1995,TRUE
+United Kingdom,GBR,GDP per capita (current US$),NY.GDP.PCAP.CD,40361.41738321590,Europe & Central Asia,High income,1 January 1995,TRUE
+Georgia,GEO,GDP per capita (current US$),NY.GDP.PCAP.CD,4357.00093554628,Europe & Central Asia,Upper middle income,14 June 2000,TRUE
+Ghana,GHA,GDP per capita (current US$),NY.GDP.PCAP.CD,2025.93242386751,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
+Gibraltar,GIB,GDP per capita (current US$),NY.GDP.PCAP.CD,,Europe & Central Asia,High income,,FALSE
+Guinea,GIN,GDP per capita (current US$),NY.GDP.PCAP.CD,856.56526975047,Sub-Saharan Africa,Low income,25 October 1995,TRUE
+"Gambia, The",GMB,GDP per capita (current US$),NY.GDP.PCAP.CD,676.65592455213,Sub-Saharan Africa,Low income,23 October 1996,TRUE
+Guinea-Bissau,GNB,GDP per capita (current US$),NY.GDP.PCAP.CD,736.72556623178,Sub-Saharan Africa,Low income,31 May 1995,TRUE
+Equatorial Guinea,GNQ,GDP per capita (current US$),NY.GDP.PCAP.CD,9667.91225173046,Sub-Saharan Africa,Upper middle income,,FALSE
+Greece,GRC,GDP per capita (current US$),NY.GDP.PCAP.CD,18930.21858564330,Europe & Central Asia,High income,1 January 1995,TRUE
+Grenada,GRD,GDP per capita (current US$),NY.GDP.PCAP.CD,10152.83281188720,Latin America & Caribbean,Upper middle income,22 February 1996,TRUE
+Greenland,GRL,GDP per capita (current US$),NY.GDP.PCAP.CD,50321.36875434420,Europe & Central Asia,High income,,FALSE
+Guatemala,GTM,GDP per capita (current US$),NY.GDP.PCAP.CD,4451.45098990197,Latin America & Caribbean,Upper middle income,21 July 1995,TRUE
+Guam,GUM,GDP per capita (current US$),NY.GDP.PCAP.CD,35615.80462743710,East Asia & Pacific,High income,,FALSE
+Guyana,GUY,GDP per capita (current US$),NY.GDP.PCAP.CD,4586.05457171312,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+High income,HIC,GDP per capita (current US$),NY.GDP.PCAP.CD,41971.23734508650,,,,FALSE
+"Hong Kong SAR, China",HKG,GDP per capita (current US$),NY.GDP.PCAP.CD,46165.85651159530,East Asia & Pacific,High income,1 January 1995,TRUE
+Honduras,HND,GDP per capita (current US$),NY.GDP.PCAP.CD,2453.72789597457,Latin America & Caribbean,Lower middle income,1 January 1995,TRUE
+Heavily indebted poor countries (HIPC),HPC,GDP per capita (current US$),NY.GDP.PCAP.CD,929.41071134235,,,,FALSE
+Croatia,HRV,GDP per capita (current US$),NY.GDP.PCAP.CD,13412.33829022970,Europe & Central Asia,High income,30 November 2000,TRUE
+Haiti,HTI,GDP per capita (current US$),NY.GDP.PCAP.CD,765.72729432427,Latin America & Caribbean,Low income,30 January 1996,TRUE
+Hungary,HUN,GDP per capita (current US$),NY.GDP.PCAP.CD,14457.60876361400,Europe & Central Asia,High income,1 January 1995,TRUE
+IBRD only,IBD,GDP per capita (current US$),NY.GDP.PCAP.CD,6091.70977670782,,,,FALSE
+IDA & IBRD total,IBT,GDP per capita (current US$),NY.GDP.PCAP.CD,4885.47424281036,,,,FALSE
+IDA total,IDA,GDP per capita (current US$),NY.GDP.PCAP.CD,1312.72588848293,,,,FALSE
+IDA blend,IDB,GDP per capita (current US$),NY.GDP.PCAP.CD,1714.46986572736,,,,FALSE
+Indonesia,IDN,GDP per capita (current US$),NY.GDP.PCAP.CD,3837.65173121117,East Asia & Pacific,Upper middle income,1 January 1995,TRUE
+IDA only,IDX,GDP per capita (current US$),NY.GDP.PCAP.CD,1110.35579689092,,,,FALSE
+Isle of Man,IMN,GDP per capita (current US$),NY.GDP.PCAP.CD,80989.17221145020,Europe & Central Asia,High income,,FALSE
+India,IND,GDP per capita (current US$),NY.GDP.PCAP.CD,1981.65104989920,South Asia,Lower middle income,1 January 1995,TRUE
+Not classified,INX,GDP per capita (current US$),NY.GDP.PCAP.CD,,,,,FALSE
+Ireland,IRL,GDP per capita (current US$),NY.GDP.PCAP.CD,69822.34717890950,Europe & Central Asia,High income,1 January 1995,TRUE
+"Iran, Islamic Rep.",IRN,GDP per capita (current US$),NY.GDP.PCAP.CD,5520.31078932382,Middle East & North Africa,Upper middle income,,FALSE
+Iraq,IRQ,GDP per capita (current US$),NY.GDP.PCAP.CD,5205.28825481998,Middle East & North Africa,Upper middle income,,FALSE
+Iceland,ISL,GDP per capita (current US$),NY.GDP.PCAP.CD,71310.93925350860,Europe & Central Asia,High income,1 January 1995,TRUE
+Israel,ISR,GDP per capita (current US$),NY.GDP.PCAP.CD,40541.86209070840,Middle East & North Africa,High income,21 April 1995,TRUE
+Italy,ITA,GDP per capita (current US$),NY.GDP.PCAP.CD,32406.72031501340,Europe & Central Asia,High income,1 January 1995,TRUE
+Jamaica,JAM,GDP per capita (current US$),NY.GDP.PCAP.CD,5069.18383810726,Latin America & Caribbean,Upper middle income,9 March 1995,TRUE
+Jordan,JOR,GDP per capita (current US$),NY.GDP.PCAP.CD,4162.82068657256,Middle East & North Africa,Upper middle income,11 April 2000,TRUE
+Japan,JPN,GDP per capita (current US$),NY.GDP.PCAP.CD,38386.51114570570,East Asia & Pacific,High income,1 January 1995,TRUE
+Kazakhstan,KAZ,GDP per capita (current US$),NY.GDP.PCAP.CD,9247.58133129626,Europe & Central Asia,Upper middle income,30 November 2015,TRUE
+Kenya,KEN,GDP per capita (current US$),NY.GDP.PCAP.CD,1572.33549593781,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
+Kyrgyz Republic,KGZ,GDP per capita (current US$),NY.GDP.PCAP.CD,1242.76964282023,Europe & Central Asia,Lower middle income,20 December 1998,TRUE
+Cambodia,KHM,GDP per capita (current US$),NY.GDP.PCAP.CD,1385.25997963330,East Asia & Pacific,Lower middle income,13 October 2004,TRUE
+Kiribati,KIR,GDP per capita (current US$),NY.GDP.PCAP.CD,1640.50010436018,East Asia & Pacific,Lower middle income,,FALSE
+St. Kitts and Nevis,KNA,GDP per capita (current US$),NY.GDP.PCAP.CD,19155.28940411250,Latin America & Caribbean,High income,21 February 1996,TRUE
+"Korea, Rep.",KOR,GDP per capita (current US$),NY.GDP.PCAP.CD,31616.84340046830,East Asia & Pacific,High income,1 January 1995,TRUE
+Kuwait,KWT,GDP per capita (current US$),NY.GDP.PCAP.CD,29759.43648655750,Middle East & North Africa,High income,1 January 1995,TRUE
+Latin America & Caribbean (excluding high income),LAC,GDP per capita (current US$),NY.GDP.PCAP.CD,8990.52450414889,,,,FALSE
+Lao PDR,LAO,GDP per capita (current US$),NY.GDP.PCAP.CD,2423.84620319210,East Asia & Pacific,Lower middle income,2 February 2013,TRUE
+Lebanon,LBN,GDP per capita (current US$),NY.GDP.PCAP.CD,7801.17865807555,Middle East & North Africa,Upper middle income,,FALSE
+Liberia,LBR,GDP per capita (current US$),NY.GDP.PCAP.CD,698.70176435511,Sub-Saharan Africa,Low income,14 July 2016,TRUE
+Libya,LBY,GDP per capita (current US$),NY.GDP.PCAP.CD,5756.69844996569,Middle East & North Africa,Upper middle income,,FALSE
+St. Lucia,LCA,GDP per capita (current US$),NY.GDP.PCAP.CD,11047.44498581090,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Latin America & Caribbean,LCN,GDP per capita (current US$),NY.GDP.PCAP.CD,9432.97118520624,,,,FALSE
+Least developed countries: UN classification,LDC,GDP per capita (current US$),NY.GDP.PCAP.CD,1041.22827629761,,,,FALSE
+Low income,LIC,GDP per capita (current US$),NY.GDP.PCAP.CD,779.60831785632,,,,FALSE
+Liechtenstein,LIE,GDP per capita (current US$),NY.GDP.PCAP.CD,173356.05128841600,Europe & Central Asia,High income,1 September 1995,TRUE
+Sri Lanka,LKA,GDP per capita (current US$),NY.GDP.PCAP.CD,4077.04372120747,South Asia,Lower middle income,1 January 1995,TRUE
+Lower middle income,LMC,GDP per capita (current US$),NY.GDP.PCAP.CD,2034.89358089237,,,,FALSE
+Low & middle income,LMY,GDP per capita (current US$),NY.GDP.PCAP.CD,4749.35641598002,,,,FALSE
+Lesotho,LSO,GDP per capita (current US$),NY.GDP.PCAP.CD,1150.07917252047,Sub-Saharan Africa,Lower middle income,31 May 1995,TRUE
+Late-demographic dividend,LTE,GDP per capita (current US$),NY.GDP.PCAP.CD,9031.34076889100,,,,FALSE
+Lithuania,LTU,GDP per capita (current US$),NY.GDP.PCAP.CD,16882.63947119950,Europe & Central Asia,High income,31 May 2001,TRUE
+Luxembourg,LUX,GDP per capita (current US$),NY.GDP.PCAP.CD,107627.15100669500,Europe & Central Asia,High income,1 January 1995,TRUE
+Latvia,LVA,GDP per capita (current US$),NY.GDP.PCAP.CD,15586.58189392000,Europe & Central Asia,High income,10 February 1999,TRUE
+"Macao SAR, China",MAC,GDP per capita (current US$),NY.GDP.PCAP.CD,81516.67492480750,East Asia & Pacific,High income,1 January 1995,TRUE
+St. Martin (French part),MAF,GDP per capita (current US$),NY.GDP.PCAP.CD,,Latin America & Caribbean,High income,,FALSE
+Morocco,MAR,GDP per capita (current US$),NY.GDP.PCAP.CD,3036.32525487301,Middle East & North Africa,Lower middle income,1 January 1995,TRUE
+Monaco,MCO,GDP per capita (current US$),NY.GDP.PCAP.CD,167517.05972785600,Europe & Central Asia,High income,,FALSE
+Moldova,MDA,GDP per capita (current US$),NY.GDP.PCAP.CD,3509.69345025814,Europe & Central Asia,Lower middle income,26 July 2001,TRUE
+Madagascar,MDG,GDP per capita (current US$),NY.GDP.PCAP.CD,515.29272487784,Sub-Saharan Africa,Low income,17 November 1995,TRUE
+Maldives,MDV,GDP per capita (current US$),NY.GDP.PCAP.CD,9540.63434888323,South Asia,Upper middle income,31 May 1995,TRUE
+Middle East & North Africa,MEA,GDP per capita (current US$),NY.GDP.PCAP.CD,7411.42312942984,,,,FALSE
+Mexico,MEX,GDP per capita (current US$),NY.GDP.PCAP.CD,9278.41816833763,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Marshall Islands,MHL,GDP per capita (current US$),NY.GDP.PCAP.CD,3666.69537359193,East Asia & Pacific,Upper middle income,,FALSE
+Middle income,MIC,GDP per capita (current US$),NY.GDP.PCAP.CD,5193.16390044498,,,,FALSE
+North Macedonia,MKD,GDP per capita (current US$),NY.GDP.PCAP.CD,5430.87421029797,Europe & Central Asia,Upper middle income,4 April 2003,TRUE
+Mali,MLI,GDP per capita (current US$),NY.GDP.PCAP.CD,830.55740881651,Sub-Saharan Africa,Low income,31 May 1995,TRUE
+Malta,MLT,GDP per capita (current US$),NY.GDP.PCAP.CD,27239.07010493750,Middle East & North Africa,High income,1 January 1995,TRUE
+Myanmar,MMR,GDP per capita (current US$),NY.GDP.PCAP.CD,1291.54241301307,East Asia & Pacific,Lower middle income,1 January 1995,TRUE
+Middle East & North Africa (excluding high income),MNA,GDP per capita (current US$),NY.GDP.PCAP.CD,3793.93201839617,,,,FALSE
+Montenegro,MNE,GDP per capita (current US$),NY.GDP.PCAP.CD,7803.41113682269,Europe & Central Asia,Upper middle income,29 April 2012,TRUE
+Mongolia,MNG,GDP per capita (current US$),NY.GDP.PCAP.CD,3669.41754039880,East Asia & Pacific,Lower middle income,29 January 1997,TRUE
+Northern Mariana Islands,MNP,GDP per capita (current US$),NY.GDP.PCAP.CD,28305.22258760300,East Asia & Pacific,High income,,FALSE
+Mozambique,MOZ,GDP per capita (current US$),NY.GDP.PCAP.CD,461.41509412059,Sub-Saharan Africa,Low income,26 August 1995,TRUE
+Mauritania,MRT,GDP per capita (current US$),NY.GDP.PCAP.CD,1578.11417355949,Sub-Saharan Africa,Lower middle income,31 May 1995,TRUE
+Mauritius,MUS,GDP per capita (current US$),NY.GDP.PCAP.CD,10484.90836204110,Sub-Saharan Africa,High income,1 January 1995,TRUE
+Malawi,MWI,GDP per capita (current US$),NY.GDP.PCAP.CD,356.71757315337,Sub-Saharan Africa,Low income,31 May 1995,TRUE
+Malaysia,MYS,GDP per capita (current US$),NY.GDP.PCAP.CD,10254.23402425880,East Asia & Pacific,Upper middle income,1 January 1995,TRUE
+North America,NAC,GDP per capita (current US$),NY.GDP.PCAP.CD,58467.97381389880,,,,FALSE
+Namibia,NAM,GDP per capita (current US$),NY.GDP.PCAP.CD,5303.30913333229,Sub-Saharan Africa,Upper middle income,1 January 1995,TRUE
+New Caledonia,NCL,GDP per capita (current US$),NY.GDP.PCAP.CD,,East Asia & Pacific,High income,,FALSE
+Niger,NER,GDP per capita (current US$),NY.GDP.PCAP.CD,516.88824718095,Sub-Saharan Africa,Low income,13 December 1996,TRUE
+Nigeria,NGA,GDP per capita (current US$),NY.GDP.PCAP.CD,1968.55958830544,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
+Nicaragua,NIC,GDP per capita (current US$),NY.GDP.PCAP.CD,2159.16307935984,Latin America & Caribbean,Lower middle income,3 September 1995,TRUE
+Netherlands,NLD,GDP per capita (current US$),NY.GDP.PCAP.CD,48675.22233502130,Europe & Central Asia,High income,1 January 1995,TRUE
+Norway,NOR,GDP per capita (current US$),NY.GDP.PCAP.CD,75496.75405819980,Europe & Central Asia,High income,1 January 1995,TRUE
+Nepal,NPL,GDP per capita (current US$),NY.GDP.PCAP.CD,911.44426652126,South Asia,Lower middle income,23 April 2004,TRUE
+Nauru,NRU,GDP per capita (current US$),NY.GDP.PCAP.CD,8510.86840824456,East Asia & Pacific,High income,,FALSE
+New Zealand,NZL,GDP per capita (current US$),NY.GDP.PCAP.CD,42849.42632470100,East Asia & Pacific,High income,1 January 1995,TRUE
+OECD members,OED,GDP per capita (current US$),NY.GDP.PCAP.CD,37370.04899087130,,,,FALSE
+Oman,OMN,GDP per capita (current US$),NY.GDP.PCAP.CD,15130.94374439420,Middle East & North Africa,High income,9 November 2000,TRUE
+Other small states,OSS,GDP per capita (current US$),NY.GDP.PCAP.CD,13404.40973613220,,,,FALSE
+Pakistan,PAK,GDP per capita (current US$),NY.GDP.PCAP.CD,1464.99330546855,South Asia,Lower middle income,1 January 1995,TRUE
+Panama,PAN,GDP per capita (current US$),NY.GDP.PCAP.CD,15150.34561216100,Latin America & Caribbean,High income,6 September 1997,TRUE
+Peru,PER,GDP per capita (current US$),NY.GDP.PCAP.CD,6710.50802896038,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Philippines,PHL,GDP per capita (current US$),NY.GDP.PCAP.CD,3123.23422944951,East Asia & Pacific,Lower middle income,1 January 1995,TRUE
+Palau,PLW,GDP per capita (current US$),NY.GDP.PCAP.CD,16078.26819407010,East Asia & Pacific,High income,,FALSE
+Papua New Guinea,PNG,GDP per capita (current US$),NY.GDP.PCAP.CD,2695.25188331160,East Asia & Pacific,Lower middle income,9 June 1996,TRUE
+Poland,POL,GDP per capita (current US$),NY.GDP.PCAP.CD,13861.30936482350,Europe & Central Asia,High income,1 July 1995,TRUE
+Pre-demographic dividend,PRE,GDP per capita (current US$),NY.GDP.PCAP.CD,1414.80084279035,,,,FALSE
+Puerto Rico,PRI,GDP per capita (current US$),NY.GDP.PCAP.CD,31108.75275089120,Latin America & Caribbean,High income,,FALSE
+"Korea, Dem. People’s Rep.",PRK,GDP per capita (current US$),NY.GDP.PCAP.CD,,East Asia & Pacific,Low income,,FALSE
+Portugal,PRT,GDP per capita (current US$),NY.GDP.PCAP.CD,21490.42986310400,Europe & Central Asia,High income,1 January 1995,TRUE
+Paraguay,PRY,GDP per capita (current US$),NY.GDP.PCAP.CD,5680.58076826353,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+West Bank and Gaza,PSE,GDP per capita (current US$),NY.GDP.PCAP.CD,3254.48588658763,Middle East & North Africa,Lower middle income,,FALSE
+Pacific island small states,PSS,GDP per capita (current US$),NY.GDP.PCAP.CD,4132.18527007284,,,,FALSE
+Post-demographic dividend,PST,GDP per capita (current US$),NY.GDP.PCAP.CD,42879.59116980100,,,,FALSE
+French Polynesia,PYF,GDP per capita (current US$),NY.GDP.PCAP.CD,,East Asia & Pacific,High income,,FALSE
+Qatar,QAT,GDP per capita (current US$),NY.GDP.PCAP.CD,61264.39647779790,Middle East & North Africa,High income,13 January 1996,TRUE
+Romania,ROU,GDP per capita (current US$),NY.GDP.PCAP.CD,10807.79539071790,Europe & Central Asia,High income,1 January 1995,TRUE
+Russian Federation,RUS,GDP per capita (current US$),NY.GDP.PCAP.CD,10720.33258534480,Europe & Central Asia,Upper middle income,22 August 2012,TRUE
+Rwanda,RWA,GDP per capita (current US$),NY.GDP.PCAP.CD,772.31847177543,Sub-Saharan Africa,Low income,22 May 1996,TRUE
+South Asia,SAS,GDP per capita (current US$),NY.GDP.PCAP.CD,1866.88606656608,,,,FALSE
+Saudi Arabia,SAU,GDP per capita (current US$),NY.GDP.PCAP.CD,20803.74256573240,Middle East & North Africa,High income,11 December 2005,TRUE
+Sudan,SDN,GDP per capita (current US$),NY.GDP.PCAP.CD,1111.86844893858,Sub-Saharan Africa,Low income,,FALSE
+Senegal,SEN,GDP per capita (current US$),NY.GDP.PCAP.CD,1361.69958778497,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
+Singapore,SGP,GDP per capita (current US$),NY.GDP.PCAP.CD,60913.74533349400,East Asia & Pacific,High income,1 January 1995,TRUE
+Solomon Islands,SLB,GDP per capita (current US$),NY.GDP.PCAP.CD,2059.04542370076,East Asia & Pacific,Lower middle income,26 July 1996,TRUE
+Sierra Leone,SLE,GDP per capita (current US$),NY.GDP.PCAP.CD,499.38070781976,Sub-Saharan Africa,Low income,23 July 1995,TRUE
+El Salvador,SLV,GDP per capita (current US$),NY.GDP.PCAP.CD,3910.25719295906,Latin America & Caribbean,Lower middle income,7 May 1995,TRUE
+San Marino,SMR,GDP per capita (current US$),NY.GDP.PCAP.CD,45394.20102737040,Europe & Central Asia,High income,,FALSE
+Somalia,SOM,GDP per capita (current US$),NY.GDP.PCAP.CD,,Sub-Saharan Africa,Low income,,FALSE
+Serbia,SRB,GDP per capita (current US$),NY.GDP.PCAP.CD,6284.19280376523,Europe & Central Asia,Upper middle income,,FALSE
+Sub-Saharan Africa (excluding high income),SSA,GDP per capita (current US$),NY.GDP.PCAP.CD,1548.80154006790,,,,FALSE
+South Sudan,SSD,GDP per capita (current US$),NY.GDP.PCAP.CD,,Sub-Saharan Africa,Low income,,FALSE
+Sub-Saharan Africa,SSF,GDP per capita (current US$),NY.GDP.PCAP.CD,1560.88734674150,,,,FALSE
+Small states,SST,GDP per capita (current US$),NY.GDP.PCAP.CD,12135.83778960160,,,,FALSE
+Sao Tome and Principe,STP,GDP per capita (current US$),NY.GDP.PCAP.CD,1811.01282588810,Sub-Saharan Africa,Lower middle income,,FALSE
+Suriname,SUR,GDP per capita (current US$),NY.GDP.PCAP.CD,5626.79581590317,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+Slovak Republic,SVK,GDP per capita (current US$),NY.GDP.PCAP.CD,17554.30832104440,Europe & Central Asia,High income,1 January 1995,TRUE
+Slovenia,SVN,GDP per capita (current US$),NY.GDP.PCAP.CD,23500.75223087040,Europe & Central Asia,High income,30 July 1995,TRUE
+Sweden,SWE,GDP per capita (current US$),NY.GDP.PCAP.CD,53791.50872984030,Europe & Central Asia,High income,1 January 1995,TRUE
+Eswatini,SWZ,GDP per capita (current US$),NY.GDP.PCAP.CD,3953.08896824132,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
+Sint Maarten (Dutch part),SXM,GDP per capita (current US$),NY.GDP.PCAP.CD,,Latin America & Caribbean,High income,,FALSE
+Seychelles,SYC,GDP per capita (current US$),NY.GDP.PCAP.CD,15906.08392047870,Sub-Saharan Africa,High income,26 April 2015,TRUE
+Syrian Arab Republic,SYR,GDP per capita (current US$),NY.GDP.PCAP.CD,,Middle East & North Africa,Low income,,FALSE
+Turks and Caicos Islands,TCA,GDP per capita (current US$),NY.GDP.PCAP.CD,25933.60743634650,Latin America & Caribbean,High income,,FALSE
+Chad,TCD,GDP per capita (current US$),NY.GDP.PCAP.CD,665.94835269506,Sub-Saharan Africa,Low income,19 October 1996,TRUE
+East Asia & Pacific (IDA & IBRD countries),TEA,GDP per capita (current US$),NY.GDP.PCAP.CD,7248.93113112798,,,,FALSE
+Europe & Central Asia (IDA & IBRD countries),TEC,GDP per capita (current US$),NY.GDP.PCAP.CD,8538.35694285658,,,,FALSE
+Togo,TGO,GDP per capita (current US$),NY.GDP.PCAP.CD,626.09152789111,Sub-Saharan Africa,Low income,31 May 1995,TRUE
+Thailand,THA,GDP per capita (current US$),NY.GDP.PCAP.CD,6592.91490169864,East Asia & Pacific,Upper middle income,1 January 1995,TRUE
+Tajikistan,TJK,GDP per capita (current US$),NY.GDP.PCAP.CD,806.04157309804,Europe & Central Asia,Low income,2 March 2013,TRUE
+Turkmenistan,TKM,GDP per capita (current US$),NY.GDP.PCAP.CD,6587.09031628698,Europe & Central Asia,Upper middle income,,FALSE
+Latin America & the Caribbean (IDA & IBRD countries),TLA,GDP per capita (current US$),NY.GDP.PCAP.CD,9288.19957715145,,,,FALSE
+Timor-Leste,TLS,GDP per capita (current US$),NY.GDP.PCAP.CD,1294.71553448905,East Asia & Pacific,Lower middle income,,FALSE
+Middle East & North Africa (IDA & IBRD countries),TMN,GDP per capita (current US$),NY.GDP.PCAP.CD,3799.78729071694,,,,FALSE
+Tonga,TON,GDP per capita (current US$),NY.GDP.PCAP.CD,4217.47650679527,East Asia & Pacific,Upper middle income,27 July 2007,TRUE
+South Asia (IDA & IBRD),TSA,GDP per capita (current US$),NY.GDP.PCAP.CD,1866.88606656608,,,,FALSE
+Sub-Saharan Africa (IDA & IBRD countries),TSS,GDP per capita (current US$),NY.GDP.PCAP.CD,1560.88734674149,,,,FALSE
+Trinidad and Tobago,TTO,GDP per capita (current US$),NY.GDP.PCAP.CD,16238.19319166740,Latin America & Caribbean,High income,1 March 1995,TRUE
+Tunisia,TUN,GDP per capita (current US$),NY.GDP.PCAP.CD,3481.22873876516,Middle East & North Africa,Lower middle income,29 March 1995,TRUE
+Turkey,TUR,GDP per capita (current US$),NY.GDP.PCAP.CD,10513.64843243780,Europe & Central Asia,Upper middle income,26 March 1995,TRUE
+Tuvalu,TUV,GDP per capita (current US$),NY.GDP.PCAP.CD,3572.49357894833,East Asia & Pacific,Upper middle income,,FALSE
+Tanzania,TZA,GDP per capita (current US$),NY.GDP.PCAP.CD,1004.84112066441,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
+Uganda,UGA,GDP per capita (current US$),NY.GDP.PCAP.CD,747.19690737798,Sub-Saharan Africa,Low income,1 January 1995,TRUE
+Ukraine,UKR,GDP per capita (current US$),NY.GDP.PCAP.CD,2640.67567655839,Europe & Central Asia,Lower middle income,16 May 2008,TRUE
+Upper middle income,UMC,GDP per capita (current US$),NY.GDP.PCAP.CD,8364.77042485029,,,,FALSE
+Uruguay,URY,GDP per capita (current US$),NY.GDP.PCAP.CD,17322.14738911660,Latin America & Caribbean,High income,1 January 1995,TRUE
+United States,USA,GDP per capita (current US$),NY.GDP.PCAP.CD,59957.72585130320,North America,High income,1 January 1995,TRUE
+Uzbekistan,UZB,GDP per capita (current US$),NY.GDP.PCAP.CD,1826.56691924216,Europe & Central Asia,Lower middle income,,FALSE
+St. Vincent and the Grenadines,VCT,GDP per capita (current US$),NY.GDP.PCAP.CD,7212.96018080962,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+"Venezuela, RB",VEN,GDP per capita (current US$),NY.GDP.PCAP.CD,,Latin America & Caribbean,Upper middle income,1 January 1995,TRUE
+British Virgin Islands,VGB,GDP per capita (current US$),NY.GDP.PCAP.CD,,Latin America & Caribbean,High income,,FALSE
+Virgin Islands (U.S.),VIR,GDP per capita (current US$),NY.GDP.PCAP.CD,35938.02438751530,Latin America & Caribbean,High income,,FALSE
+Vietnam,VNM,GDP per capita (current US$),NY.GDP.PCAP.CD,2365.62166567374,East Asia & Pacific,Lower middle income,11 January 2007,TRUE
+Vanuatu,VUT,GDP per capita (current US$),NY.GDP.PCAP.CD,3082.35632289041,East Asia & Pacific,Lower middle income,24 August 2012,TRUE
+World,WLD,GDP per capita (current US$),NY.GDP.PCAP.CD,10817.48194749520,,,,FALSE
+Samoa,WSM,GDP per capita (current US$),NY.GDP.PCAP.CD,4258.48626965259,East Asia & Pacific,Upper middle income,10 May 2012,TRUE
+Kosovo,XKX,GDP per capita (current US$),NY.GDP.PCAP.CD,4045.61420880757,Europe & Central Asia,Upper middle income,,FALSE
+"Yemen, Rep.",YEM,GDP per capita (current US$),NY.GDP.PCAP.CD,882.39575851097,Middle East & North Africa,Low income,26 June 2014,TRUE
+South Africa,ZAF,GDP per capita (current US$),NY.GDP.PCAP.CD,6132.47984097210,Sub-Saharan Africa,Upper middle income,1 January 1995,TRUE
+Zambia,ZMB,GDP per capita (current US$),NY.GDP.PCAP.CD,1534.86537052245,Sub-Saharan Africa,Lower middle income,1 January 1995,TRUE
+Zimbabwe,ZWE,GDP per capita (current US$),NY.GDP.PCAP.CD,1548.17005572552,Sub-Saharan Africa,Lower middle income,5 March 1995,TRUE
