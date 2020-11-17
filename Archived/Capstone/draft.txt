@@ -56,3 +56,45 @@ Residual standard error: 1.114 on 195 degrees of freedom
 Multiple R-squared:  0.4381,    Adjusted R-squared:  0.4179
 F-statistic: 21.72 on 7 and 195 DF,  p-value: < 2.2e-16
 --------------------------------------------------------------------------
+
+# if wtoTURE is excluded, we see slightly improve in adjusted R-squared.
+    Considering >0.5 p-value for wto membership, we may infer wtoTRUE contributes nothing to gdp per capita difference
+lm2 <- lm(log(gdp_per_capita) ~ region)
+summary(lm2)
+--------------------------------------------------------------------------
+Call:
+lm(formula = log(gdp_per_capita) ~ region)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-3.08286 -0.75644 -0.07068  0.88110  2.42703 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  8.94666    0.19081  46.887  < 2e-16 ***
+regionECA    0.82834    0.24190   3.424 0.000751 ***
+regionLAC    0.22027    0.26266   0.839 0.402696    
+regionMENA   0.08605    0.31354   0.274 0.784029    
+regionNoA    1.91290    0.80956   2.363 0.019112 *  
+regionSA    -1.32833    0.43721  -3.038 0.002704 ** 
+regionSSA   -1.69923    0.25282  -6.721 1.92e-10 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.113 on 196 degrees of freedom
+Multiple R-squared:  0.4369,    Adjusted R-squared:  0.4196 
+F-statistic: 25.34 on 6 and 196 DF,  p-value: < 2.2e-16
+--------------------------------------------------------------------------
+
+# with anova(), we could condlude group mean by region is significantly different, but so is not for wto membership
+--------------------------------------------------------------------------
+Analysis of Variance Table
+
+Response: log(gdp_per_capita)
+           Df  Sum Sq Mean Sq F value Pr(>F)    
+region      6 188.247 31.3745 25.2675 <2e-16 ***
+wto         1   0.507  0.5071  0.4084 0.5236    
+Residuals 195 242.130  1.2417                   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+--------------------------------------------------------------------------
