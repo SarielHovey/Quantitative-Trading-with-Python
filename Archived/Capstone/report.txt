@@ -1,0 +1,16 @@
+Relation between country GDP per capita and location & WTO membership
+
+1. Executive summary/abstract
+In theory, a country’s GDP per capita is determined by a number of factors, like population, industrialization level, and participant in world market. In this article, we are interested in how the geographical location and WTO membership relates to GDP per capita. 
+
+…
+
+2. Introduction
+This article attempts to figure out the relation between GDP per capita of world countries and their geographical location & WTO membership. So relevant data may need to be downloaded from websites of UN, world bank or WTO. Then we need to plot the variables to achieve intuition for the relations. Afterwards, we will regress a simple linear regression. With the linear model, we could try ANOVA model based on Bayesian regression.
+
+3. Data
+The data used comes from 2 sources, 1 from World Bank. Their website provides panel data for GDP and GDP per capita among the world countries and regions. GDP data are in time series along several decades, but as this article does not involve state space model so we will only use world GDP per capita data in the year 2017, in dollars. The reason we choose 2017 here is that data from 2018 and 2019 have more na parts. But the method performed in this article could also be used in other fiscal years without much modification. Besides, GDP data for regions  will be excluded as we would not like to repeat data pattern for countries in our regression. 
+
+Additionally, data from world bank provides dimension for geographical location for every country. We have 7 factors in this column: [1-7]. And of course, data in this column will not change over the time. There is also another column marking the country by its income group. We will not use this for regression though, as world bank declare that they divide countries in income group via GNI per capita on their website . GNI usually has a high correlation with GDP  thus we have to avoid self-explanation here. And indeed, if we include Income Group as dummy variable, we will have an adjusted R-square as high as 89% in linear regression, which is too good to be true in practical research.
+
+The other data source is from WTO. We map WTO membership data provided for every country in our World Bank GDP data. Regions membership like EU and China Hongkong are neglected. Also, the countries in WTO’s watch list are marked as “not-a-member” as their enrollment are still under WTO’s censorship. 
