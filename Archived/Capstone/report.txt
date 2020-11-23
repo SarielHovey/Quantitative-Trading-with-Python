@@ -9,8 +9,26 @@ In theory, a country’s GDP per capita is determined by a number of factors, li
 This article attempts to figure out the relation between GDP per capita of world countries and their geographical location & WTO membership. So relevant data may need to be downloaded from websites of UN, world bank or WTO. Then we need to plot the variables to achieve intuition for the relations. Afterwards, we will regress a simple linear regression. With the linear model, we could try ANOVA model based on Bayesian regression.
 
 3. Data
-The data used comes from 2 sources, 1 from World Bank. Their website provides panel data for GDP and GDP per capita among the world countries and regions. GDP data are in time series along several decades, but as this article does not involve state space model so we will only use world GDP per capita data in the year 2017, in dollars. The reason we choose 2017 here is that data from 2018 and 2019 have more na parts. But the method performed in this article could also be used in other fiscal years without much modification. Besides, GDP data for regions  will be excluded as we would not like to repeat data pattern for countries in our regression. 
+The data used comes from 2 sources, 1 from World Bank. Their website provides panel data for GDP and GDP per capita among the world countries and regions. GDP data are in time series along several decades, but as this article does not involve state space model so we will only use world GDP per capita data in the year 2017, in dollars. The reason we choose 2017 here is that data from 2018 and 2019 have more NA parts. But the method performed in this article could also be used in other fiscal years without much modification. Besides, GDP data for regions  will be excluded as we would not like to repeat data pattern for countries in our regression. 
 
-Additionally, data from world bank provides dimension for geographical location for every country. We have 7 factors in this column: [1-7]. And of course, data in this column will not change over the time. There is also another column marking the country by its income group. We will not use this for regression though, as world bank declare that they divide countries in income group via GNI per capita on their website . GNI usually has a high correlation with GDP  thus we have to avoid self-explanation here. And indeed, if we include Income Group as dummy variable, we will have an adjusted R-square as high as 89% in linear regression, which is too good to be true in practical research.
+Additionally, data from world bank provides dimension for geographical location for every country. We have 7 factors in this column: East Asia and Pacific, Europe and Central Asia,  Latin America & the Caribbean, Middle East and North Africa	, North America, South Asia and Sub-Saharan Africa. And of course, data in this column will not change over the time. There is also another column marking the country by its income group. We will not use this for regression though, as world bank declare that they divide countries in income group via GNI per capita on their website . GNI usually has a high correlation with GDP  thus we have to avoid self-explanation here. And indeed, if we include Income Group as dummy variable, we will have an adjusted R-square as high as 89% in linear regression, which is too good to be true in practical research.
 
 The other data source is from WTO. We map WTO membership data provided for every country in our World Bank GDP data. Regions membership like EU and China Hongkong are neglected. Also, the countries in WTO’s watch list are marked as “not-a-member” as their enrollment are still under WTO’s censorship. 
+
+---updated---
+With the data downloaded, firstly we need to check its validity. In this stage we will use Income Group for a quick test.
+--P1_gdp_to_income.png
+Obviously, countries in superior income rank have higher GDP per capita in both median level and 25%--75% quantile. This matches the definition for Income Group, adding our confidence to data quality.
+
+Secondly, we will plot GDP per capita against the 2 independent variables. For GDP per capita against WTO membership, we notice almost identical median for countries in/out of WTO, although non-membership group has higher variance. This infers in 2017 WTO membership does not relate to higher GDP per capita. Besides, for variable location, we find different group median, which infers country location does relate to GDP.
+--P2_gdp_to_wto.png; --P3_gdp_to_location.png
+
+4. Model
+Given the pattern shown for Part 3, we will try a simple linear regression on log of GDP per capita against region and WTO membership. R will set the 2 default as dummy variables. Regression summary is as below, with East Asia & Pacific countries who are not WTO member as base case.
+--P4_simple_linear_regression.png
+It is noticed that p value for WTO membership is not significant even at 0.1 level, which adds to our concern that its irrelevant. The ANOVA table also only shows region with significant difference in terms of group variance to global variance.
+--P5_ANOVA.png
+Considering the simple linear regression result, we will now first try an ANOVA model based on Bayesian method with same variance among groups.
+
+
+
