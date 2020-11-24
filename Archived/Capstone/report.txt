@@ -15,7 +15,6 @@ Additionally, data from world bank provides dimension for geographical location 
 
 The other data source is from WTO. We map WTO membership data provided for every country in our World Bank GDP data. Regions membership like EU and China Hongkong are neglected. Also, the countries in WTO’s watch list are marked as “not-a-member” as their enrollment are still under WTO’s censorship. 
 
----updated---
 With the data downloaded, firstly we need to check its validity. In this stage we will use Income Group for a quick test.
 --P1_gdp_to_income.png
 Obviously, countries in superior income rank have higher GDP per capita in both median level and 25%--75% quantile. This matches the definition for Income Group, adding our confidence to data quality.
@@ -30,5 +29,6 @@ It is noticed that p value for WTO membership is not significant even at 0.1 lev
 --P5_ANOVA.png
 Considering the simple linear regression result, we will now first try an ANOVA model based on Bayesian method with same variance among groups.
 
-
+---------------updated---------------
+In the regression, we will use 2 groups, region and WTO membership. As we believe WTO membership has no strong relationship with a country's region, it is also assumed that no interaction between the 2 groups.\footnote{At least according to WTO's declairation, "Any state or customs territoryhaving full autonomy in the conduct of its trade policies may join (“accede to”) the WTO, but WTO members must agree on the terms." https://www.wto.org/english/thewto_e/whatis_e/tif_e/org3_e.htm}
 
