@@ -42,3 +42,4 @@ int main() {
     int c = get_fibo_last_digit_fast(n);
     std::cout << c << '\n';
     }
+// http://fusharblog.com/solving-linear-recurrence-for-programming-contest/
