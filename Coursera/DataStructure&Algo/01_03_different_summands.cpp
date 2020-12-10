@@ -7,16 +7,25 @@ list<int> optimal_summands(int n) {
     list<int> summands;
     int tmp = 0;
     
+    if (n == 1) {
+        summands.push_back(1);
+        return summands;
+    }
+    if (n == 2) {
+        summands.push_back(2);
+        return summands;
+    }
+    
     summands.push_back(1);
     while (n > 0) {
-        n -= *summands.rbegin();
-        tmp = *summands.rbegin() + 1;
+        n -= *summands.rbegin(); // n=5
+        tmp = *summands.rbegin() + 1; // tmp=3
         if (n - tmp <= tmp) {
-            summands.push_back(n - *summands.rbegin());
+            summands.push_back(n);
             return summands;
         }
         else {
-            summands.push_back(tmp);
+            summands.push_back(tmp); // 1,2
         }        
     }
     
