@@ -12,7 +12,7 @@ struct item {
     item(int w, int v) {
         weight = w;
         value = v;
-        rank = v / w;
+        rank = (double) v / w;
     }
     bool operator< (item& another) {
         return this->rank < another.rank;
