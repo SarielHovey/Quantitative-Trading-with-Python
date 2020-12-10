@@ -14,24 +14,25 @@ int compute_min_refills(int dist, int tank, list<double> & stops) {
     int n = 0;
     double diff = 0.0;
     double last_fill = 0.0;
-    list<double>::iterator itr;
     while (stops.size() != 1) {
         diff = *std::next(stops.begin()) - *(stops.begin());
         if (diff > 1.0) {
             return -1;
         }
         else {
-            stops.pop_front();
-            diff = *std::next(stops.begin()) - *(stops.begin());
-            if (*std::next(stops.begin()) > (last_fill+1)) {
+            if (*std::next(stops.begin()) - last_fill > 1.0) {
+                //cout << *std::next(stops.begin()) << " - ";
+                //cout << last_fill << "\n";
                 n++;
                 last_fill = *stops.begin();
                 stops.pop_front();
-                cout << "pop with n+1" << "\n";
+                //cout << "pop with n+1" << "\n";
             }
             else {
+                //cout << *std::next(stops.begin()) << " - ";
+                //cout << last_fill << "\n";
                 stops.pop_front();
-                cout << "pop with n unchanged!" << "\n";
+                //cout << "pop with n unchanged!" << "\n";
             }
         }
     }
@@ -50,10 +51,14 @@ int main() {
     list<double> stops;
     for (size_t i = 0; i != n; ++i) {
         cin >> tmp;
-        stops.push_back(tmp / tank);
+        stops.push_back((double) tmp / tank);  // int / int = int if not transformed!!!
     }
-    stops.push_front(0.0);
-    stops.push_back(dist / tank);
+    stops.push_back((double) dist / tank);
+    
+    if (*stops.begin() > 1) {
+        cout << -1 << "\n";
+        return 0;
+    }
  
     cout << compute_min_refills(dist, tank, stops) << "\n";
 
