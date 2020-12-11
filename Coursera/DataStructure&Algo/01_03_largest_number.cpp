@@ -14,7 +14,7 @@ using std::string;
 using std::stringstream;
 using std::stoi;
 
-bool leq(const int& x1, const int& x2) {
+inline bool leq(const int& x1, const int& x2) {
     stringstream s1, s2;
     
     s1 << x1 << x2;
@@ -26,7 +26,7 @@ bool leq(const int& x1, const int& x2) {
 
 string largest_number(list<int>& a) {
     
-    a.sort(leq);
+    a.sort(leq);  // O(nlogn)
   
     stringstream ret;
     for (list<int>::const_reverse_iterator itr = a.crbegin(); itr != a.crend(); itr++) {
