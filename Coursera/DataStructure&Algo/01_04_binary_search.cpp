@@ -24,7 +24,8 @@ int binary_search(vector<int>& a, const int& x) {
     std::sort(a.begin(), a.end());  // O(nlog n)
     
     vector<int>::const_iterator itr;
-    itr = binary_find(a.cbegin(), a.cend(), x);
+    itr = binary_find(a.cbegin(), a.cend(), x);  // Complier will induce T from param
+    // itr = binary_find<vector<int>::const_iterator, int>(a.cbegin(), a.cend(), x); Explicit specification also allowed
     if (itr != a.cend()) {
         return itr - a.cbegin();
     }
