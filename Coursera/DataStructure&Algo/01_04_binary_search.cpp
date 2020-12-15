@@ -12,6 +12,8 @@ Iter binary_find(Iter begin, Iter end, T val)
     Iter itr = std::lower_bound(begin, end, val);
 
     // lower_bound use < to find items, so dont use (*i == val) here
+    // *itr here may be a int larger than or equal to val
+    // in below, if val < *itr then val is not found
     if (itr != end && !(val < *itr)) 
         return itr; // found
     else
