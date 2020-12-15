@@ -26,9 +26,9 @@ bool get_majority_element(vector<int>& a, int left, int right) {
     int num=0;
     for(it = m.begin(); it != m.end(); it++) {
         num = m.count(it->first);
-        std::cout << "key= " << it->first << ", ";
-        std::cout << "num= " << num << ", ";
-        std::cout << "a_size= " << a_size << "\n";
+        // std::cout << "key= " << it->first << ", ";
+        // std::cout << "num= " << num << ", ";
+        // std::cout << "a_size= " << a_size << "\n";
         if ((float) num > a_size) {
             return 1;
         }
