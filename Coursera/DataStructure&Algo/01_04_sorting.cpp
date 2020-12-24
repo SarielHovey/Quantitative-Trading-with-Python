@@ -28,7 +28,7 @@ vector<int> partition3(vector<int>& a, int l, int r) {
     int more = r;
     int i = l+1;
     int j = r;
-    while (i < j) {
+    while (i <= j) {
         if (a[i] < x) {
             less++;
             swap(a[i], a[less]);
@@ -68,8 +68,8 @@ void randomized_quick_sort(vector<int>& a, int l, int r) {
     
     vector<int> otpt = partition3(a, l, r);
 
-    randomized_quick_sort(a, l, otpt[0]);
-    randomized_quick_sort(a, otpt[1], r);
+    randomized_quick_sort(a, l, otpt[0]-1);
+    randomized_quick_sort(a, otpt[1]+1, r);
 }
 
 int main() {
