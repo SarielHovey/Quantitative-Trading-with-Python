@@ -37,8 +37,10 @@ vector<int> partition3(vector<int>& a, int l, int r) {
         else if (a[i] == x) {
             i++;
         }
-        else {
-            i++;
+        else if (a[i] > x) {
+            swap(a[i], a[more]);
+            more--;
+            j--;
         }
         if (a[j] > x) {
             swap(a[j], a[more]);
@@ -48,8 +50,10 @@ vector<int> partition3(vector<int>& a, int l, int r) {
         else if (a[j] == x) {
             j--;
         }
-        else {
-            j--;
+        else if (a[j] < x) {
+            less++;
+            swap(a[j], a[less]);
+            i++;
         }
     }
     swap(a[l], a[less]);
