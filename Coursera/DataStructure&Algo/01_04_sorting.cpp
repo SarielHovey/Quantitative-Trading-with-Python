@@ -13,8 +13,8 @@ int partition2(vector<int>& a, int l, int r) {
     int j = l;
     for (int i = l + 1; i <= r; i++) {
         if (a[i] <= x) {
-        j++;
-        swap(a[i], a[j]);
+            j++;
+            swap(a[i], a[j]);
         }
     }
     swap(a[l], a[j]);
@@ -23,40 +23,26 @@ int partition2(vector<int>& a, int l, int r) {
 
 vector<int> partition3(vector<int>& a, int l, int r) {
     vector<int> otpt(2);
-    int x = a[l];
-    int less = l;
-    int more = r;
-    int i = l+1;
-    int j = r;
-    while (i <= j) {
+    int x = a[l];  // pivot
+    int less = l;  // less items in [l,less-1]
+    int more = r;  // greater items in [more+1,r]
+    int i = l;
+    
+    while (i <= more) {
         if (a[i] < x) {
-            less++;
             swap(a[i], a[less]);
             i++;
+            less++;
         }
         else if (a[i] == x) {
             i++;
         }
-        else if (a[i] > x) {
+        else {
             swap(a[i], a[more]);
             more--;
-            j--;
-        }
-        if (a[j] > x) {
-            swap(a[j], a[more]);
-            j--;
-            more--;          
-        }
-        else if (a[j] == x) {
-            j--;
-        }
-        else if (a[j] < x) {
-            less++;
-            swap(a[j], a[less]);
-            i++;
         }
     }
-    swap(a[l], a[less]);
+    
     otpt[0] = less; otpt[1] = more;
     return otpt;
 }
