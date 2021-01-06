@@ -49,7 +49,7 @@ void merge_sort(vector<int>& A, int l, int r) {
         return;
     }
     
-    int m = (l+r-1) / 2;
+    int m = (l+r) / 2;  // m should be mid point of [l,r]
     merge_sort(A, l, m);
     merge_sort(A, m+1, r);
     merge(A, l, m, r);
