@@ -26,7 +26,7 @@ vector<int> naive_count_segments(const vector<int>& starts, const vector<int>& e
 }
 
 list<int> fast_count_segments(const vector<int>& starts, const vector<int>& ends, const vector<int>& points) {
-    list<int> cnt(points.size());
+    list<int> cnt;
     
     size_t total_num = starts.size() + ends.size();
     list< pair<int, int> > line(total_num);
@@ -42,6 +42,14 @@ list<int> fast_count_segments(const vector<int>& starts, const vector<int>& ends
         }
     );
     
+    for (vector<int>::const_iterator itr = points.cbegin(); itr != points.cend(); itr++) {
+        int cnt_i = 0;
+        while (!line.empty() && line.front().first <= *itr) {
+            cnt_i += line.front().second;
+            line.pop_front();
+        }
+        cnt.push_back(std::move(cnt_i));
+    }
     
     return cnt;
 }
