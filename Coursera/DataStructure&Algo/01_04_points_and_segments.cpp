@@ -1,5 +1,6 @@
 /*
 Description: Given a number of segments [a,b], check if a set of points provided are within any segment.
+    Additionally, points provided is unordered, and output should also be for unordered points.
 */
 #include <iostream>
 #include <vector>
@@ -25,8 +26,8 @@ vector<int> naive_count_segments(const vector<int>& starts, const vector<int>& e
     return cnt;
 }
 
-list<int> fast_count_segments(const vector<int>& starts, const vector<int>& ends, const vector<int>& points) {
-    list<int> cnt;
+list<pair<int, int> > fast_count_segments(const vector<int>& starts, const vector<int>& ends, const vector<pair<int, int> >& points) {
+    list<pair<int, int> > cnt;
     
     size_t total_num = starts.size() + ends.size();
     list< pair<int, int> > line(total_num);
@@ -34,7 +35,7 @@ list<int> fast_count_segments(const vector<int>& starts, const vector<int>& ends
         line.push_back({starts[i],1});
     }
     for (size_t j=0; j != ends.size(); j++) {
-        line.push_back({ends[j]+1,-1});
+        line.push_back({ends[j],-1});
     }
     
     line.sort([](const pair<int, int>& a, const pair<int, int>& b) -> bool {
@@ -42,13 +43,14 @@ list<int> fast_count_segments(const vector<int>& starts, const vector<int>& ends
         }
     );
     
-    for (vector<int>::const_iterator itr = points.cbegin(); itr != points.cend(); itr++) {
-        int cnt_i = 0;
-        while (!line.empty() && line.front().first <= *itr) {
+    int cnt_i = 0;  // must be out of below loop to accumulate count of lower bound
+    for (vector<pair<int, int> >::const_iterator itr = points.cbegin(); itr != points.cend(); itr++) {
+
+        while (!line.empty() && line.front().first < (*itr).first) {
             cnt_i += line.front().second;
             line.pop_front();
         }
-        cnt.push_back(std::move(cnt_i));
+        cnt.push_back({std::move(cnt_i), (*itr).second});  // match count with order before sort in "points"
     }
     
     return cnt;
@@ -61,15 +63,24 @@ int main() {
     for (size_t i = 0; i < starts.size(); i++) {
         cin >> starts[i] >> ends[i];
     }
-    vector<int> points(m);  // defining points
-    vector<int>::iterator itr;
-    for (itr = points.begin(); itr != points.end(); itr++) {
-        cin >> *itr;
+    vector<pair<int, int> > points(m);  // defining points
+    int tmp;
+    for (int i=0; i != m; i++) {
+        cin >> tmp;
+        points[i] = {tmp,i};  // i here stores order before sort
     }
-    std::sort(points.begin(), points.end());
+    std::sort(points.begin(), points.end(), [](const pair<int, int>& a, const pair<int, int>& b) -> bool {
+            return a.first < b.first;
+        }
+    );
 
-    list<int> cnt = fast_count_segments(starts, ends, points);
-    for (list<int>::iterator i = cnt.begin(); i != cnt.end(); i++) {
-        cout << *i << ' ';
+    list<pair<int, int> > cnt = fast_count_segments(starts, ends, points);
+    
+    cnt.sort([](const pair<int, int>& a, const pair<int, int>& b) -> bool {
+            return a.second < b.second;
+        });
+    
+    for (list<pair<int, int> >::iterator i = cnt.begin(); i != cnt.end(); i++) {
+        cout << (*i).first << ' ';
     }
 }
