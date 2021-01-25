@@ -150,7 +150,7 @@ stringstream _analyze_data(const string& in, const string& des, const string& pr
             p_wday >> std::get_time(&tm2, "%d%m%Y %H:%M:%S");
             time_t yest = mktime(&tm2);
             bool ttt = (rsps>=yest);            
-            if (ttt && (row[15] == "UBSWGB24" || row[15] == "UBSWGB2L" || row[15] == "UBSWDE24") ) {
+            if (ttt && (row[15] == "A" || row[15] == "B" || row[15] == "C") ) {
                 outfile << row[0] << ",";
                 outfile << row[23] << "\n";
                 mw_id << row[0] << ";";
