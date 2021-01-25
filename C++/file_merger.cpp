@@ -2,15 +2,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include <dirent.h>
 #include <sys/types.h>
-#include <list>
+#include <vector>
+#include <iomanip>
 #include <ctime>
+
 using namespace std;
 
-
-string ipt = "//sample/dir1/dir2/";
-string history = "//sample.com/dir1/dir2/test space/";
+string ipt = "\\\\path\\";
+string history = "\\\\pathpath\\";
 
 string get_path() {
     /*
@@ -25,19 +27,19 @@ string get_path() {
 }
 
 
-list<string> list_dir(const string& path, const string& filter) {
+vector<string> list_dir(const string& path, const string& filter) {
     /*
-    Used to get filename for files like Sa_ddmmyyyy.csv in a specific directory.
+    Used to get filename for files like MW_ddmmyyyy.csv in a specific directory.
     param-path: std::string, directory path for files
     param-filter: std::string, filter to match filename
-    return: std::list<string>
+    return: std::vector<string>
     */
     int i = filter.size();
-    list<string> fileNames;
+    vector<string> fileNames;
     struct dirent *entry;
     DIR *dir = opendir(path.c_str());
 
-    if (dir == NULL) { cerr << "filePath not found!" << "\n"; }
+    if (dir == NULL) { std::cerr << "filePath not found!" << "\n"; }
     while ((entry = readdir(dir)) != NULL) {
         string temp = entry->d_name;
         if (temp.substr(0,i) == filter) {
@@ -97,16 +99,16 @@ void read_and_write(const string& in, fstream& outfile, const string& out) {
 }
 
 
-void merge_files(list<string>& inList, const string& outName) {
+void merge_files(vector<string>& inList, const string& outName) {
     /*
     Read contents from inList and merge the contents into an output file.
-    param-inList: list<string> object, contains file path for input files
+    param-inList: vector<string> object, contains file path for input files
     param-outName: filename of the output file, like otpt.csv
     */
     fstream outfile;
     outfile.open(outName.c_str(), ios::out | ios::trunc);
     int cnt=0;
-    for (list<string>::iterator it=inList.begin(); it != inList.end(); it++) {
+    for (vector<string>::iterator it=inList.begin(); it != inList.end(); it++) {
         //clog << *it << endl;
         cnt++;
         cout << "\r" << "Processing file [" << cnt << "/" << inList.size() << "]";
@@ -116,59 +118,50 @@ void merge_files(list<string>& inList, const string& outName) {
 }
 
 
-void analyze_data(const string& in) {
+stringstream _analyze_data(const string& in, const string& des, const string& prev_wday) {
     /*
-    Used to count lines of record for different filters,
-    result will be written into result.txt.
-    param-in: string, path for input file
+    Used to find MW IDs that should be mapped into ODW.
     */
     ifstream infile;
     fstream outfile;
-    string data;
+    vector<string> row;
+    string line, word;
+    stringstream mw_id;
+    
     infile.open(in.c_str(), ios::in);
     outfile.open("result.txt", ios::out | ios::trunc);
-    unsigned int total=0, f1=0, f2=0, f3=0, f4=0, f5=0;
-    while ( getline(infile, data) ) {
-        if (data.find("F1") != std::string::npos) {
-            total += 1;
-            f1 += 1;
+    while ( getline(infile, line) ) {
+        
+        row.clear();
+        istringstream s(line);
+        while ( getline(s, word, ',') ) {
+            row.push_back(word);
         }
-        else if (data.find("F2") != std::string::npos) {
-            total += 1;
-            f1 += 1;
+        
+        // a typical mw report consists of 25 columns
+        if (row.size()==25 && row[19]=="Error") {
+            istringstream rsps_time(row[23]);
+            istringstream p_wday(prev_wday + " 00:00:00");
+            
+            struct tm tm1, tm2;
+            
+            rsps_time >> std::get_time(&tm1, "%d/%m/%Y %H:%M:%S");
+            time_t rsps = mktime(&tm1);
+            p_wday >> std::get_time(&tm2, "%d%m%Y %H:%M:%S");
+            time_t yest = mktime(&tm2);
+            bool ttt = (rsps>=yest);            
+            if (ttt && (row[15] == "UBSWGB24" || row[15] == "UBSWGB2L" || row[15] == "UBSWDE24") ) {
+                outfile << row[0] << ",";
+                outfile << row[23] << "\n";
+                mw_id << row[0] << ";";
+            }
         }
-        else if (data.find("F3") != std::string::npos) {
-            total += 1;
-            f2 += 1;
-        }
-        else if (data.find("F4") != std::string::npos) {
-            total +=1;
-            f3 +=1;
-        }
-        else if (data.find("F5") != std::string::npos) {
-            total +=1;
-            f4 +=1;
-        }
-        else if (data.find("F6") != std::string::npos) {
-            total +=1;
-            f5 +=1;
-        }
-        else {
-            continue;
-        }
+        
     }
-    infile.close();
 
-    outfile << "Test V1.0" << "\n";
-    outfile << "-------------------------------------------------" << "\n";
-    outfile << "Total lines of record: " << total << endl;
-    outfile << "-->F1: " << f1 << endl;
-    outfile << "-->F2: " << f2 << endl;
-    outfile << "-->F3: " << f3 << endl;
-    outfile << "-->F4: " << f4 << endl;
-    outfile << "-->F5: " << f5 << endl;
-    outfile << "-------------------------------------------------" << endl;
+    infile.close(); 
     outfile.close();
+    return mw_id;
 }
 
 
@@ -181,26 +174,37 @@ void daily_process() {
 
     //cout << "Size of fileNames: " << fileNames.size() << "\n";
     //cout << *fileNames.begin() << "\n";
-    string fname = "Sa_" + get_prev_wday() + ".csv";
+    string fname = "MW_" + get_prev_wday() + ".csv";
     string cmd;
-    cmd = "rename " + download + "SampleSample.csv" + " " + fname;
+    cmd = "rename " + download + "ReportingHistory.csv" + " " + fname;
     system(cmd.c_str());
     cmd = "copy " + download + fname + " " + "\"" + history + "\"";
     system(cmd.c_str());
     cmd = "copy " + download + fname + " " + "\"" + ipt + "\"";
     system(cmd.c_str());
-    analyze_data(download + fname);
-    system("dir \\\\sample\\dir1\\dir2 >> result.txt");
+    
+    stringstream otpt;
+    otpt = _analyze_data(download + fname, ipt, get_prev_wday());
+    cout << otpt << "\n";
 }
 
 
+void adhoc_process(const string& date) {
+    string fname = "MW_" + date + ".csv";
+    stringstream otpt;
+    otpt = _analyze_data(history + fname, ipt, date);
+    cout << otpt << "\n";
+}
+
 int main() {
-    cout << "Test V1.0" << endl;
+    cout << "Control V2.0 powered by C++ -- Sariel Huang" << endl;
     cout << "-------------------------------------------------" << endl;
     cout << "Please insert number: " << endl;
-    cout << "1 for daily process; " << "2 for periodic control; " << "\n";
+    cout << "1 for daily process; " << "2 for periodic control; ";
+    cout << "3 for ad hoc control; ";
     cout << "0 for exit." << endl;
     unsigned int temp = 0;
+    string temp1;
 
     process:while (1) {
         cin >> temp;
@@ -215,10 +219,16 @@ int main() {
         }
         else if ( temp == 2) {
             cout << "Reading files in " << history << "\n";
-            list<string> fileNames;
-            fileNames = list_dir(history, "Sa");
+            vector<string> fileNames;
+            fileNames = list_dir(history, "MW");
             merge_files(fileNames, "otpt.csv");
             cout << "\n" << "Files merged into otpt.csv!" << "\n";
+            goto endProcess;
+        }
+        else if ( temp == 3) {
+            cout << "Please input Datetime ddmmyyyy: ";
+            cin >> temp1;
+            adhoc_process(temp1);           
             goto endProcess;
         }
         else if ( temp == 0) {
